@@ -18,18 +18,18 @@
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 10%,#fff 0 15%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff);color:var(--ink);font-family:Nunito,sans-serif;min-height:100vh}
 .wrap{width:min(980px,94vw);margin:0 auto;padding:24px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.brand{font:700 30px Fredoka;color:#315b92}.brand span{color:var(--pink)}.pill{background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:999px;font-weight:800;color:var(--muted)}
 .game{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.stage,.panel{background:rgba(255,255,255,.9);border:1px solid rgba(220,232,246,.9);border-radius:28px;box-shadow:var(--shadow)}.stage{padding:18px}.scene{min-height:600px;border-radius:22px;position:relative;overflow:hidden;background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center/cover no-repeat;display:block}
-.scene.night{filter:brightness(.62) saturate(.8)}.sun,.moon{position:absolute;top:28px;right:35px;width:58px;height:58px;border-radius:50%;background:#ffe28a;box-shadow:0 0 45px #ffe28a}.moon{background:#eef2ff;box-shadow:0 0 30px #cfdcff}.cloud{position:absolute;left:8%;top:16%;font-size:50px;opacity:.7}.cloud.c2{left:auto;right:15%;top:28%;font-size:38px}.ground{position:absolute;bottom:0;width:100%;height:42%;background:repeating-linear-gradient(120deg,rgba(255,255,255,.14) 0 3px,transparent 3px 20px)}
+.scene.night{filter:none!important;background-image:url('https://cdn.websitepublisher.ai/custom/wid29230/images/world-night.svg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}.scene:not(.night):not(.sleep-mode){filter:none!important}.sun,.moon{position:absolute;top:28px;right:35px;width:58px;height:58px;border-radius:50%;background:#ffe28a;box-shadow:0 0 45px #ffe28a}.moon{background:#eef2ff;box-shadow:0 0 30px #cfdcff}.cloud{position:absolute;left:8%;top:16%;font-size:50px;opacity:.7}.cloud.c2{left:auto;right:15%;top:28%;font-size:38px}.ground{position:absolute;bottom:0;width:100%;height:42%;background:repeating-linear-gradient(120deg,rgba(255,255,255,.14) 0 3px,transparent 3px 20px)}
 .pet{position:absolute;left:0;bottom:8%;z-index:7;width:190px;height:190px;display:grid;place-items:center;animation:bob 2.2s ease-in-out infinite}
-.pet.roam{animation:roamPixel 7s linear infinite alternate,bob 2.2s ease-in-out infinite}
+.pet.roam{animation:bob 2.2s ease-in-out infinite}
 .pet.action-feed{animation:feedAction .75s ease-out 1}
-.needBubble{position:absolute;z-index:10;left:50%;top:20%;transform:translateX(-50%);max-width:270px;padding:10px 15px;border:3px solid #8fb8d5;border-radius:18px;background:#fff;color:#27445e;font-weight:900;font-size:15px;line-height:1.3;text-align:center;box-shadow:4px 5px 0 rgba(32,60,85,.16);transition:.25s;white-space:nowrap}.needBubble:after{content:'';position:absolute;left:28px;bottom:-12px;border:7px solid transparent;border-top-color:#8fb8d5}.needBubble.low{background:#fff0f3;border-color:#ef8ca4;color:#a93450}.needBubble.low:after{border-top-color:#ef8ca4}.needBubble.warn{background:#fff8df;border-color:#e6bb4c;color:#7a5a08}.needBubble.good{background:#ecfff6;border-color:#6fc5a4;color:#23785e}.pet.bored .pixel{animation:boredFace .9s ease-in-out infinite alternate}.pet.bored:before{content:'💭  ·  ·';position:absolute;z-index:9;left:28px;top:24px;font-size:23px;color:#758aa1;animation:floatThought 1.5s ease-in-out infinite}.pet.tired .pixel{filter:brightness(.82) saturate(.8);animation:tiredFace 1.6s ease-in-out infinite}.pet.tired:before{content:'💤';position:absolute;z-index:9;left:22px;top:18px;font-size:27px;animation:zzz 1.7s ease-in-out infinite}.pet.hungry .pixel{animation:hunger .7s ease-in-out infinite}.pet.dirty .pixel{animation:dirtyFace 1.1s ease-in-out infinite alternate}.pet.happyMood .pixel{animation:happy .8s ease-in-out infinite alternate}.pet.happyMood:before{content:'♥  ✦  ♥';position:absolute;z-index:9;left:25px;top:16px;color:#ff7195;font-size:20px;animation:heartFloat 1.3s ease-in-out infinite}
+.needBubble{position:absolute;z-index:10;left:50%;top:auto;bottom:55%;transform:translateX(-50%);max-width:270px;padding:10px 15px;border:3px solid #8fb8d5;border-radius:18px;background:#fff;color:#27445e;font-weight:900;font-size:15px;line-height:1.3;text-align:center;box-shadow:4px 5px 0 rgba(32,60,85,.16);transition:.25s;white-space:nowrap}.needBubble:after{content:'';position:absolute;left:28px;bottom:-12px;border:7px solid transparent;border-top-color:#8fb8d5}.needBubble.low{background:#fff0f3;border-color:#ef8ca4;color:#a93450}.needBubble.low:after{border-top-color:#ef8ca4}.needBubble.warn{background:#fff8df;border-color:#e6bb4c;color:#7a5a08}.needBubble.good{background:#ecfff6;border-color:#6fc5a4;color:#23785e}.pet.bored .pixel{animation:boredFace .9s ease-in-out infinite alternate}.pet.bored:before{content:'💭  ·  ·';position:absolute;z-index:9;left:28px;top:24px;font-size:23px;color:#758aa1;animation:floatThought 1.5s ease-in-out infinite}.pet.tired .pixel{filter:brightness(.82) saturate(.8);animation:tiredFace 1.6s ease-in-out infinite}.pet.tired:before{content:'💤';position:absolute;z-index:9;left:22px;top:18px;font-size:27px;animation:zzz 1.7s ease-in-out infinite}.pet.hungry .pixel{animation:hunger .7s ease-in-out infinite}.pet.dirty .pixel{animation:dirtyFace 1.1s ease-in-out infinite alternate}.pet.happyMood .pixel{animation:happy .8s ease-in-out infinite alternate}.pet.happyMood:before{content:'♥  ✦  ♥';position:absolute;z-index:9;left:25px;top:16px;color:#ff7195;font-size:20px;animation:heartFloat 1.3s ease-in-out infinite}
 .faceMood{position:absolute;inset:0;z-index:8;pointer-events:none}.faceMood .eye{position:absolute;top:42px;width:14px;height:14px;background:#203047;border-radius:2px;display:block}.faceMood .e1{left:45px}.faceMood .e2{right:45px}.faceMood .mouth{position:absolute;left:63px;top:68px;width:24px;height:9px;border-bottom:5px solid #203047;border-radius:0 0 14px 14px}.faceMood .tear{display:none;position:absolute;width:7px;height:13px;background:#5eb8ff;border-radius:0 0 8px 8px;top:57px}.faceMood .t1{left:46px}.faceMood .t2{right:46px}.pet.hungry .faceMood .eye{top:44px;height:10px}.pet.hungry .faceMood .mouth{top:73px;border-bottom:0;border-top:5px solid #203047;border-radius:14px 14px 0 0}.pet.hungry .faceMood .tear{display:block;opacity:.7}.pet.bored .faceMood .eye{top:48px;height:5px;border-radius:8px}.pet.bored .faceMood .mouth{top:72px;width:28px;height:5px;border-bottom:4px solid #203047;border-radius:0}.pet.tired .faceMood .eye{top:47px;height:5px;border-radius:8px;transform:skewX(-15deg)}.pet.tired .faceMood .mouth{top:72px;border-bottom:0;border-top:4px solid #203047;border-radius:12px 12px 0 0}.pet.dirty .faceMood .eye{top:45px}.pet.dirty .faceMood .mouth{top:70px;width:18px;height:13px;border:4px solid #203047;border-top:0;border-radius:0 0 12px 12px}.pet.sleeping .faceMood .eye{top:48px;width:17px;height:5px;background:transparent;border-bottom:4px solid #203047;border-radius:0;transform:rotate(8deg)}.pet.sleeping .faceMood .e2{transform:rotate(-8deg)}.pet.sleeping .faceMood .mouth{top:71px;width:10px;height:6px;border-bottom:0;border-top:3px solid #203047;border-radius:50%}.pet.happyMood .faceMood .eye{top:48px;width:16px;height:6px;background:transparent;border-bottom:4px solid #ff5f8c;border-radius:0;transform:rotate(10deg)}.pet.happyMood .faceMood .e2{transform:rotate(-10deg)}.pet.happyMood .faceMood .mouth{top:68px;width:28px;height:13px;border-bottom:5px solid #203047;border-radius:0 0 18px 18px}
 @keyframes boredFace{50%{transform:translateY(3px) rotate(-2deg);filter:saturate(.7)}}
 .faceMood.egg .brow,.faceMood.egg .cheek,.faceMood.egg .tear,.faceMood.egg .sweat,.faceMood.egg .blush{display:none!important}.faceMood.egg .eye{top:86px;width:10px;height:10px;background:#203047;border-radius:50%}.faceMood.egg .e1{left:70px}.faceMood.egg .e2{right:70px}.faceMood.egg .mouth{left:83px;top:107px;width:14px;height:7px;border-bottom:3px solid #203047;border-radius:0 0 10px 10px}.pet.eggMood .faceMood{opacity:1}.faceMood .brow{position:absolute;top:32px;width:20px;height:5px;background:#203047;border-radius:8px;display:block;opacity:.95}.faceMood .b1{left:41px;transform:rotate(-8deg)}.faceMood .b2{right:41px;transform:rotate(8deg)}
 .faceMood .cheek{position:absolute;top:58px;width:17px;height:8px;background:#ff7892;border-radius:50%;opacity:.72}.faceMood .ch1{left:30px}.faceMood .ch2{right:30px}
 .faceMood .sweat{display:none;position:absolute;width:8px;height:15px;background:#55bfff;border-radius:70% 30% 65% 65%;top:39px;box-shadow:0 0 0 1px rgba(40,140,220,.08)}.faceMood .sw1{right:27px;transform:rotate(18deg)}.faceMood .sw2{right:17px;top:49px;transform:rotate(28deg)}
 .faceMood .blush{display:none;position:absolute;width:19px;height:8px;border-radius:50%;background:#ff91aa;top:59px;opacity:.8}.faceMood .bl1{left:25px}.faceMood .bl2{right:25px}
-.pet.generatedFace .faceMood .brow,.pet.generatedFace .faceMood .cheek,.pet.generatedFace .faceMood .blush,.pet.generatedFace .faceMood .tear,.pet.generatedFace .faceMood .sweat{display:none!important}.pet.generatedFace.happyMood:before{display:none!important}.pet.generatedFace .faceMood .eye{top:88px;width:12px;height:14px;background:#203047;border-radius:2px}.pet.generatedFace .faceMood .e1{left:57px}.pet.generatedFace .faceMood .e2{right:57px}.pet.generatedFace .faceMood .mouth{left:82px;top:116px;width:22px;height:9px;border-bottom:4px solid #203047;border-radius:0 0 12px 12px}.pet.generatedFace .faceMood .tear{top:101px;width:7px;height:14px}.pet.generatedFace .faceMood .t1{left:59px}.pet.generatedFace .faceMood .t2{right:59px}.pet.generatedFace .faceMood .sweat{top:88px}.pet.generatedFace .faceMood .sw1{right:48px}.pet.generatedFace .faceMood .sw2{right:38px;top:99px}
+.pet.generatedFace .faceMood .brow,.pet.generatedFace .faceMood .cheek,.pet.generatedFace .faceMood .blush,.pet.generatedFace .faceMood .tear,.pet.generatedFace .faceMood .sweat{display:none!important}.pet.generatedFace.happyMood:before{display:none!important}.pet.generatedFace .faceMood .eye{top:88px;width:12px;height:14px;background:#203047;border-radius:2px}.pet.generatedFace .faceMood .e1{left:57px}.pet.generatedFace .faceMood .e2{right:57px}.pet.generatedFace .faceMood .mouth{left:82px;top:116px;width:22px;height:9px;border-bottom:4px solid #203047;border-radius:0 0 12px 12px}.pet.generatedFace .faceMood .tear{top:101px;width:7px;height:14px}.pet.generatedFace .faceMood .t1{left:59px}.pet.generatedFace .faceMood .t2{right:59px}.pet.generatedFace .faceMood .sweat{top:88px}.pet.generatedFace .faceMood .sw1{right:48px}.pet.generatedFace .faceMood .sw2{right:38px;top:99px}.pet.generatedFace:before{display:none!important;content:none!important}.pet.cleanFace:before{display:none!important;content:none!important}.pet.cleanFace .pixelSprite{visibility:visible!important}.pet.cleanFace .body:before{content:'';position:absolute;left:42px;top:-40px;width:21px;height:58px;background:#2f7042;border-radius:16px 5px 16px 5px;transform:rotate(-32deg);box-shadow:43px 5px 0 #2f7042;z-index:0}.pet.cleanFace .body:after{content:'';position:absolute;left:58px;top:-28px;width:20px;height:57px;background:#4f9a52;border-radius:16px 5px 16px 5px;transform:rotate(4deg);box-shadow:-25px 18px 0 #4f9a52,25px 19px 0 #4f9a52;z-index:1}.pet.cleanFace .faceMood>*{display:none!important}.pet.cleanFace .faceMood:before{content:'';display:block!important;position:absolute;left:50px;top:64px;width:12px;height:15px;background:#203047;border-radius:2px;box-shadow:56px 0 0 #203047}.pet.cleanFace .faceMood:after{content:'';display:block!important;position:absolute;left:65px;top:91px;width:22px;height:10px;border-bottom:4px solid #203047;border-radius:0 0 14px 14px}.pet.generatedFace .faceMood>*{display:none!important}.pet.generatedFace .faceMood:before{content:'';display:block!important;position:absolute;left:57px;top:88px;width:12px;height:14px;background:#203047;border-radius:2px;box-shadow:64px 0 0 #203047}.pet.generatedFace .faceMood:after{content:'';display:block!important;position:absolute;left:82px;top:116px;width:22px;height:9px;border-bottom:4px solid #203047;border-radius:0 0 12px 12px}.pet.bloomOff .faceMood{display:none!important}.pet.bloomOff:before{display:none!important;content:none!important}
 .pet.happyMood .faceMood .brow{top:34px;transform:rotate(-14deg)}.pet.happyMood .faceMood .b2{transform:rotate(14deg)}.pet.happyMood .faceMood .blush{display:block}.pet.happyMood .faceMood .mouth{height:15px;border-bottom:6px solid #203047}
 .pet.hungry .faceMood .brow{top:34px;transform:rotate(12deg)}.pet.hungry .faceMood .b2{transform:rotate(-12deg)}.pet.hungry .faceMood .tear{display:block}.pet.hungry .faceMood .mouth{width:18px;height:11px;left:66px}
 .pet.bored .faceMood .brow{top:35px;transform:rotate(2deg);opacity:.55}.pet.bored .faceMood .b2{transform:rotate(-2deg)}.pet.bored .faceMood .cheek{opacity:.35}
@@ -75,7 +75,7 @@
 .fx.show.touchfx{animation:touchFx .8s ease-out}
 @keyframes rejectFx{0%{opacity:0;transform:translateY(8px) scale(.7)}25%{opacity:1;transform:translateY(0) scale(1.05)}100%{opacity:0;transform:translateY(-28px) scale(1)}}
 @keyframes touchFx{0%{opacity:0;transform:translateY(8px) scale(.7)}30%{opacity:1;transform:translateY(-5px) scale(1.15)}100%{opacity:0;transform:translateY(-42px) scale(1)}}
-@keyframes roamPixel{from{left:2%}to{left:calc(100% - 192px)}}
+
 @keyframes feedAction{0%{transform:scale(1)}35%{transform:translateY(-10px) scale(1.08)}70%{transform:scale(.94)}100%{transform:scale(1)}}
 @keyframes playAction{0%{transform:translateX(-8px) rotate(0)}25%{transform:translateX(24px) rotate(8deg)}50%{transform:translateX(-20px) rotate(-8deg)}75%{transform:translateX(18px) rotate(7deg)}100%{transform:translateX(0)}}
 @keyframes bathAction{0%{transform:translateY(0)}35%{transform:translateY(-8px) scale(1.05)}60%{transform:translateY(4px) scale(.97)}100%{transform:translateY(0)}}
@@ -93,8 +93,8 @@
 .pixel.golem{background:#6f777c;width:138px;height:126px;border-radius:28% 38% 24% 30%;box-shadow:inset -14px -12px 0 rgba(30,38,42,.25),inset 9px 8px 0 rgba(255,255,255,.13)}
 .pixel.moss{background:#69ad68;width:120px;height:112px;border-radius:50% 50% 35% 35%;box-shadow:inset -10px -8px 0 rgba(35,85,45,.18),inset 8px 7px 0 rgba(255,255,255,.18)}
 .pixel.moonmoss{background:#566f9e;width:132px;height:122px;border-radius:48% 42% 34% 38%;box-shadow:inset -12px -10px 0 rgba(30,38,75,.25),inset 8px 7px 0 rgba(255,255,255,.15)}
-.pixel:before,.pixel:after{content:'';position:absolute;background:#203047;width:15px;height:22px;top:31px;border-radius:3px}.pixel:before{left:27px}.pixel:after{right:27px}.pixel .mouth{position:absolute;width:25px;height:10px;border-bottom:5px solid #203047;left:46px;top:61px;border-radius:0 0 15px 15px}.pixel .cheek{position:absolute;width:13px;height:7px;background:#ff7892;top:57px;border-radius:50%}.pixel .c1{left:13px}.pixel .c2{right:13px}.pixel.ember{background:#f28b45}.pixel.ember .ear{position:absolute;width:35px;height:42px;background:#f28b45;top:-24px;border-radius:60% 60% 10% 10%;z-index:-1}.pixel.ember .e1{left:7px;transform:rotate(-20deg)}.pixel.ember .e2{right:7px;transform:rotate(20deg)}.pixel.aqua{background:#62c9e8;border-radius:45%;width:126px;height:100px}.pixel.aqua .fin{position:absolute;width:34px;height:24px;background:#62c9e8;top:50px;z-index:-1}.pixel.aqua .f1{left:-22px}.pixel.aqua .f2{right:-22px}.pixel.egg{width:104px;height:128px;border-radius:50%;background:#fff8dc;box-shadow:inset -9px -8px 0 #e9dcae}.pixel.egg:before,.pixel.egg:after{display:none}.pet.attack{animation:attack .42s ease-in-out 2}.pet.happy{animation:happy .6s ease-in-out 2}.pet.sad{animation:sad .8s ease-in-out 1}.pet.hungry{animation:hunger .7s ease-in-out 2}.pet.sleeping{animation:sleepy 2.4s ease-in-out infinite;filter:brightness(.82)}.pet.touch{animation:touch .38s ease-out 1}@keyframes hunger{50%{transform:translateY(5px) scale(.96);filter:saturate(.7)}}@keyframes sleepy{50%{transform:translateY(5px)}}@keyframes touch{35%{transform:scale(1.16) rotate(-4deg)}70%{transform:scale(.94) rotate(4deg)}}@keyframes bob{50%{transform:translateY(-7px)}}@keyframes attack{50%{transform:translateX(34px) rotate(8deg) scale(1.05)}}@keyframes happy{50%{transform:translateY(-22px) rotate(5deg)}}@keyframes sad{50%{transform:translateY(10px) rotate(-6deg);filter:grayscale(.45)}}.fx{position:absolute;z-index:5;font:800 24px Fredoka;color:#fff;text-shadow:0 3px 8px #395;opacity:0}.fx.show{animation:floatfx 1s ease-out}@keyframes floatfx{0%{opacity:0;transform:translateY(10px)}25%{opacity:1}100%{opacity:0;transform:translateY(-70px)}}.name{display:none}.sceneCard{position:absolute;z-index:8;left:16px;top:16px;display:flex;align-items:center;gap:9px;padding:10px 14px;background:#eef9ff;border:3px solid #b6d3e5;border-radius:14px;box-shadow:4px 4px 0 rgba(32,60,85,.16);font-weight:900}.sceneCard b{font-size:17px;color:#23415c}.sceneCard span{font-size:11px;color:#587086}.weatherCard{position:absolute;z-index:8;right:16px;top:16px;display:flex;align-items:center;gap:8px;padding:10px 13px;background:#214d70;color:#fff;border:3px solid #15384f;border-radius:14px;box-shadow:4px 4px 0 rgba(32,60,85,.2);font-weight:900}.weatherCard b{font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.stat{background:#f6f9fd;border-radius:14px;padding:9px}.stat small{display:flex;justify-content:space-between;color:var(--muted);font-weight:800}.bar{height:8px;border-radius:99px;background:#e3eaf3;margin-top:6px;overflow:hidden}.fill{height:100%;border-radius:99px;background:var(--blue);width:50%;transition:width .3s}.fill.food{background:#ff9f43}.fill.joy{background:#ff70a0}.fill.energy{background:#6bc6ff}.fill.hyg{background:#58c9a4}
-.panel{padding:18px;border:4px solid #8fb8d5;border-radius:22px;background:#f8fcff;box-shadow:0 8px 0 #bdd7e8}.actions{grid-template-columns:repeat(2,1fr);gap:9px}.btn{min-height:52px;border:3px solid rgba(32,60,85,.14);border-radius:14px;font-weight:900}.btn.primary{background:#f17878;color:#fff}.btn.pink{background:#f28eb0;color:#fff}.btn.green{background:#4ba9e8;color:#fff}.btn.gold{background:#ffd54f;color:#543f12}.panel h2{font:700 22px Fredoka;margin:2px 0 14px}.info{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}.info div{background:#f7faff;border-radius:15px;padding:11px}.info b{display:block;font-size:18px}.info span{color:var(--muted);font-size:12px;font-weight:800}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:16px;padding:13px 10px;background:#edf4ff;color:#31527c;font:800 14px Nunito;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-2px);filter:brightness(.98)}.btn.primary{background:var(--blue);color:#fff}.btn.pink{background:#ffe7ed;color:#b23c5b}.btn.green{background:#dff7ee;color:#23785e}.btn.gold{background:#fff2cf;color:#8a6516}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.log{margin-top:13px;background:#f7faff;border:1px solid var(--line);border-radius:16px;padding:12px;height:126px;overflow:auto;font-size:13px;color:#52657f}.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.mini{padding:10px 7px;border-radius:13px;background:#fff;border:1px solid var(--line);font-weight:900;color:#52657f;cursor:pointer}.ad{margin-top:12px;min-height:62px;border:1px dashed #cbd7e6;border-radius:14px;display:grid;place-items:center;color:#9aa9bc;font-size:12px;font-weight:800}.modal{position:fixed;inset:0;background:rgba(24,39,61,.45);display:none;place-items:center;padding:20px;z-index:20}.modal.open{display:grid}.dialog{background:#fff;border-radius:24px;width:min(520px,100%);padding:22px;box-shadow:0 25px 70px rgba(0,0,0,.22)}.dialog h3{font:700 24px Fredoka;margin:0 0 8px}.choice{display:grid;gap:9px;margin-top:15px}.dex{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.dexitem{background:#f7faff;border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}.dexitem .dpet{font-size:48px}.muted{color:var(--muted);font-size:13px;font-weight:700}
+.pixel:before,.pixel:after{content:'';position:absolute;background:#203047;width:15px;height:22px;top:31px;border-radius:3px}.pixel:before{left:27px}.pixel:after{right:27px}.pixel .mouth{position:absolute;width:25px;height:10px;border-bottom:5px solid #203047;left:46px;top:61px;border-radius:0 0 15px 15px}.pixel .cheek{position:absolute;width:13px;height:7px;background:#ff7892;top:57px;border-radius:50%}.pixel .c1{left:13px}.pixel .c2{right:13px}.pixel.ember{background:#f28b45}.pixel.ember .ear{position:absolute;width:35px;height:42px;background:#f28b45;top:-24px;border-radius:60% 60% 10% 10%;z-index:-1}.pixel.ember .e1{left:7px;transform:rotate(-20deg)}.pixel.ember .e2{right:7px;transform:rotate(20deg)}.pixel.aqua{background:#62c9e8;border-radius:45%;width:126px;height:100px}.pixel.aqua .fin{position:absolute;width:34px;height:24px;background:#62c9e8;top:50px;z-index:-1}.pixel.aqua .f1{left:-22px}.pixel.aqua .f2{right:-22px}.pixel.egg{width:104px;height:128px;border-radius:50%;background:#fff8dc;box-shadow:inset -9px -8px 0 #e9dcae}.pixel.egg:before,.pixel.egg:after{display:none}.pet.attack{animation:attack .42s ease-in-out 2}.pet.happy{animation:happy .6s ease-in-out 2}.pet.sad{animation:sad .8s ease-in-out 1}.pet.hungry{animation:hunger .7s ease-in-out 2}.pet.sleeping{animation:sleepy 2.4s ease-in-out infinite;filter:brightness(.82)}.pet.touch{animation:touch .38s ease-out 1}@keyframes hunger{50%{transform:translateY(5px) scale(.96);filter:saturate(.7)}}@keyframes sleepy{50%{transform:translateY(5px)}}@keyframes touch{35%{transform:scale(1.16) rotate(-4deg)}70%{transform:scale(.94) rotate(4deg)}}@keyframes bob{50%{transform:translateY(-7px)}}@keyframes attack{50%{transform:translateX(34px) rotate(8deg) scale(1.05)}}@keyframes happy{50%{transform:translateY(-22px) rotate(5deg)}}@keyframes sad{50%{transform:translateY(10px) rotate(-6deg);filter:grayscale(.45)}}.fx{position:absolute;left:50%;top:58%;z-index:30;transform:translate(-50%,-50%);pointer-events:none;font:800 24px Fredoka;color:#fff;text-shadow:0 3px 8px #395;opacity:0}.fx.show{animation:floatfx 1s ease-out}@keyframes floatfx{0%{opacity:0;transform:translateY(10px)}25%{opacity:1}100%{opacity:0;transform:translateY(-70px)}}.name{display:none}.sceneCard{position:absolute;z-index:8;left:16px;top:16px;transform:none;display:flex;align-items:center;gap:9px;padding:10px 14px;background:#eef9ff;border:3px solid #b6d3e5;border-radius:14px;box-shadow:4px 4px 0 rgba(32,60,85,.16);font-weight:900}.sceneCard b{font-size:17px;color:#23415c}.sceneCard span{font-size:11px;color:#587086}.weatherCard{position:absolute;z-index:8;right:16px;top:16px;display:flex;align-items:center;gap:8px;padding:10px 13px;background:#214d70;color:#fff;border:3px solid #15384f;border-radius:14px;box-shadow:4px 4px 0 rgba(32,60,85,.2);font-weight:900}.weatherCard b{font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.stat{background:#f6f9fd;border-radius:14px;padding:9px}.stat small{display:flex;justify-content:space-between;color:var(--muted);font-weight:800}.bar{height:8px;border-radius:99px;background:#e3eaf3;margin-top:6px;overflow:hidden}.fill{height:100%;border-radius:99px;background:var(--blue);width:50%;transition:width .3s}.fill.food{background:#ff9f43}.fill.joy{background:#ff70a0}.fill.energy{background:#6bc6ff}.fill.hyg{background:#58c9a4}
+.panel{padding:18px;border:4px solid #8fb8d5;border-radius:22px;background:#f8fcff;box-shadow:0 8px 0 #bdd7e8}.actions{grid-template-columns:repeat(2,1fr);gap:9px}.btn{min-height:52px;border:3px solid rgba(32,60,85,.14);border-radius:14px;font-weight:900}.btn.primary{background:#f17878;color:#fff}.btn.pink{background:#f28eb0;color:#fff}.btn.green{background:#4ba9e8;color:#fff}.btn.gold{background:#ffd54f;color:#543f12}.panel h2{font:700 22px Fredoka;margin:2px 0 14px}.info{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}.info div{background:#f7faff;border-radius:15px;padding:11px}.info b{display:block;font-size:18px}.info span{color:var(--muted);font-size:12px;font-weight:800}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:16px;padding:13px 10px;background:#edf4ff;color:#31527c;font:800 14px Nunito;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-2px);filter:brightness(.98)}.btn.primary{background:var(--blue);color:#fff}.btn.pink{background:#ffe7ed;color:#b23c5b}.btn.green{background:#dff7ee;color:#23785e}.btn.gold{background:#fff2cf;color:#8a6516}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.log{margin-top:13px;background:#f7faff;border:1px solid var(--line);border-radius:16px;padding:12px;height:126px;overflow:auto;font-size:13px;color:#52657f}.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.mini{padding:10px 7px;border-radius:13px;background:#fff;border:1px solid var(--line);font-weight:900;color:#52657f;cursor:pointer}.ad{margin-top:12px;min-height:62px;border:1px dashed #cbd7e6;border-radius:14px;display:grid;place-items:center;color:#9aa9bc;font-size:12px;font-weight:800}.ranking{display:none!important;margin-top:18px;background:rgba(255,255,255,.94);border:1px solid rgba(220,232,246,.9);border-radius:24px;box-shadow:var(--shadow);padding:16px}.rankingHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.rankingHead h2{margin:0;font:700 21px Fredoka;color:#315b92}.rankingHead span{font-size:12px;font-weight:900;color:#8090a6;background:#f2f6fb;border:1px solid #e1e9f3;padding:6px 9px;border-radius:999px}.rankingList{display:grid;gap:7px}.rankItem{display:grid;grid-template-columns:32px 52px 1fr auto;align-items:center;gap:10px;min-height:62px;padding:7px 10px;background:#f8fbff;border:1px solid #e2ebf5;border-radius:15px}.rankNum{font:800 17px Fredoka;text-align:center;color:#7b8ca2}.rankNum.top1{color:#e2a900}.rankNum.top2{color:#788899}.rankNum.top3{color:#a96d42}.rankImg{width:52px;height:52px;object-fit:contain;image-rendering:pixelated}.rankName{min-width:0;font-weight:900;color:#30465e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rankName small{display:block;color:#91a0b2;font-size:10px;font-weight:800;margin-top:2px}.rankLevel{font:800 16px Fredoka;color:#315b92}.rankItem.me{background:#fff7fb;border-color:#ffb5c7;box-shadow:0 3px 0 rgba(255,125,155,.12)}@media(max-width:760px){.ranking{margin-top:14px;padding:12px}.rankItem{grid-template-columns:28px 46px 1fr auto;gap:8px;min-height:56px}.rankImg{width:46px;height:46px}}.modal{position:fixed;inset:0;background:rgba(24,39,61,.45);display:none;place-items:center;padding:20px;z-index:20}.modal.open{display:grid}.dialog{background:#fff;border-radius:24px;width:min(520px,100%);padding:22px;box-shadow:0 25px 70px rgba(0,0,0,.22)}.dialog h3{font:700 24px Fredoka;margin:0 0 8px}.choice{display:grid;gap:9px;margin-top:15px}.dex{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.dexitem{background:#f7faff;border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}.dexitem .dpet{font-size:48px}.muted{color:var(--muted);font-size:13px;font-weight:700}
 .evoCard{background:linear-gradient(145deg,#fff,#f5f8ff);border:1px solid var(--line);border-radius:18px;padding:12px;overflow:hidden}.evoHead{display:flex;align-items:center;justify-content:space-between;font-weight:900;color:#49627f}.evoChain{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:9px}.miniPet{position:relative;width:54px;height:54px;display:grid;place-items:center}.miniPet .pixel{transform:scale(.34);transform-origin:center;width:116px;height:104px}.evoArrow{font-size:20px;color:#8b9bb0;font-weight:900}.evoLv{font-size:10px;color:#8b9bb0;margin-top:6px}.evoName{font-size:12px;font-weight:900;margin-top:2px}
 .dex{display:block;margin-top:12px;max-height:68vh;overflow:auto;padding-right:3px}.evoCard{margin-bottom:10px;padding:12px}.dexRoot{display:flex;align-items:center;justify-content:center;gap:10px;padding:7px 0 12px;border-bottom:1px dashed #d9e4ef}.dexRoot .miniPet{width:76px;height:76px}.dexRoot .miniPet .pixelSprite{width:76px;height:76px}.dexBranchList{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.dexBranch{min-width:0;background:#fff;border:1px solid #e2eaf3;border-radius:14px;padding:7px;text-align:center}.dexBranch .miniPet{width:64px;height:64px;margin:0 auto}.dexBranch .miniPet .pixelSprite{width:64px;height:64px}.dexFinals{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px;padding-top:7px;border-top:1px dashed #e1e8f0}.dexFinal{min-width:0}.dexFinal .miniPet{width:48px;height:48px;margin:auto}.dexFinal .miniPet .pixelSprite{width:48px;height:48px}.dexFinal .evoName{font-size:9px;line-height:1.15;word-break:keep-all}.dexBranch .evoName{font-size:11px;line-height:1.2;word-break:keep-all}.dexRoot .evoName{font-size:14px}.dexRoot .evoLv,.dexBranch .evoLv,.dexFinal .evoLv{line-height:1.15}
 @media(max-width:760px){.dialog{width:min(560px,100%);padding:16px}.dexBranchList{grid-template-columns:1fr;gap:7px}.dexBranch{display:grid;grid-template-columns:64px 1fr;grid-template-rows:auto auto;column-gap:8px;text-align:left}.dexBranch .miniPet{grid-row:1/3}.dexBranch .evoName{align-self:end}.dexBranch .evoLv{align-self:start}.dexFinals{grid-column:1/3;grid-template-columns:repeat(3,1fr);text-align:center}.dexFinal .miniPet{width:44px;height:44px}.dexFinal .miniPet .pixelSprite{width:44px;height:44px}}
@@ -127,7 +127,47 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 <style id="save-code-ui">
 .saveCodeBox{display:grid;gap:9px;margin-top:12px}.saveCodeBox textarea{width:100%;min-height:120px;resize:vertical;padding:11px;border:2px solid #cfe0ee;border-radius:12px;background:#f7fbff;color:#29425b;font:700 12px monospace;line-height:1.45}.saveCodeBox .saveBtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.saveHint{padding:9px 11px;background:#eef7ff;border-radius:11px;color:#60768d;font-size:12px;font-weight:800;line-height:1.45}
-</style>
+<style id="ui-restore">
+.panel{padding:18px!important;border:1px solid #dfe8f4!important;border-radius:28px!important;background:rgba(255,255,255,.94)!important;box-shadow:0 18px 45px rgba(50,86,130,.13)!important}
+.panel h2{margin:2px 0 14px!important;font:700 22px Fredoka!important;color:#203047!important}
+.info{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:9px!important;margin:0 0 14px!important}
+.info div{background:#f7faff!important;border:1px solid #e3ebf5!important;border-radius:15px!important;padding:11px!important}
+.info span{display:block!important;color:#70809a!important;font-size:12px!important;font-weight:800!important}
+.info b{display:block!important;margin-top:3px!important;color:#203047!important;font-size:18px!important;font-weight:900!important}
+.actions{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:9px!important}
+.actions .btn{min-height:50px!important;padding:12px 10px!important;border:0!important;border-radius:16px!important;font:800 14px Nunito!important;cursor:pointer!important;box-shadow:none!important}
+.actions .btn.primary{background:#4b8dff!important;color:#fff!important}
+.actions .btn.green{background:#dff7ee!important;color:#23785e!important}
+.actions .btn.gold{background:#fff2cf!important;color:#8a6516!important}
+.actions .btn.pink{background:#ffe7ed!important;color:#b23c5b!important}
+.actions .btn:not(.primary):not(.green):not(.gold):not(.pink){background:#edf4ff!important;color:#31527c!important}
+.actions .btn:hover{transform:translateY(-2px)!important;filter:brightness(.98)!important}
+.actions .btn:disabled{opacity:.45!important;cursor:not-allowed!important;transform:none!important}
+.menu{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:8px!important;margin-top:12px!important}
+.menu .mini{min-height:40px!important;padding:9px 6px!important;border-radius:13px!important;background:#fff!important;border:1px solid #dfe8f4!important;color:#52657f!important;font:900 12px Nunito!important;cursor:pointer!important}
+.log{margin-top:13px!important;background:#f7faff!important;border:1px solid #dfe8f4!important;border-radius:16px!important;padding:12px!important;height:126px!important;overflow:auto!important;font-size:13px!important;color:#52657f!important}
+@media(max-width:760px){
+.panel{padding:14px!important;border-radius:22px!important}
+.panel h2{margin:0 0 8px!important;font-size:21px!important}
+.panel .info{grid-template-columns:repeat(3,1fr)!important;gap:6px!important;margin:8px 0 10px!important}
+.panel .actions{grid-template-columns:repeat(3,1fr)!important;gap:6px!important}
+.panel .actions .btn{min-height:42px!important;padding:8px 4px!important;border-radius:11px!important;font-size:12px!important}
+.panel .menu{grid-template-columns:repeat(4,1fr)!important;gap:6px!important;margin-top:6px!important}
+.panel .mini{padding:8px 3px!important;font-size:10px!important}
+.panel .log{margin-top:8px!important;height:90px!important}
+}
+<style id="button-image-ui">
+.btnIcon{width:30px!important;height:30px!important;object-fit:contain!important;image-rendering:pixelated!important;display:block!important;margin:0 auto 3px!important}
+.miniIcon{width:22px!important;height:22px!important;object-fit:contain!important;image-rendering:pixelated!important;vertical-align:middle!important;margin-right:4px!important}
+.actions .btn{display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:1px!important}
+.menu .mini{display:flex!important;align-items:center!important;justify-content:center!important;gap:2px!important;white-space:nowrap!important}
+@media(max-width:760px){
+.actions .btn{min-height:54px!important;padding:5px 3px!important;font-size:12px!important}
+.btnIcon{width:27px!important;height:27px!important}
+.menu .mini{font-size:10px!important;min-height:40px!important}
+.miniIcon{width:20px!important;height:20px!important}
+}
+</style></style></style>
 <style id="pixel-world-fix">
 /* Pixel world background */
 .scene{min-height:600px!important;display:block!important;background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center/cover no-repeat!important;overflow:hidden!important}
@@ -260,6 +300,11 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 .scene:not(.sleep-mode):before,.scene:not(.sleep-mode):after,.scene.sleep-mode:before{display:none!important;content:none!important}
 .scene .ground{display:none!important}
 </style></style>
+<style id="visual-v59">
+/* 깔끔한 펫 얼굴: 표정/입/볼/하트 장식을 제거 */
+.faceMood{display:none!important}
+.pet.happyMood:before{display:none!important;content:none!important}
+</style>
 <style id="ui-v32">
 .stage{display:flex;flex-direction:column}
 .stage>.sceneCard{position:relative;left:auto;top:auto;z-index:8;margin-bottom:10px;align-self:stretch}
@@ -283,6 +328,31 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
   .stats{grid-template-columns:1fr 1fr!important;margin-top:0!important;margin-bottom:10px!important}
   .scene{min-height:390px!important}
 }
+</style><style id="final-ui-fix">
+.pet.roam{animation:roamPixel 8s linear infinite alternate,bob 2.2s ease-in-out infinite!important;will-change:left,transform}
+@media(prefers-reduced-motion:reduce){.pet.roam{animation:roamPixel 8s linear infinite alternate,bob 2.2s ease-in-out infinite!important}}
+.btnIcon{width:30px!important;height:30px!important;object-fit:contain!important;image-rendering:pixelated!important;display:block!important;margin:0 auto 3px!important}
+.miniIcon{width:22px!important;height:22px!important;object-fit:contain!important;image-rendering:pixelated!important;display:inline-block!important;vertical-align:middle!important;margin:0 3px 0 0!important}
+.actions .btn{display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:1px!important}
+.menu .mini{display:flex!important;align-items:center!important;justify-content:center!important;gap:2px!important;white-space:nowrap!important}
+@media(max-width:760px){.actions .btn{min-height:54px!important;padding:5px 3px!important;font-size:12px!important}.btnIcon{width:27px!important;height:27px!important}.menu .mini{min-height:40px!important;padding:7px 3px!important;font-size:10px!important}.miniIcon{width:20px!important;height:20px!important}}
+</style><style id="dex-character-fix">
+.dex{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:10px!important;max-height:65vh!important;overflow-y:auto!important;padding:4px!important}
+.dexFamily{background:#f7faff;border:1px solid #dfe8f4;border-radius:16px;padding:10px}
+.dexFamilyTitle{display:flex;justify-content:space-between;align-items:center;font-weight:900;color:#31527c;margin-bottom:8px}
+.dexStages{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.dexStage{background:#fff;border:1px solid #e3ebf5;border-radius:11px;padding:6px 3px;text-align:center;min-width:0}
+.dexStageTitle{font-size:9px;color:#8191a5;font-weight:800;margin-bottom:3px}
+.dexChar{height:62px;display:grid;place-items:center}
+.dexChar img{width:62px;height:62px;object-fit:contain;image-rendering:pixelated}.dexChar img.undiscovered{filter:grayscale(1);opacity:.38}
+.dexCharName{font-size:10px;font-weight:900;color:#31465d;line-height:1.15;word-break:keep-all}
+.dexTrait{font-size:8px;color:#8191a5;margin-top:2px}
+@media(max-width:760px){
+.dex{grid-template-columns:1fr!important;max-height:68vh!important}
+.dexStages{gap:6px}
+.dexChar{height:58px}
+.dexChar img{width:58px;height:58px}
+}
 </style><meta name="disable-service-worker" content="true">
 
 <meta property="og:title" content="Pocket Pet - 웹 다마고치" /><meta property="og:description" content="시간에 따라 성장하고 진화하는 웹 펫 키우기 게임" />
@@ -294,7 +364,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 
 
 </head>
-<body>
+<body><img data-wpe-slot="pet-atlas" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="펫 78종 아틀라스" style="display:none">
 <div class="wrap">
   <div class="top"><div class="brand">Pocket <span>Pet</span></div><div class="pill" id="clock">--:--</div></div>
   <div class="game">
@@ -318,58 +388,60 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
       <h2 id="statusTitle">새로운 알</h2>
       <div class="info">
         <div><span>레벨</span><b id="level">0</b></div><div><span>경험치</span><b id="exp">0 / 60</b></div>
-        <div><span>💰 골드</span><b id="gold">100</b></div><div><span>♥ 유대</span><b id="bond">0</b></div>
+        <div><span>♥ 유대</span><b id="bond">0</b></div>
       </div>
       <div class="actions">
-        <button class="btn primary" id="feed">🍎 먹이</button>
-        <button class="btn green" id="bath">🧼 목욕</button>
-        <button class="btn gold" id="sleep">🌙 잠자기</button>
-        <button class="btn pink" id="play">⚽ 놀기</button>
-        <button class="btn" id="train">🥊 훈련</button>
-        <button class="btn" id="rename">✏️ 이름</button>
+        <button class="btn primary" id="feed"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-feed.svg?v=54" alt="">먹이</button>
+        <button class="btn green" id="bath"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-bath.svg?v=54" alt="">목욕</button>
+        <button class="btn gold" id="sleep"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-sleep.svg?v=54" alt="">잠자기</button>
+        <button class="btn pink" id="play"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-play.svg?v=54" alt="">놀기</button>
+        <button class="btn" id="train"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-train.svg?v=54" alt="">훈련</button>
+        <button class="btn" id="rename"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-rename.svg?v=54" alt="">이름</button>
       </div>
       <div class="menu">
-        <button class="mini" id="hatch">🥚 부화</button><button class="mini" id="dex">📖 도감</button><button class="mini" id="saveData">💾 저장/불러오기</button><button class="mini" id="reset">↻ 초기화</button>
+        <button class="mini" id="hatch"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-hatch.svg?v=54" alt="">부화</button><button class="mini" id="dex"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-dex.svg?v=54" alt="">도감</button><button class="mini" id="saveData"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-save.svg?v=54" alt="">저장/불러오기</button><button class="mini" id="reset"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-reset.svg?v=54" alt="">초기화</button><button class="mini" id="sendPet" disabled>🌟 보내주기</button>
       </div>
       
       <div class="log" id="log" aria-live="polite"></div>
     </aside>
   </div>
+<section class="ranking"><div class="rankingHead"><h2>🏆 펫 랭킹</h2><span>TOP 5</span></div><div class="rankingList" id="rankingList"></div></section>
 </div>
 <div class="modal" id="modal"><div class="dialog" id="dialog"></div></div>
 <script>
 (function(){
 const KEY='pocket_pet_v1';
+const BACKUP_KEY='pocket_pet_v1_backup';
 const families=[
- {root:'sprout',name:'새싹이',className:'sprout',rate:22,palette:['#78c95a','#2d7138','#f28fc4'],branches:[
-  {id:'bloom',name:'꽃망울',trait:'feed',label:'영양형',old:true},
-  {id:'leafbloom',name:'잎새꽃',trait:'rest',label:'활력형'},
-  {id:'vinebud',name:'덩굴콩',trait:'hyg',label:'청결형'}
+ {root:'sprout',name:'꽃망울',className:'sprout',rate:100/6,palette:['#74c84b','#28733c','#ff78b7'],branches:[
+  {id:'bloom',name:'새싹이',trait:'feed',label:'영양형',old:false},
+  {id:'leafbloom',name:'잎새이',trait:'rest',label:'활력형'},
+  {id:'vinebud',name:'꽃잎이',trait:'hyg',label:'청결형'}
  ]},
- {root:'ember',name:'불꽃이',className:'ember',rate:18,palette:['#f28b45','#9e3825','#ffd45c'],branches:[
-  {id:'flare',name:'화염꼬리',trait:'feed',label:'영양형',old:true},
-  {id:'flamehorn',name:'불꽃갈기',trait:'rest',label:'활력형'},
-  {id:'cinder',name:'잿불꼬리',trait:'hyg',label:'청결형'}
+ {root:'ember',name:'불꽃이',className:'ember',rate:100/6,palette:['#ff7a24','#9f281c','#ffd43d'],branches:[
+  {id:'flare',name:'불새이',trait:'feed',label:'영양형'},
+  {id:'flamehorn',name:'화염이',trait:'rest',label:'활력형'},
+  {id:'cinder',name:'불날이',trait:'hyg',label:'청결형'}
  ]},
- {root:'aqua',name:'물방울이',className:'aqua',rate:18,palette:['#62c9e8','#236b9a','#d9f7ff'],branches:[
-  {id:'ripple',name:'파도링',trait:'feed',label:'영양형',old:true},
-  {id:'tidefin',name:'물결지느러미',trait:'rest',label:'활력형'},
-  {id:'rainbell',name:'비방울이',trait:'hyg',label:'청결형'}
+ {root:'aqua',name:'물방울이',className:'aqua',rate:100/6,palette:['#38b8ef','#2360b4','#baf7ff'],branches:[
+  {id:'ripple',name:'물몽이',trait:'feed',label:'영양형'},
+  {id:'tidefin',name:'물개이',trait:'rest',label:'활력형'},
+  {id:'rainbell',name:'물고기',trait:'hyg',label:'청결형'}
  ]},
- {root:'volt',name:'찌릿이',className:'volt',rate:14,palette:['#f5d34f','#8d6b13','#ffe98a'],branches:[
-  {id:'spark',name:'번개냥',trait:'feed',label:'영양형',old:true},
-  {id:'voltfox',name:'전광여우',trait:'rest',label:'활력형'},
-  {id:'thunderpaw',name:'천둥발',trait:'hyg',label:'청결형'}
+ {root:'volt',name:'찌릿이',className:'volt',rate:100/6,palette:['#ffd52e','#8a5a08','#77d8ff'],branches:[
+  {id:'spark',name:'전기이',trait:'feed',label:'영양형'},
+  {id:'voltfox',name:'번개이',trait:'rest',label:'활력형'},
+  {id:'thunderpaw',name:'스파크',trait:'hyg',label:'청결형'}
  ]},
- {root:'rocky',name:'돌콩이',className:'rocky',rate:12,palette:['#9b8f88','#514943','#d9d0c9'],branches:[
-  {id:'golem',name:'돌수호자',trait:'feed',label:'영양형',old:true},
-  {id:'ironstone',name:'바위갑옷',trait:'rest',label:'활력형'},
-  {id:'crystalock',name:'수정돌이',trait:'hyg',label:'청결형'}
+ {root:'rocky',name:'돌콩이',className:'rocky',rate:100/6,palette:['#9d9286','#4b4037','#d8c4aa'],branches:[
+  {id:'golem',name:'바위이',trait:'feed',label:'영양형'},
+  {id:'ironstone',name:'바위곰',trait:'rest',label:'활력형'},
+  {id:'crystalock',name:'돌거북',trait:'hyg',label:'청결형'}
  ]},
- {root:'moss',name:'이끼링',className:'moss',rate:10,palette:['#69ad68','#315f3d','#e6f6a2'],branches:[
-  {id:'moonmoss',name:'달이끼',trait:'feed',label:'영양형',old:true},
-  {id:'forestbud',name:'숲방울',trait:'rest',label:'활력형'},
-  {id:'mossdeer',name:'이끼사슴',trait:'hyg',label:'청결형'}
+ {root:'moss',name:'이끼링',className:'moss',rate:100/6,palette:['#59b85b','#245d38','#c9ef62'],branches:[
+  {id:'moonmoss',name:'버섯이',trait:'feed',label:'영양형'},
+  {id:'forestbud',name:'나무이',trait:'rest',label:'활력형'},
+  {id:'mossdeer',name:'숲요정',trait:'hyg',label:'청결형'}
  ]}
 ];
 const finalTraits=[
@@ -377,14 +449,15 @@ const finalTraits=[
  {id:'f2',trait:'rest',label:'휴식형'},
  {id:'f3',trait:'hyg',label:'청결형'}
 ];
+const finalNames={bloom:['봄꽃이','장미송이','해바라기'],leafbloom:['백합이','동백이','라일락'],vinebud:['수국이','연꽃이','선인장'],flare:['불사자','화염호랑이','불드래곤'],flamehorn:['태양이','용암이','불사신'],cinder:['불페가수스','홍련이','불피닉스'],ripple:['돌고래','고래이','해마'],tidefin:['거북이','상어이','가오리'],rainbell:['문어이','해파리','크라켄'],spark:['피카롱','썬더이','라이트닝'],voltfox:['일렉트론','전기드래곤','전자고양이'],thunderpaw:['플라즈마','네온이','스톰이'],golem:['골렘이','바위거인','암석드래곤'],ironstone:['다이아몬드','수정이','흑요석'],crystalock:['화산이','지진이','티타늄'],moonmoss:['트리맨','엔트이','폴드래곤'],forestbud:['요정나비','클로버','도토리'],mossdeer:['풀늑대','나무정령','숲의신']};
 const species=[];
 families.forEach(f=>{
- species.push({id:f.root,name:f.name,className:f.className,next:null,at:6,rate:f.rate,stage:1,family:f.root,palette:f.palette});
+ species.push({id:f.root,name:f.name,className:f.className,next:null,at:6,rate:f.rate,stage:1,family:f.root,palette:f.palette,generated:true,variant:1});
  f.branches.forEach(b=>{
-   const mid={id:b.id,name:b.name,className:b.id,next:null,at:11,stage:2,family:f.root,branch:b.id,trait:b.trait,label:b.label,palette:f.palette,generated:!b.old};
+   const mid={id:b.id,name:b.name,className:b.id,next:null,at:11,stage:2,family:f.root,branch:b.id,trait:b.trait,label:b.label,palette:f.palette,generated:true,variant:({feed:1,rest:2,hyg:3}[b.trait]||1)};
    species.push(mid);
    finalTraits.forEach((ft,i)=>{
-     species.push({id:b.id+'_'+ft.id,name:b.name+' '+ft.label,className:b.id+'_'+ft.id,next:null,at:99,stage:3,family:f.root,branch:b.id,trait:ft.trait,label:ft.label,palette:f.palette,generated:true,variant:i+1});
+     species.push({id:b.id+'_'+ft.id,name:(finalNames[b.id]||[])[i]||((b.name)+' '+ft.label),className:b.id+'_'+ft.id,next:null,at:99,stage:3,family:f.root,branch:b.id,trait:ft.trait,label:ft.label,palette:f.palette,generated:true,variant:i+1});
    });
  });
 });
@@ -392,11 +465,32 @@ const base={species:'sprout',name:'새싹이',level:0,exp:0,gold:100,bond:0,food
 let awayResetNotice=null;
 let s=load(); let tickTimer;
 const $=id=>document.getElementById(id);
-function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x){const awayMs=Date.now()-(x.last||Date.now());if(awayMs>=30*24*60*60*1000){const days=Math.floor(awayMs/(24*60*60*1000));awayResetNotice={name:x.name||'펫',days};const fresh=structuredClone(base);fresh.last=Date.now();fresh.created=Date.now();localStorage.setItem(KEY,JSON.stringify(fresh));return fresh}x.care=Object.assign({feed:0,sleep:0,energy:0,hyg:0},x.care||{});if(!x.care.feed&&!x.care.sleep&&!x.care.energy&&!x.care.hyg){x.care.feed=x.food||50;x.care.energy=x.ene||50;x.care.hyg=x.hyg||50;x.care.sleep=x.sleeping?30:10}applyOffline(x);return x}}catch(e){}return structuredClone(base)}
-function save(){s.last=Date.now();localStorage.setItem(KEY,JSON.stringify(s))}
+function load(){
+ try{
+   let raw=localStorage.getItem(KEY),x=null;
+   try{x=raw?JSON.parse(raw):null}catch(e){x=null}
+   if(!x){
+     const backup=localStorage.getItem(BACKUP_KEY);
+     try{x=backup?JSON.parse(backup):null}catch(e){x=null}
+   }
+   if(x&&typeof x==='object'&&x.species&&typeof x.level==='number'){
+     const awayMs=Date.now()-(x.last||Date.now());
+     if(awayMs>=30*24*60*60*1000){
+       const days=Math.floor(awayMs/(24*60*60*1000));awayResetNotice={name:x.name||'펫',days};
+       const fresh=structuredClone(base);fresh.last=Date.now();fresh.created=Date.now();
+       localStorage.setItem(KEY,JSON.stringify(fresh));localStorage.setItem(BACKUP_KEY,JSON.stringify(fresh));return fresh
+     }
+     x.care=Object.assign({feed:0,sleep:0,energy:0,hyg:0},x.care||{});
+     if(!x.care.feed&&!x.care.sleep&&!x.care.energy&&!x.care.hyg){x.care.feed=x.food||50;x.care.energy=x.ene||50;x.care.hyg=x.hyg||50;x.care.sleep=x.sleeping?30:10}
+     applyOffline(x);localStorage.setItem(KEY,JSON.stringify(x));localStorage.setItem(BACKUP_KEY,JSON.stringify(x));return x
+   }
+ }catch(e){}
+ return structuredClone(base)
+}
+function save(){s.last=Date.now();const data=JSON.stringify(s);try{localStorage.setItem(BACKUP_KEY,data);localStorage.setItem(KEY,data)}catch(e){try{localStorage.setItem(KEY,data)}catch(err){console.warn('save failed',err)}}}
 function applyOffline(x){
  const now=Date.now(), mins=Math.min(10080,Math.max(0,Math.floor((now-(x.last||now))/60000)));
- if(mins>0 && x.hatched){const drain=x.sleeping?.25:1;x.food=Math.max(0,x.food-2*mins*drain);x.ene=Math.min(100,x.ene+(x.sleeping?3:1)*mins);x.hyg=Math.max(0,x.hyg-1*mins*drain);x.joy=Math.max(0,x.joy-1*mins*drain);x.exp=Math.min(60,(x.exp||0)+mins)}
+ if(mins>0 && x.hatched){const drain=x.sleeping?.25:1;x.food=Math.max(0,x.food-2*mins*drain);x.ene=Math.min(100,x.ene+(x.sleeping?3:1)*mins);x.hyg=Math.max(0,x.hyg-1*mins*drain);x.joy=Math.max(0,x.joy-1*mins*drain);if(x.level<((species.find(z=>z.id===x.species)||{}).at||99))x.exp=Math.min(60,(x.exp||0)+mins)}
  return x
 }
 function log(t){const d=document.createElement('div');d.textContent='• '+t;$('log').prepend(d);while($('log').children.length>18)$('log').lastChild.remove()}
@@ -404,20 +498,51 @@ function clamp(v){return Math.max(0,Math.min(100,Math.round(v)))}
 function current(){return species.find(x=>x.id===s.species)||species[0]}
 function spriteUrl(id){
  const p=species.find(x=>x.id===id)||species[0];
- if(!p.generated)return 'https://cdn.websitepublisher.ai/custom/wid29230/images/'+(id==='sprout'||id==='ember'||id==='aqua'||id==='volt'||id==='rocky'||id==='moss'||id==='bloom'||id==='flare'||id==='ripple'||id==='spark'||id==='golem'||id==='moonmoss'?id:'egg')+'.svg';
- const pal=p.palette||['#78c95a','#2d7138','#f28fc4'],stage=p.stage||2,v=p.variant||({feed:1,rest:2,hyg:3}[p.trait]||1);
- const base=pal[0],dark=pal[1],accent=pal[2];
- const head=stage===2?'<rect x="20" y="25" width="56" height="54" rx="14" fill="'+base+'"/><rect x="28" y="18" width="40" height="14" fill="'+base+'"/>':'<polygon points="18,34 30,18 66,18 78,34 78,76 66,88 30,88 18,76" fill="'+accent+'"/><rect x="29" y="10" width="38" height="18" fill="'+accent+'"/>';
- let accessory='';
- if(v===1)accessory='<rect x="31" y="7" width="34" height="11" fill="'+dark+'"/><rect x="39" y="0" width="18" height="9" fill="'+base+'"/><rect x="7" y="44" width="13" height="27" fill="'+base+'"/><rect x="76" y="44" width="13" height="27" fill="'+base+'"/>';
- if(v===2)accessory='<polygon points="48,2 61,25 35,25" fill="'+dark+'"/><rect x="39" y="0" width="18" height="7" fill="'+dark+'"/><polygon points="5,60 20,39 25,76" fill="'+base+'"/><polygon points="91,60 76,39 71,76" fill="'+base+'"/>';
- if(v===3)accessory='<circle cx="48" cy="13" r="13" fill="'+base+'"/><rect x="29" y="2" width="11" height="18" fill="'+dark+'"/><rect x="56" y="2" width="11" height="18" fill="'+dark+'"/><rect x="4" y="49" width="17" height="29" fill="'+base+'"/><rect x="75" y="49" width="17" height="29" fill="'+base+'"/>';
- const face='';
- const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><g shape-rendering="crispEdges">'+accessory+head+'<rect x="18" y="73" width="60" height="9" fill="'+dark+'" opacity=".35"/>'+face+(stage===3?'<rect x="41" y="30" width="14" height="9" fill="'+base+'"/>':'')+'</g></svg>';
- return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+ if(id==='egg')return 'https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';
+ return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+}
+function applySprite(el,id){
+ if(!el)return;
+ el.style.backgroundImage='none';
+ el.style.backgroundSize='';
+ el.style.backgroundPosition='';
+ el.style.backgroundRepeat='';
+ el.style.visibility='visible';
+ if(!id||id==='egg'){
+   el.src='https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';
+   return;
+ }
+ const p=species.find(x=>x.id===id)||species[0];
+ const fi=families.findIndex(f=>f.root===p.family);
+ const f=families[fi]||families[0];
+ let col=0;
+ if(p.stage===2) col=Math.max(0,f.branches.findIndex(b=>b.id===p.id))+1;
+ else if(p.stage===3){
+   const bi=Math.max(0,f.branches.findIndex(b=>b.id===p.branch));
+   const ti=Math.max(0,finalTraits.findIndex(ft=>ft.id===p.id.slice(p.branch.length+1)));
+   col=4+bi*3+ti;
+ }
+ const w=Math.max(44,el.getBoundingClientRect().width||96);
+ const scale=w/96;
+ el.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+ el.style.backgroundImage='url("https://cdn.websitepublisher.ai/custom/wid29230/images/pet-atlas-exact78-96q.png")';
+ el.style.backgroundSize=(1248*scale)+'px '+(576*scale)+'px';
+ el.style.backgroundPosition=(-col*96*scale)+'px '+(-fi*96*scale)+'px';
+ el.style.backgroundRepeat='no-repeat';
+ el.style.imageRendering='pixelated';
+}function renderRanking(){
+ const list=[
+  {id:'rankA',name:'루루',level:18,species:'bloom'},
+  {id:'rankB',name:'코코',level:16,species:'flare'},
+  {id:'rankC',name:'미미',level:14,species:'ripple'},
+  {id:'rankD',name:'토토',level:12,species:'spark'},
+  {id:'me',name:s.hatched?s.name:'알',level:s.hatched?s.level:0,species:s.hatched?s.species:'egg',me:true}
+ ].sort((a,b)=>b.level-a.level).slice(0,5);
+ $('rankingList').innerHTML=list.map((x,i)=>'<div class="rankItem '+(x.me?'me':'')+'"><div class="rankNum '+(i<3?'top'+(i+1):'')+'">'+(i+1)+'</div><img class="rankImg" data-rank-pet="'+x.species+'" src="'+spriteUrl(x.species)+'" alt="'+x.name+'"><div class="rankName">'+x.name+(x.me?' <small>내 펫</small>':'')+'</div><div class="rankLevel">Lv.'+x.level+'</div></div>').join('');
+ setTimeout(()=>document.querySelectorAll('[data-rank-pet]').forEach(el=>applySprite(el,el.getAttribute('data-rank-pet'))),0);
 }
 function render(){
- const p=current();$('petName').textContent=s.hatched?s.name:'알';const pp=$('pixelPet');const sprite=s.hatched?p.id:'egg';pp.className='pixelSprite';pp.src=s.hatched?spriteUrl(sprite):'https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';pp.alt=s.hatched?p.name:'알';$('level').textContent=s.level;$('exp').textContent=s.level>=p.at?'진화 가능':(s.exp+' / 60');$('gold').textContent=s.gold;$('bond').textContent=s.bond;
+ const p=current();$('petName').textContent=s.hatched?s.name:'알';const pp=$('pixelPet');const sprite=s.hatched?p.id:'egg';pp.className='pixelSprite';applySprite(pp,sprite);pp.alt=s.hatched?p.name:'알';$('level').textContent=s.level;$('exp').textContent=s.level>=p.at?'진화 가능':(s.exp+' / 60');$('bond').textContent=s.bond;
  ['food','joy','ene','hyg'].forEach(k=>{$(k+'N').textContent=s[k];$(k+'B').style.width=s[k]+'%'});
  let mood='good',bubble='✨ 기분이 좋아요!',bubbleClass='good';
  if(!s.hatched){bubble='🥚 알을 부화시켜 주세요!';bubbleClass='good'}
@@ -426,34 +551,62 @@ function render(){
  else if(s.food<25){mood='hungry';bubble='🍖 배고파요... 밥 주세요!';bubbleClass='low'}
  else if(s.ene<20){mood='tired';bubble='⚡ 힘이 없어요... 쉬고 싶어요!';bubbleClass='warn'}
  else if(s.joy<25){mood='bored';bubble='⚽ 심심해요... 같이 놀아요!';bubbleClass='warn'}
- $('statusTitle').textContent=s.hatched?(s.sleeping?'😴 잠자는 중':s.hyg<30?'🧼 너무 꼬질해요!':s.food<25?'🍖 배고파요!':s.ene<20?'⚡ 너무 피곤해요!':s.joy<25?'😟 심심해요!':'✨ '+p.name+' · 성장 중'):'새로운 알';$('needBubble').textContent=bubble;$('needBubble').className='needBubble '+bubbleClass;$('scenePetName').textContent=s.hatched?s.name:'알';$('sceneLevel').textContent='Lv.'+s.level;$('sceneExp').textContent=s.level>=p.at?'진화 가능':(s.exp+' / 60');$('sceneAvatarImg').src=s.hatched?spriteUrl(p.id):'https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';$('sceneAvatarImg').alt=s.hatched?p.name:'알';$('sceneXpFill').style.width=Math.min(100,(s.exp/60)*100)+'%';$('pet').className='pet '+(s.hatched&&!s.sleeping?'roam ':'')+(s.hatched?(p.generated?'generatedFace ':'')+(mood==='good'?'happyMood ':mood):'eggMood');$('faceMood').className='faceMood '+(s.hatched?mood:'egg');$('scene').classList.toggle('sleep-mode',s.sleeping);
+ $('statusTitle').textContent=s.hatched?(s.sleeping?'😴 잠자는 중':s.hyg<30?'🧼 너무 꼬질해요!':s.food<25?'🍖 배고파요!':s.ene<20?'⚡ 너무 피곤해요!':s.joy<25?'😟 심심해요!':'✨ '+p.name+' · 성장 중'):'새로운 알';$('needBubble').textContent=bubble;$('needBubble').className='needBubble '+bubbleClass;$('scenePetName').textContent=s.hatched?s.name:'알';$('sceneLevel').textContent='Lv.'+s.level;$('sceneExp').textContent=s.level>=p.at?'진화 가능':(s.exp+' / 60');applySprite($('sceneAvatarImg'),s.hatched?p.id:'egg');$('sceneAvatarImg').alt=s.hatched?p.name:'알';$('sceneXpFill').style.width=Math.min(100,(s.exp/60)*100)+'%';$('pet').className='pet '+(s.hatched&&!s.sleeping&&!window.__keepPetPosition?'roam ':'')+(s.hatched?((p.generated?'generatedFace ':'')+(mood==='good'?'happyMood ':mood)):'eggMood');$('faceMood').className='faceMood '+(s.hatched?mood:'egg')+(p.id==='bloom'?' bloomOff':'');$('scene').classList.toggle('sleep-mode',s.sleeping);renderRanking();
  $('sleep').textContent=s.sleeping?'☀️ 깨우기':'🌙 잠자기';$('hatch').textContent=s.hatched?'🧬 진화':'🥚 부화';
- $('feed').disabled=!s.hatched||s.sleeping;$('play').disabled=!s.hatched||s.sleeping;$('bath').disabled=!s.hatched||s.sleeping;$('train').disabled=!s.hatched||s.sleeping;
- const night=new Date().getHours()<6||new Date().getHours()>=19;$('scene').classList.toggle('night',night);$('sky').className=night?'moon':'sun';
+ $('feed').disabled=!s.hatched||s.sleeping;$('play').disabled=!s.hatched||s.sleeping;$('bath').disabled=!s.hatched||s.sleeping;$('train').disabled=!s.hatched||s.sleeping;$('sendPet').disabled=!(s.hatched&&current().stage===3);
+ const hour=new Date().getHours();const night=hour<6||hour>=21;$('scene').classList.toggle('night',night);$('sky').className=night?'moon':'sun';$('scene').style.removeProperty('filter');
 }
 function fx(txt,kind){$('fx').textContent=txt;$('fx').className='fx show '+(kind||'');void $('fx').offsetWidth;if(kind){const f=$('fx2');const icons={feed:'🍎',play:'⚽',bath:'🫧',train:'🥊',reject:'×',touch:'♥'};f.textContent=icons[kind]||'✦';f.className='fx show '+kind+'fx';setTimeout(()=>{f.className='fx'},900)}setTimeout(()=>{$('fx').className='fx'},950)}
 function rejectAction(type,msg){s.refuse=s.refuse||{};s.refuse[type]=(s.refuse[type]||0)+1;fx('싫어요!','reject');log(msg);$('pet').className='pet sad';setTimeout(()=>{$('pet').className='pet roam'},900)}
 function actionReady(type,stat,max,reason){s.refuse=s.refuse||{};if(stat<max){s.refuse[type]=0;return true}if((s.refuse[type]||0)<2){s.refuse[type]=(s.refuse[type]||0)+1;return true}rejectAction(type,reason);return false}
+let petMoveTimer=null,petMoveDir=1,petMoveX=null,petMovePaused=false;
+function startPetMove(){
+ const pet=$('pet'),scene=$('scene');
+ if(!pet||!scene||!s.hatched||s.sleeping)return;
+ if(petMoveTimer)clearInterval(petMoveTimer);
+ const sr=scene.getBoundingClientRect(),pr=pet.getBoundingClientRect();
+ if(petMoveX===null)petMoveX=Math.max(0,Math.min(sr.width-pr.width,pr.left-sr.left));
+ petMovePaused=false;
+ pet.style.left=petMoveX+'px';
+ petMoveTimer=setInterval(()=>{
+   if(petMovePaused||!s.hatched||s.sleeping)return;
+   const sr2=scene.getBoundingClientRect(),pr2=pet.getBoundingClientRect(),maxX=Math.max(0,sr2.width-pr2.width);
+   petMoveX+=petMoveDir*.8;
+   if(petMoveX<=0){petMoveX=0;petMoveDir=1}
+   if(petMoveX>=maxX){petMoveX=maxX;petMoveDir=-1}
+   pet.style.left=petMoveX+'px';
+ },16);
+}
+function pausePetMove(){
+ const pet=$('pet'),scene=$('scene');
+ if(!pet||!scene)return;
+ const sr=scene.getBoundingClientRect(),pr=pet.getBoundingClientRect();
+ petMoveX=Math.max(0,Math.min(sr.width-pr.width,pr.left-sr.left));
+ petMovePaused=true;
+ if(petMoveTimer){clearInterval(petMoveTimer);petMoveTimer=null}
+ pet.style.left=petMoveX+'px';
+}
+function gainExp(amount){const p=current();if(!s.hatched||s.level>=p.at)return false;s.exp=Math.min(60,s.exp+amount);return true}
 function act(type){
  if(!s.hatched||s.sleeping)return;
  if(type==='feed'&&!actionReady('feed',s.food,100,'배가 불러서 더는 먹기 싫어요!'))return;
  if(type==='play'&&!actionReady('play',s.joy,100,'지금은 충분히 놀아서 쉬고 싶어요!'))return;
  if(type==='bath'&&!actionReady('bath',s.hyg,100,'이미 깨끗해요! 목욕은 싫어요!'))return;
  if(type==='train'&&!actionReady('train',s.ene,20,'힘이 없어요! 훈련은 이제 싫어요!'))return;
- if(type==='feed'){s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.care.feed+=2;s.food=clamp(s.food+25);s.joy=clamp(s.joy+2);s.gold=Math.max(0,s.gold-3);s.exp=Math.min(60,s.exp+2);fx('+25 🍖','feed');log('베리를 먹었습니다! 경험치 +2');}
- if(type==='play'){s.joy=clamp(s.joy+15);s.ene=clamp(s.ene-12);s.bond++;s.exp=Math.min(60,s.exp+4);fx('+4 EXP 😊','play');log('즐겁게 놀았습니다! 경험치 +4 · 에너지 -12');}
- if(type==='bath'){s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.care.hyg+=3;s.hyg=100;s.exp=Math.min(60,s.exp+1);fx('+1 EXP 🫧','bath');log('깨끗해졌습니다! 경험치 +1');}
- if(type==='train'){s.training=Math.min(18,s.training+1);s.ene=clamp(s.ene-25);s.joy=clamp(s.joy+3);s.gold+=5;s.exp=Math.min(60,s.exp+8);fx('+8 EXP STR','train');log('훈련 완료! 경험치 +8 · 에너지 -25');}checkGrowth();save();render();const petEl=$('pet'),sceneEl=$('scene'),sceneRect=sceneEl.getBoundingClientRect(),petRect=petEl.getBoundingClientRect();const stayLeft=Math.max(0,petRect.left-sceneRect.left);petEl.style.left=stayLeft+'px';petEl.className='pet action-'+type;setTimeout(()=>{petEl.style.left='';petEl.className='pet roam'},1100)
+ if(type==='feed'){s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.care.feed+=2;s.food=clamp(s.food+25);s.joy=clamp(s.joy+2);gainExp(2);fx('+25 🍖','feed');log('베리를 먹었습니다! 경험치 +2');}
+ if(type==='play'){s.joy=clamp(s.joy+15);s.ene=clamp(s.ene-12);s.bond++;gainExp(4);fx('+4 EXP 😊','play');log('즐겁게 놀았습니다! 경험치 +4 · 에너지 -12');}
+ if(type==='bath'){s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.care.hyg+=3;s.hyg=100;gainExp(1);fx('+1 EXP 🫧','bath');log('깨끗해졌습니다! 경험치 +1');}
+ if(type==='train'){s.training=Math.min(18,s.training+1);s.ene=clamp(s.ene-25);s.joy=clamp(s.joy+3);gainExp(8);fx('+8 EXP STR','train');log('훈련 완료! 경험치 +8 · 에너지 -25');}render();const petEl=$('pet');pausePetMove();checkGrowth();save();petEl.style.animation='none';petEl.className='pet action-'+type;setTimeout(()=>{petEl.className='pet roam';petEl.style.animation='';petEl.style.animationDelay='';startPetMove()},1100)
 }
-function hatch(){if(s.hatched){if(s.level>=current().at)evolve();return} const pool=species.filter(x=>x.rate);let r=Math.random()*pool.reduce((a,x)=>a+x.rate,0),pick=pool[0];for(const x of pool){r-=x.rate;if(r<=0){pick=x;break}} s.hatched=true;s.level=1;s.exp=0;s.species=pick.id;s.name=pick.name;s.dex=[pick.id];save();render();$('pet').className='pet happy';fx('HATCH!');log('🥚✨ 알이 깨지며 '+pick.name+'이(가) 태어났습니다!');setTimeout(()=>{$('pet').className='pet'},1200)}
+function hatch(){if(s.hatched){if(s.level>=current().at)evolve();return} const pool=species.filter(x=>x.rate);let r=Math.random()*pool.reduce((a,x)=>a+x.rate,0),pick=pool[0];for(const x of pool){r-=x.rate;if(r<=0){pick=x;break}} s.hatched=true;s.level=1;s.exp=0;s.species=pick.id;s.name=pick.name;s.dex=[pick.id];save();render();$('pet').className='pet happy';fx('HATCH!');log('🥚✨ 알이 깨지며 '+pick.name+'이(가) 태어났습니다!');setTimeout(()=>{$('pet').className='pet roam'},1200)}
 function careProfile(){const c=s.care||{};return{feed:(c.feed||0)+s.food*.45,sleep:(c.sleep||0)+(s.sleeping?18:0)+s.ene*.15,energy:(c.energy||0)+s.ene*.5,hyg:(c.hyg||0)+s.hyg*.5}}
 function chooseEvolution(stage){const q=careProfile();if(stage===2){const scores={feed:q.feed*1.2+q.hyg*.15,rest:q.sleep*.8+q.energy*1.15,hyg:q.hyg*1.15+q.sleep*.25};return Object.keys(scores).sort((a,b)=>scores[b]-scores[a])[0]}const scores={feed:q.feed,rest:q.sleep+q.energy*.7,hyg:q.hyg};return Object.keys(scores).sort((a,b)=>scores[b]-scores[a])[0]}
-function evolve(){const p=current();if(!s.hatched)return;let n=null;if(p.stage===1){const trait=chooseEvolution(2);n=species.find(x=>x.family===p.family&&x.stage===2&&x.trait===trait)}else if(p.stage===2){const trait=chooseEvolution(3);n=species.find(x=>x.family===p.family&&x.stage===3&&x.branch===p.id&&x.trait===trait)}if(!n)return;$('pet').className='pet happy';const q=careProfile();const path=n.stage===2?(n.label+' · 먹이/수면/에너지/청결 관리 결과'):n.label+' · '+(n.trait==='feed'?'먹이 관리가 가장 중요했어요':n.trait==='rest'?'수면·에너지 관리가 가장 좋았어요':'청결 관리가 가장 좋았어요');fx('✨ EVOLUTION!');log('✨ '+p.name+'이(가) 빛나기 시작합니다!');setTimeout(()=>{s.species=n.id;s.name=n.name;s.level++;s.exp=0;s.dex=Array.from(new Set((s.dex||[]).concat(n.id)));save();render();$('pet').className='pet happy';log('🌟 '+n.name+'으로 진화! '+path);fx('EVOLVE!');setTimeout(()=>{$('pet').className='pet'},1200)},900)}
-function checkGrowth(){const p=current();if(s.hatched&&s.exp>=60){s.exp=0;s.level++;log('🎉 레벨 업! Lv.'+s.level);fx('LEVEL UP!');if(s.level>=p.at&&p.stage<3){setTimeout(()=>{evolve()},500)}}}
+function evolve(){const p=current();if(!s.hatched)return;let n=null;if(p.stage===1){const trait=chooseEvolution(2);n=species.find(x=>x.family===p.family&&x.stage===2&&x.trait===trait)}else if(p.stage===2){const trait=chooseEvolution(3);n=species.find(x=>x.family===p.family&&x.stage===3&&x.branch===p.id&&x.trait===trait)}if(!n)return;$('pet').className='pet happy';const q=careProfile();const path=n.stage===2?(n.label+' · 먹이/수면/에너지/청결 관리 결과'):n.label+' · '+(n.trait==='feed'?'먹이 관리가 가장 중요했어요':n.trait==='rest'?'수면·에너지 관리가 가장 좋았어요':'청결 관리가 가장 좋았어요');fx('✨ EVOLUTION!');log('✨ '+p.name+'이(가) 빛나기 시작합니다!');setTimeout(()=>{s.species=n.id;s.name=n.name;s.level++;s.exp=0;s.dex=Array.from(new Set((s.dex||[]).concat(n.id)));save();render();$('pet').className='pet happy';log('🌟 '+n.name+'으로 진화! '+path);fx('EVOLVE!');setTimeout(()=>{$('pet').className='pet roam'},1200)},900)}
+function checkGrowth(){const p=current();if(s.hatched&&s.level<p.at&&s.exp>=60){s.exp=0;s.level++;log('🎉 레벨 업! Lv.'+s.level);fx('LEVEL UP!')}}
 function modal(content){$('dialog').innerHTML=content;$('modal').classList.add('open')}
 $('modal').addEventListener('click',e=>{if(e.target===$('modal'))$('modal').classList.remove('open')});
 $('feed').onclick=()=>act('feed');$('play').onclick=()=>act('play');$('bath').onclick=()=>act('bath');$('train').onclick=()=>act('train');
-$('pet').onclick=()=>{if(!s.hatched)return;if(s.sleeping){fx('Z z Z');log('😴 지금은 자고 있어요.');return}s.bond++;s.joy=clamp(s.joy+3);s.refuse=s.refuse||{};s.refuse.touch=0;fx('♥ 쓰담쓰담!','touch');$('pet').className='pet touch';log('♥ '+s.name+'의 머리를 쓰다듬었습니다.');save();render();$('pet').className='pet touch';setTimeout(()=>{$('pet').className='pet roam'},650)};
+$('pet').onclick=()=>{if(!s.hatched)return;if(s.sleeping){fx('Z z Z');log('😴 지금은 자고 있어요.');return}s.bond++;s.joy=clamp(s.joy+3);s.refuse=s.refuse||{};s.refuse.touch=0;fx('♥ 쓰담쓰담!','touch');render();log('♥ '+s.name+'의 머리를 쓰다듬었습니다.');const petEl=$('pet');pausePetMove();save();petEl.style.animation='none';petEl.className='pet touch';setTimeout(()=>{petEl.className='pet roam';petEl.style.animation='';petEl.style.animationDelay='';startPetMove()},650)};
 $('sleep').onclick=()=>{if(!s.hatched)return;s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.sleeping=!s.sleeping;if(s.sleeping)s.care.sleep+=2;log(s.sleeping?'🌙 잠이 들었습니다. 달빛 아래에서 편안히 잠듭니다.':'☀️ 잠에서 깨어났습니다.');save();render()};
 $('hatch').onclick=()=>{
  if(!s.hatched){hatch();return}
@@ -473,7 +626,21 @@ $('hatch').onclick=()=>{
  },0)
 };
 $('rename').onclick=()=>{if(!s.hatched)return;modal('<h3>이름 바꾸기</h3><input id="nameInput" maxlength="12" value="'+s.name+'" style="width:100%;padding:13px;border:1px solid #dfe8f4;border-radius:12px;font:700 16px Nunito"><div class="choice"><button class="btn primary" id="saveName">저장</button></div>');setTimeout(()=>{$('saveName').onclick=()=>{const v=$('nameInput').value.trim();if(v){s.name=v;save();render();log('이름을 '+v+'로 바꿨습니다.')}$('modal').classList.remove('open')}},0)};
-$('dex').onclick=()=>{const roots=families;modal('<h3>📖 캐릭터 도감</h3><p class="muted">부화 '+roots.length+'종 · 2차 진화 '+(roots.length*3)+'종 · 최종 진화 '+(roots.length*9)+'종</p><div class="dex">'+roots.map(f=>{const r=species.find(x=>x.id===f.root);return '<div class="evoCard"><div class="evoHead"><span>✨ '+f.name+' 계열</span><span>'+f.rate+'%</span></div><div class="evoChain"><div><div class="miniPet"><img class="pixelSprite" src="'+spriteUrl(f.root)+'"></div><div class="evoLv">Lv.1~5</div><div class="evoName">'+f.name+'</div></div><div class="evoArrow">→</div>'+f.branches.map(b=>'<div><div class="miniPet"><img class="pixelSprite" src="'+spriteUrl(b.id)+'"></div><div class="evoLv">Lv.6~10</div><div class="evoName">'+b.name+'</div><div class="evoLv">'+b.label+'</div><div class="evoChain">'+finalTraits.map(ft=>{const z=species.find(x=>x.id===b.id+'_'+ft.id);return '<div><div class="miniPet"><img class="pixelSprite" src="'+spriteUrl(z.id)+'"></div><div class="evoLv">Lv.11+</div><div class="evoName">'+z.name+'</div></div>'}).join('')+'</div></div>').join('')+'</div></div>'}).join('')+'</div>');};
+$('dex').onclick=()=>{
+ const cards=families.map(f=>{
+   const root=species.find(x=>x.id===f.root);
+   const stages=[{id:f.root,name:f.name,stage:'부화',trait:''}];
+   f.branches.forEach(b=>{
+     stages.push({id:b.id,name:b.name,stage:'2차',trait:b.label});
+     finalTraits.forEach(ft=>{
+       const z=species.find(x=>x.id===b.id+'_'+ft.id);
+       if(z)stages.push({id:z.id,name:z.name,stage:'최종',trait:z.label});
+     });
+   });
+   return '<div class="dexFamily"><div class="dexFamilyTitle"><span>✨ '+f.name+' 계열</span><span>'+f.rate+'%</span></div><div class="dexStages">'+stages.map(x=>{const found=(s.dex||[]).includes(x.id);return '<div class="dexStage"><div class="dexStageTitle">'+x.stage+'</div><div class="dexChar"><img class="'+(found?'':'undiscovered')+'" data-pet-id="'+x.id+'" src="'+spriteUrl(x.id)+'" alt="'+(found?x.name:'???')+'"></div><div class="dexCharName">'+(found?x.name:'???')+'</div>'+(found&&x.trait?'<div class="dexTrait">'+x.trait+'</div>':'')+'</div>'}).join('')+'</div></div>';
+ }).join('');
+ modal('<h3>📖 캐릭터 도감</h3><p class="muted">부화 6종 · 2차 진화 18종 · 최종 진화 54종 · 총 78종</p><div class="dex">'+cards+'</div>');setTimeout(()=>document.querySelectorAll('[data-pet-id]').forEach(el=>applySprite(el,el.getAttribute('data-pet-id'))),0);
+};
 function makeSaveCode(){
   s.last=Date.now();
   const payload={v:1,game:s,createdAt:Date.now()};
@@ -496,18 +663,21 @@ function readSaveCode(code){
 }
 $('saveData').onclick=()=>{
   const code=makeSaveCode();
-  modal('<h3>💾 저장 데이터</h3><div class="saveHint">PC에서 <b>저장 코드 복사</b> 후 카카오톡·메신저·메모장 등으로 스마트폰에 보내세요. 스마트폰에서는 이 화면에 코드를 붙여넣고 <b>불러오기</b>를 누르면 이어서 키울 수 있습니다.</div><div class="saveCodeBox"><textarea id="saveCode" spellcheck="false"></textarea><div class="saveBtns"><button class="btn primary" id="copySave">📋 저장 코드 복사</button><button class="btn green" id="loadSave">📥 코드 불러오기</button></div><button class="btn" id="refreshSave">🔄 현재 상태로 코드 다시 만들기</button></div>');
+  modal('<h3>💾 저장 데이터</h3><div class="saveHint">PC에서 <b>저장 코드 복사</b> 후 카카오톡·메신저·메모장 등으로 스마트폰에 보내세요. 스마트폰에서는 이 화면에 코드를 붙여넣고 <b>불러오기</b>를 누르면 이어서 키울 수 있습니다.</div><div class="saveCodeBox"><textarea id="saveCode" spellcheck="false"></textarea><div class="saveBtns"><button class="btn primary" id="copySave">📋 저장 코드 복사</button><button class="btn green" id="loadSave">📥 코드 불러오기</button></div><button class="btn" id="copyResumeLink">📱 다른 기기로 이어하기 링크 복사</button><div class="saveHint" style="margin-top:8px">링크를 다른 기기로 보내서 열면 저장된 펫으로 바로 이어할 수 있습니다.</div><button class="btn" id="refreshSave">🔄 현재 상태로 코드 다시 만들기</button></div>');
   $('saveCode').value=code;
   setTimeout(()=>{
     $('copySave').onclick=async()=>{try{await navigator.clipboard.writeText($('saveCode').value);fx('복사 완료!');log('💾 저장 코드를 클립보드에 복사했습니다.')}catch(e){$('saveCode').select();document.execCommand('copy');log('💾 저장 코드를 복사했습니다.')}};
-    $('loadSave').onclick=()=>{try{const x=readSaveCode($('saveCode').value);s=x;localStorage.setItem(KEY,JSON.stringify(s));$('modal').classList.remove('open');render();log('📥 저장 데이터를 불러왔습니다! Lv.'+s.level+' · '+(s.hatched?s.name:'알'));fx('LOAD!')}catch(e){log('⚠️ '+e.message);alert(e.message)}};
+    $('loadSave').onclick=()=>{try{const x=readSaveCode($('saveCode').value);s=x;const loadData=JSON.stringify(s);localStorage.setItem(KEY,loadData);localStorage.setItem(BACKUP_KEY,loadData);$('modal').classList.remove('open');render();log('📥 저장 데이터를 불러왔습니다! Lv.'+s.level+' · '+(s.hatched?s.name:'알'));fx('LOAD!')}catch(e){log('⚠️ '+e.message);alert(e.message)}};
     $('refreshSave').onclick=()=>{$('saveCode').value=makeSaveCode();log('🔄 현재 상태의 저장 코드를 다시 만들었습니다.')};
+    $('copyResumeLink').onclick=async()=>{const code=makeSaveCode();const link=location.origin+location.pathname+'#resume='+encodeURIComponent(code);try{await navigator.clipboard.writeText(link);fx('링크 복사 완료!');log('📱 다른 기기로 이어하기 링크를 복사했습니다.')}catch(e){$('saveCode').value=link;$('saveCode').select();document.execCommand('copy');log('📱 이어하기 링크를 복사했습니다.')}};
   },0);
 };
-$('reset').onclick=()=>modal('<h3>정말 초기화할까요?</h3><p>현재 캐릭터와 성장 데이터를 모두 삭제하고 새 알로 돌아갑니다.</p><div class="choice"><button class="btn pink" id="yesReset">초기화</button><button class="btn" id="noReset">취소</button></div>');setTimeout(()=>{$('yesReset')&&($('yesReset').onclick=()=>{localStorage.removeItem(KEY);s=structuredClone(base);$('modal').classList.remove('open');log('새 게임을 시작했습니다.');render()});$('noReset')&&($('noReset').onclick=()=>$('modal').classList.remove('open'))},0);
-function gameTick(){if(!s.hatched)return;s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.food=clamp(s.food-2);s.ene=clamp(s.ene+(s.sleeping?3:1));s.hyg=clamp(s.hyg-(s.sleeping?0:1));s.joy=clamp(s.joy-(s.food<30?3:1));if(s.food>=45&&s.food<=90)s.care.feed+=1;if(s.sleeping)s.care.sleep+=1;if(s.ene>=60)s.care.energy+=1;if(s.hyg>=70)s.care.hyg+=1;if(s.sleeping&&s.ene>=100)s.sleeping=false;s.exp=Math.min(60,s.exp+1);checkGrowth();save();render()}
+$('sendPet').onclick=()=>{if(!s.hatched||current().stage!==3)return;modal('<h3>🌟 '+s.name+' 보내주기</h3><p>최종진화를 마친 <b>'+s.name+'</b>을(를) 원래 별로 보내고 새로운 알과 다시 시작할까요?</p><div class="choice"><button class="btn pink" id="yesSend">🌟 보내주기</button><button class="btn" id="noSend">취소</button></div>');setTimeout(()=>{$('yesSend').onclick=()=>{const oldName=s.name;const oldDex=Array.from(new Set(s.dex||[]));const fresh=structuredClone(base);fresh.dex=oldDex;fresh.last=Date.now();fresh.created=Date.now();s=fresh;const freshData=JSON.stringify(s);localStorage.setItem(KEY,freshData);localStorage.setItem(BACKUP_KEY,freshData);$('modal').classList.remove('open');render();log('🌟 '+oldName+'은(는) 원래 별로 돌아갔습니다. 새로운 알이 도착했어요!');fx('GOOD BYE!');setTimeout(()=>{modal('<h3>🥚 새로운 알이 나타났어요!</h3><p><b>'+oldName+'</b>은(는) 원래 별로 돌아갔습니다.</p><p>이제 새로운 알을 다시 키워보세요. ✨</p><div class="choice"><button class="btn primary" id="closeSend">🥚 새로 시작하기</button></div>');setTimeout(()=>{$('closeSend')&&($('closeSend').onclick=()=>{$('modal').classList.remove('open')})},0)},350)};$('noSend').onclick=()=>{$('modal').classList.remove('open')};},0)};
+$('reset').onclick=()=>{modal('<h3>정말 초기화할까요?</h3><p>현재 캐릭터와 성장 데이터를 모두 삭제하고 새 알로 돌아갑니다.</p><div class="choice"><button class="btn pink" id="yesReset">초기화</button><button class="btn" id="noReset">취소</button></div>');setTimeout(()=>{const yes=$('yesReset'),no=$('noReset');if(yes)yes.onclick=()=>{localStorage.removeItem(KEY);localStorage.removeItem(BACKUP_KEY);sessionStorage.clear();location.hash='';location.reload()};if(no)no.onclick=()=>$('modal').classList.remove('open')},0)}
+function gameTick(){if(!s.hatched)return;s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.food=clamp(s.food-2);s.ene=clamp(s.ene+(s.sleeping?3:1));s.hyg=clamp(s.hyg-(s.sleeping?0:1));s.joy=clamp(s.joy-(s.food<30?3:1));if(s.food>=45&&s.food<=90)s.care.feed+=1;if(s.sleeping)s.care.sleep+=1;if(s.ene>=60)s.care.energy+=1;if(s.hyg>=70)s.care.hyg+=1;if(s.sleeping&&s.ene>=100)s.sleeping=false;if(s.level<current().at)gainExp(1);checkGrowth();save();render()}
+try{const h=location.hash||'';if(h.startsWith('#resume=')){const code=decodeURIComponent(h.slice(8));const x=readSaveCode(code);s=x;const resumeData=JSON.stringify(s);localStorage.setItem(KEY,resumeData);localStorage.setItem(BACKUP_KEY,resumeData);history.replaceState(null,'',location.pathname+location.search);setTimeout(()=>{log('📱 이어하기 링크로 저장 데이터를 불러왔습니다!');fx('RESUME!')},100)} }catch(e){console.warn('resume link load failed',e)}
 setInterval(gameTick,30000);setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});},1000);
-render();log('게임을 시작했습니다. 알을 눌러 부화시키세요.');if(awayResetNotice){setTimeout(()=>{modal('<h3>🏡 펫이 고향으로 돌아갔어요</h3><p><b>'+awayResetNotice.days+'일</b> 동안 게임에 접속하지 않아 '+awayResetNotice.name+'이(가) 고향으로 돌아갔습니다.</p><p>새로운 인연을 다시 시작해 주세요. 이번에는 <b>알</b>부터 다시 키울 수 있습니다. 🥚</p><div class="choice"><button class="btn primary" id="closeAway">🥚 새 알과 시작하기</button></div>');setTimeout(()=>{$('closeAway')&&($('closeAway').onclick=()=>{$('modal').classList.remove('open')})},0)},250)}$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+render();setTimeout(startPetMove,100);log('게임을 시작했습니다. 알을 눌러 부화시키세요.');if(awayResetNotice){setTimeout(()=>{modal('<h3>🏡 펫이 고향으로 돌아갔어요</h3><p><b>'+awayResetNotice.days+'일</b> 동안 게임에 접속하지 않아 '+awayResetNotice.name+'이(가) 고향으로 돌아갔습니다.</p><p>새로운 인연을 다시 시작해 주세요. 이번에는 <b>알</b>부터 다시 키울 수 있습니다. 🥚</p><div class="choice"><button class="btn primary" id="closeAway">🥚 새 알과 시작하기</button></div>');setTimeout(()=>{$('closeAway')&&($('closeAway').onclick=()=>{$('modal').classList.remove('open')})},0)},250)}$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
 })();
 </script>
 
