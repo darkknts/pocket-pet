@@ -9,38 +9,21 @@ permissions:
 
 jobs:
   pixelize-atlas:
-    if: github.event.head_commit.message != 'chore: pixelize existing pet atlas [skip ci]'
+    if: github.event.head_commit.message != 'chore: pixelize existing pet atlas'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
       - name: Pixelize the existing atlas without redesigning it
         run: |
-          npm install --no-save sharp
           git show 05d6b16ff453ebfdce07d06d89bb0d74099a74c9:images/pet_atlas_exact78_96q.png > /tmp/original.png
-          node - <<'NODE'
-          const sharp = require('sharp');
-          (async () => {
-            const input = '/tmp/original.png';
-            const output = 'images/pet_atlas_exact78_96q.png';
-            const meta = await sharp(input).metadata();
-            const w = meta.width, h = meta.height;
-            const smallW = Math.max(1, Math.round(w / 2));
-            const smallH = Math.max(1, Math.round(h / 2));
-            await sharp(input)
-              .resize(smallW, smallH, {kernel:'nearest'})
-              .resize(w, h, {kernel:'nearest'})
-              .png()
-              .toFile(output);
-          })();
-          NODE
+          file /tmp/original.png
+          identify /tmp/original.png
+          convert /tmp/original.png -resize 50% -filter point -resize 200% -filter point images/pet_atlas_exact78_96q.png
           rm -f images/pet_atlas_redesigned.svg
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add images/pet_atlas_exact78_96q.png images/pet_atlas_redesigned.svg
-          git commit -m "chore: pixelize existing pet atlas [skip ci]" || exit 0
+          git commit -m "chore: pixelize existing pet atlas" || exit 0
           git push
