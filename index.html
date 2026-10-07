@@ -11,12 +11,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#eef7ff;--card:#fff;--ink:#203047;--muted:#70809a;--blue:#4b8dff;--mint:#57c9a4;--pink:#ff7d9b;--yellow:#ffc857;--line:#dfe8f4;--shadow:0 18px 45px rgba(50,86,130,.13)}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 10%,#fff 0 15%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff);color:var(--ink);font-family:Nunito,sans-serif;min-height:100vh}
-.wrap{width:min(980px,94vw);margin:0 auto;padding:24px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.brand{font:700 30px Fredoka;color:#315b92}.brand span{color:var(--pink)}.pill{background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:999px;font-weight:800;color:var(--muted)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 10%,#fff 0 15%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+.wrap{width:min(980px,94vw);margin:0 auto;padding:24px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.brand{font:700 30px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#315b92}.brand span{color:var(--pink)}.pill{background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:999px;font-weight:800;color:var(--muted)}
 .game{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.stage,.panel{background:rgba(255,255,255,.9);border:1px solid rgba(220,232,246,.9);border-radius:28px;box-shadow:var(--shadow)}.stage{padding:18px}.scene{min-height:600px;border-radius:22px;position:relative;overflow:hidden;background:#62c5f2 url('./images/world.svg') center/cover no-repeat;display:block}
 .scene.night{filter:none!important;background-image:url('./images/world-night.svg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}.scene:not(.night):not(.sleep-mode){filter:none!important}.sun,.moon{position:absolute;top:28px;right:35px;width:58px;height:58px;border-radius:50%;background:#ffe28a;box-shadow:0 0 45px #ffe28a}.moon{background:#eef2ff;box-shadow:0 0 30px #cfdcff}.cloud{position:absolute;left:8%;top:16%;font-size:50px;opacity:.7}.cloud.c2{left:auto;right:15%;top:28%;font-size:38px}.ground{position:absolute;bottom:0;width:100%;height:42%;background:repeating-linear-gradient(120deg,rgba(255,255,255,.14) 0 3px,transparent 3px 20px)}
 .pet{position:absolute;left:0;bottom:8%;z-index:7;width:190px;height:190px;display:grid;place-items:center;animation:bob 2.2s ease-in-out infinite}
@@ -251,7 +249,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 .panel{border:4px solid #8fb8d5!important;border-radius:24px!important;background:#f7fcff!important;box-shadow:0 8px 0 #bfd8e8,0 16px 28px rgba(55,93,125,.12)!important}
 .panel h2{font-family:Fredoka,sans-serif!important;color:#183d5b!important}
 .info>div{border:3px solid #d0e3ef!important;background:#eef7fc!important;box-shadow:0 3px 0 #c4dbe8!important}
-.actions .btn{font-family:Nunito,sans-serif!important;font-weight:900!important;border:3px solid rgba(32,60,85,.16)!important;box-shadow:0 5px 0 rgba(32,60,85,.13)!important}
+.actions .btn{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-weight:900!important;border:3px solid rgba(32,60,85,.16)!important;box-shadow:0 5px 0 rgba(32,60,85,.13)!important}
 .menu .mini{border:3px solid #b9d4e5!important;background:#f9fdff!important;box-shadow:0 4px 0 #d0e2ed!important}
 .log{border:3px solid #c5dce9!important;background:#eef8fd!important}
 .dialog{border:4px solid #86aec8!important;box-shadow:0 10px 0 rgba(32,60,85,.2)!important}
@@ -379,8 +377,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 
 
 </head>
-<body><img data-wpe-slot="pet-atlas" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="펫 78종 아틀라스" style="display:none">
-
+<body>
 <style id="pocket-pet-auth-ui">
 #authGate{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 20% 10%,#fff 0 12%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff)}
 #authGate.hidden{display:none}
@@ -454,15 +451,15 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
         <div><span>♥ 유대</span><b id="bond">0</b></div>
       </div>
       <div class="actions">
-        <button class="btn primary" id="feed"><img class="btnIcon" src="./images/ui-feed.svg" alt="">먹이</button>
-        <button class="btn green" id="bath"><img class="btnIcon" src="./images/ui-bath.svg" alt="">목욕</button>
-        <button class="btn gold" id="sleep"><img class="btnIcon" src="./images/ui-sleep.svg" alt="">잠자기</button>
-        <button class="btn pink" id="play"><img class="btnIcon" src="./images/ui-play.svg" alt="">놀기</button>
-        <button class="btn" id="train"><img class="btnIcon" src="./images/ui-train.svg" alt="">훈련</button>
-        <button class="btn" id="rename"><img class="btnIcon" src="./images/ui-rename.svg" alt="">이름</button>
+        <button class="btn primary" id="feed"><span class="btnIcon" aria-hidden="true">🍎</span>먹이</button>
+        <button class="btn green" id="bath"><span class="btnIcon" aria-hidden="true">🫧</span>목욕</button>
+        <button class="btn gold" id="sleep"><span class="btnIcon" aria-hidden="true">🌙</span>잠자기</button>
+        <button class="btn pink" id="play"><span class="btnIcon" aria-hidden="true">⚽</span>놀기</button>
+        <button class="btn" id="train"><span class="btnIcon" aria-hidden="true">🥊</span>훈련</button>
+        <button class="btn" id="rename"><span class="btnIcon" aria-hidden="true">✏️</span>이름</button>
       </div>
       <div class="menu">
-        <button class="mini" id="hatch"><img class="miniIcon" src="./images/ui-hatch.svg" alt="">부화</button><button class="mini" id="dex"><img class="miniIcon" src="./images/ui-dex.svg" alt="">도감</button><button class="mini" id="saveData"><img class="miniIcon" src="./images/ui-save.svg" alt="">저장/불러오기</button><button class="mini" id="reset"><img class="miniIcon" src="./images/ui-reset.svg" alt="">초기화</button><button class="mini" id="sendPet" disabled>🌟 보내주기</button>
+        <button class="mini" id="hatch"><span class="miniIcon" aria-hidden="true">🥚</span>부화</button><button class="mini" id="dex"><span class="miniIcon" aria-hidden="true">📖</span>도감</button><button class="mini" id="saveData"><span class="miniIcon" aria-hidden="true">💾</span>저장/불러오기</button><button class="mini" id="reset"><span class="miniIcon" aria-hidden="true">🔄</span>초기화</button><button class="mini" id="sendPet" disabled>🌟 보내주기</button>
       </div>
       
       <div class="log" id="log" aria-live="polite"></div>
@@ -889,7 +886,7 @@ $('hatch').onclick=()=>{
    $('closeE')&&($('closeE').onclick=()=>{$('modal').classList.remove('open')});
  },0)
 };
-$('rename').onclick=()=>{if(!s.hatched)return;modal('<h3>이름 바꾸기</h3><input id="nameInput" maxlength="12" value="'+s.name+'" style="width:100%;padding:13px;border:1px solid #dfe8f4;border-radius:12px;font:700 16px Nunito"><div class="choice"><button class="btn primary" id="saveName">저장</button></div>');setTimeout(()=>{$('saveName').onclick=()=>{const v=$('nameInput').value.trim();if(v){s.name=v;save();render();log('이름을 '+v+'로 바꿨습니다.')}$('modal').classList.remove('open')}},0)};
+$('rename').onclick=()=>{if(!s.hatched)return;modal('<h3>이름 바꾸기</h3><input id="nameInput" maxlength="12" value="'+s.name+'" style="width:100%;padding:13px;border:1px solid #dfe8f4;border-radius:12px;font:700 16px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif"><div class="choice"><button class="btn primary" id="saveName">저장</button></div>');setTimeout(()=>{$('saveName').onclick=()=>{const v=$('nameInput').value.trim();if(v){s.name=v;save();render();log('이름을 '+v+'로 바꿨습니다.')}$('modal').classList.remove('open')}},0)};
 $('dex').onclick=()=>{
  const cards=families.map(f=>{
    const root=species.find(x=>x.id===f.root);
@@ -976,6 +973,6 @@ render();log('Pocket Pet을 시작합니다. 로그인해 주세요.');initCloud
 
 
 
-<!-- WebsitePublisher.ai Powered-by Widget -->
+
 
 </body></html>
