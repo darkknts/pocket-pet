@@ -5,7 +5,14 @@
     <stop offset="1" stop-color="#f3dfc9"/>
   </linearGradient>
 </defs>
-<path d="M60 8C35 8 20 35 18 65c-2 31 10 67 42 76 32-9 44-45 42-76C100 35 85 8 60 8Z" fill="url(#egg)" stroke="#d9c7bd" stroke-width="4"/>
+<path d="M60 8
+  C39 8 23 30 19 57
+  C14 88 24 122 47 137
+  C52 140 56 142 60 143
+  C64 142 68 140 73 137
+  C96 122 106 88 101 57
+  C97 30 81 8 60 8Z"
+  fill="url(#egg)" stroke="#d9c7bd" stroke-width="4" stroke-linejoin="round"/>
 <circle cx="43" cy="53" r="8" fill="#ff9fba"/>
 <circle cx="76" cy="72" r="6" fill="#ffd27d"/>
 <circle cx="38" cy="91" r="7" fill="#9edb8b"/>
