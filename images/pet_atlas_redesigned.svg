@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1248" height="576" viewBox="0 0 1248 576">
+<defs>
+<g id="f"><ellipse cx="48" cy="84" rx="23" ry="5" fill="#203c55" opacity=".14"/><ellipse cx="48" cy="54" rx="24" ry="25" fill="#f58bb8" stroke="#203047" stroke-width="3"/><ellipse cx="68.0" cy="34.0" rx="9" ry="14" fill="#ff9bc3" stroke="#203047" stroke-width="2"/><ellipse cx="58.0" cy="51.3" rx="9" ry="14" fill="#ff9bc3" stroke="#203047" stroke-width="2"/><ellipse cx="38.0" cy="51.3" rx="9" ry="14" fill="#ff9bc3" stroke="#203047" stroke-width="2"/><ellipse cx="28.0" cy="34.0" rx="9" ry="14" fill="#ff9bc3" stroke="#203047" stroke-width="2"/><ellipse cx="38.0" cy="16.7" rx="9" ry="14" fill="#ff9bc3" stroke="#203047" stroke-width="2"/><ellipse cx="58.0" cy="16.7" rx="9" ry="14" fill="#ff9bc3" stroke="#203047" stroke-width="2"/><circle cx="48" cy="34" r="7" fill="#ffd45c" stroke="#203047" stroke-width="2"/><ellipse cx="23" cy="52" rx="10" ry="18" fill="#5aa84a" stroke="#203047" stroke-width="2.5" transform="rotate(-30 23 52)"/><ellipse cx="73" cy="52" rx="10" ry="18" fill="#5aa84a" stroke="#203047" stroke-width="2.5" transform="rotate(30 73 52)"/><circle cx="39" cy="53" r="4.5" fill="#203047"/><circle cx="57" cy="53" r="4.5" fill="#203047"/><circle cx="40" cy="51.5" r="1.4" fill="#fff"/><circle cx="58" cy="51.5" r="1.4" fill="#fff"/><path d="M43 63 Q48 68 53 63" fill="none" stroke="#203047" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="30" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/><ellipse cx="66" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/></g>
+<g id="e"><ellipse cx="48" cy="84" rx="23" ry="5" fill="#203c55" opacity=".14"/><ellipse cx="48" cy="54" rx="24" ry="25" fill="#f06b38" stroke="#203047" stroke-width="3"/><polygon points="29,40 18,14 34,25 42,8 50,30" fill="#ffd05a" stroke="#203047" stroke-width="2"/><polygon points="67,40 78,14 62,25 54,8 46,30" fill="#ffd05a" stroke="#203047" stroke-width="2"/><path d="M70 65 Q94 72 78 48" fill="none" stroke="#ffd05a" stroke-width="9" stroke-linecap="round"/><circle cx="39" cy="53" r="4.5" fill="#203047"/><circle cx="57" cy="53" r="4.5" fill="#203047"/><circle cx="40" cy="51.5" r="1.4" fill="#fff"/><circle cx="58" cy="51.5" r="1.4" fill="#fff"/><path d="M43 63 Q48 68 53 63" fill="none" stroke="#203047" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="30" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/><ellipse cx="66" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/></g>
+<g id="w"><ellipse cx="48" cy="84" rx="23" ry="5" fill="#203c55" opacity=".14"/><ellipse cx="48" cy="54" rx="24" ry="25" fill="#55b9ea" stroke="#203047" stroke-width="3"/><polygon points="25,48 13,29 28,12 38,33" fill="#55b9ea" stroke="#203047" stroke-width="2.5"/><polygon points="71,48 83,29 68,12 58,33" fill="#55b9ea" stroke="#203047" stroke-width="2.5"/><path d="M69 62 Q93 74 75 84" fill="none" stroke="#bff5ff" stroke-width="8" stroke-linecap="round"/><circle cx="73" cy="18" r="6" fill="#bff5ff" stroke="#203047" stroke-width="2"/><circle cx="39" cy="53" r="4.5" fill="#203047"/><circle cx="57" cy="53" r="4.5" fill="#203047"/><circle cx="40" cy="51.5" r="1.4" fill="#fff"/><circle cx="58" cy="51.5" r="1.4" fill="#fff"/><path d="M43 63 Q48 68 53 63" fill="none" stroke="#203047" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="30" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/><ellipse cx="66" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/></g>
+<g id="v"><ellipse cx="48" cy="84" rx="23" ry="5" fill="#203c55" opacity=".14"/><ellipse cx="48" cy="54" rx="24" ry="25" fill="#ffd23f" stroke="#203047" stroke-width="3"/><polygon points="27,45 13,22 28,28 38,8 40,31" fill="#fff1a2" stroke="#203047" stroke-width="2"/><polygon points="69,45 83,22 68,28 58,8 56,31" fill="#fff1a2" stroke="#203047" stroke-width="2"/><polygon points="70,54 93,43 79,60 94,58 71,77" fill="#ffd23f" stroke="#203047" stroke-width="2"/><circle cx="39" cy="53" r="4.5" fill="#203047"/><circle cx="57" cy="53" r="4.5" fill="#203047"/><circle cx="40" cy="51.5" r="1.4" fill="#fff"/><circle cx="58" cy="51.5" r="1.4" fill="#fff"/><path d="M43 63 Q48 68 53 63" fill="none" stroke="#203047" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="30" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/><ellipse cx="66" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/></g>
+<g id="r"><ellipse cx="48" cy="84" rx="23" ry="5" fill="#203c55" opacity=".14"/><ellipse cx="48" cy="54" rx="24" ry="25" fill="#9a8b78" stroke="#203047" stroke-width="3"/><polygon points="22,45 30,18 43,28 52,10 64,29 77,20 80,47" fill="#4f453b" stroke="#203047" stroke-width="2.5"/><circle cx="57" cy="20" r="6" fill="#d8c28f" stroke="#203047" stroke-width="2"/><circle cx="39" cy="53" r="4.5" fill="#203047"/><circle cx="57" cy="53" r="4.5" fill="#203047"/><circle cx="40" cy="51.5" r="1.4" fill="#fff"/><circle cx="58" cy="51.5" r="1.4" fill="#fff"/><path d="M43 63 Q48 68 53 63" fill="none" stroke="#203047" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="30" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/><ellipse cx="66" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/></g>
+<g id="m"><ellipse cx="48" cy="84" rx="23" ry="5" fill="#203c55" opacity=".14"/><ellipse cx="48" cy="54" rx="24" ry="25" fill="#63ad5a" stroke="#203047" stroke-width="3"/><ellipse cx="28" cy="29" rx="11" ry="22" fill="#315f3b" stroke="#203047" stroke-width="2.5" transform="rotate(-20 28 29)"/><ellipse cx="68" cy="29" rx="11" ry="22" fill="#315f3b" stroke="#203047" stroke-width="2.5" transform="rotate(20 68 29)"/><path d="M36 31 Q20 12 16 26 M60 31 Q76 12 80 26" fill="none" stroke="#315f3b" stroke-width="5" stroke-linecap="round"/><circle cx="39" cy="53" r="4.5" fill="#203047"/><circle cx="57" cy="53" r="4.5" fill="#203047"/><circle cx="40" cy="51.5" r="1.4" fill="#fff"/><circle cx="58" cy="51.5" r="1.4" fill="#fff"/><path d="M43 63 Q48 68 53 63" fill="none" stroke="#203047" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="30" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/><ellipse cx="66" cy="63" rx="5" ry="2.5" fill="#ff8fa8" opacity=".65"/></g>
+<g id="crown"><circle cx="48" cy="9" r="5" fill="#ffd45c" stroke="#203047" stroke-width="2"/></g>
+<g id="gem"><polygon points="48,6 55,13 48,20 41,13" fill="#bff5ff" stroke="#203047" stroke-width="2"/></g>
+</defs>
+<g transform="translate(48 48) scale(0.820) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(144 48) scale(0.855) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(240 48) scale(0.890) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(336 48) scale(0.925) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(432 48) scale(0.960) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(528 48) scale(0.995) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(624 48) scale(1.030) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(720 48) scale(1.065) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(816 48) scale(1.100) translate(-48 -48)"><use href="#f"/></g>
+<g transform="translate(912 48) scale(1.135) translate(-48 -48)"><use href="#f"/><use href="#crown"/></g>
+<g transform="translate(1008 48) scale(1.170) translate(-48 -48)"><use href="#f"/><use href="#crown"/></g>
+<g transform="translate(1104 48) scale(1.205) translate(-48 -48)"><use href="#f"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(1200 48) scale(1.240) translate(-48 -48)"><use href="#f"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(48 144) scale(0.820) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(144 144) scale(0.855) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(240 144) scale(0.890) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(336 144) scale(0.925) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(432 144) scale(0.960) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(528 144) scale(0.995) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(624 144) scale(1.030) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(720 144) scale(1.065) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(816 144) scale(1.100) translate(-48 -48)"><use href="#e"/></g>
+<g transform="translate(912 144) scale(1.135) translate(-48 -48)"><use href="#e"/><use href="#crown"/></g>
+<g transform="translate(1008 144) scale(1.170) translate(-48 -48)"><use href="#e"/><use href="#crown"/></g>
+<g transform="translate(1104 144) scale(1.205) translate(-48 -48)"><use href="#e"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(1200 144) scale(1.240) translate(-48 -48)"><use href="#e"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(48 240) scale(0.820) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(144 240) scale(0.855) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(240 240) scale(0.890) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(336 240) scale(0.925) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(432 240) scale(0.960) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(528 240) scale(0.995) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(624 240) scale(1.030) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(720 240) scale(1.065) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(816 240) scale(1.100) translate(-48 -48)"><use href="#w"/></g>
+<g transform="translate(912 240) scale(1.135) translate(-48 -48)"><use href="#w"/><use href="#crown"/></g>
+<g transform="translate(1008 240) scale(1.170) translate(-48 -48)"><use href="#w"/><use href="#crown"/></g>
+<g transform="translate(1104 240) scale(1.205) translate(-48 -48)"><use href="#w"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(1200 240) scale(1.240) translate(-48 -48)"><use href="#w"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(48 336) scale(0.820) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(144 336) scale(0.855) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(240 336) scale(0.890) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(336 336) scale(0.925) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(432 336) scale(0.960) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(528 336) scale(0.995) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(624 336) scale(1.030) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(720 336) scale(1.065) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(816 336) scale(1.100) translate(-48 -48)"><use href="#v"/></g>
+<g transform="translate(912 336) scale(1.135) translate(-48 -48)"><use href="#v"/><use href="#crown"/></g>
+<g transform="translate(1008 336) scale(1.170) translate(-48 -48)"><use href="#v"/><use href="#crown"/></g>
+<g transform="translate(1104 336) scale(1.205) translate(-48 -48)"><use href="#v"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(1200 336) scale(1.240) translate(-48 -48)"><use href="#v"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(48 432) scale(0.820) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(144 432) scale(0.855) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(240 432) scale(0.890) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(336 432) scale(0.925) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(432 432) scale(0.960) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(528 432) scale(0.995) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(624 432) scale(1.030) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(720 432) scale(1.065) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(816 432) scale(1.100) translate(-48 -48)"><use href="#r"/></g>
+<g transform="translate(912 432) scale(1.135) translate(-48 -48)"><use href="#r"/><use href="#crown"/></g>
+<g transform="translate(1008 432) scale(1.170) translate(-48 -48)"><use href="#r"/><use href="#crown"/></g>
+<g transform="translate(1104 432) scale(1.205) translate(-48 -48)"><use href="#r"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(1200 432) scale(1.240) translate(-48 -48)"><use href="#r"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(48 528) scale(0.820) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(144 528) scale(0.855) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(240 528) scale(0.890) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(336 528) scale(0.925) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(432 528) scale(0.960) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(528 528) scale(0.995) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(624 528) scale(1.030) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(720 528) scale(1.065) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(816 528) scale(1.100) translate(-48 -48)"><use href="#m"/></g>
+<g transform="translate(912 528) scale(1.135) translate(-48 -48)"><use href="#m"/><use href="#crown"/></g>
+<g transform="translate(1008 528) scale(1.170) translate(-48 -48)"><use href="#m"/><use href="#crown"/></g>
+<g transform="translate(1104 528) scale(1.205) translate(-48 -48)"><use href="#m"/><use href="#crown"/><use href="#gem"/></g>
+<g transform="translate(1200 528) scale(1.240) translate(-48 -48)"><use href="#m"/><use href="#crown"/><use href="#gem"/></g>
+</svg>
