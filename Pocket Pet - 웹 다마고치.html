@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Pocket Pet - 웹 다마고치</title>
+    <link rel="canonical" href="https://project29230.websitepublisher.ai" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="content-language" content="ko">
+    
+    <script>!function(){"use strict";if("function"!=typeof Node||!Node.prototype)return;if(Node.prototype.__wpTranslateGuard)return;Node.prototype.__wpTranslateGuard=!0;var e=Node.prototype.removeChild;Node.prototype.removeChild=function(t){return t&&t.parentNode!==this?t:e.apply(this,arguments)};var r=Node.prototype.insertBefore;Node.prototype.insertBefore=function(t,n){return n&&n.parentNode!==this?r.call(this,t,null):r.apply(this,arguments)}}();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef7ff;--card:#fff;--ink:#203047;--muted:#70809a;--blue:#4b8dff;--mint:#57c9a4;--pink:#ff7d9b;--yellow:#ffc857;--line:#dfe8f4;--shadow:0 18px 45px rgba(50,86,130,.13)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 10%,#fff 0 15%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff);color:var(--ink);font-family:Nunito,sans-serif;min-height:100vh}
+.wrap{width:min(980px,94vw);margin:0 auto;padding:24px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.brand{font:700 30px Fredoka;color:#315b92}.brand span{color:var(--pink)}.pill{background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:999px;font-weight:800;color:var(--muted)}
+.game{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.stage,.panel{background:rgba(255,255,255,.9);border:1px solid rgba(220,232,246,.9);border-radius:28px;box-shadow:var(--shadow)}.stage{padding:18px}.scene{min-height:600px;border-radius:22px;position:relative;overflow:hidden;background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center/cover no-repeat;display:block}
+.scene.night{filter:brightness(.62) saturate(.8)}.sun,.moon{position:absolute;top:28px;right:35px;width:58px;height:58px;border-radius:50%;background:#ffe28a;box-shadow:0 0 45px #ffe28a}.moon{background:#eef2ff;box-shadow:0 0 30px #cfdcff}.cloud{position:absolute;left:8%;top:16%;font-size:50px;opacity:.7}.cloud.c2{left:auto;right:15%;top:28%;font-size:38px}.ground{position:absolute;bottom:0;width:100%;height:42%;background:repeating-linear-gradient(120deg,rgba(255,255,255,.14) 0 3px,transparent 3px 20px)}
+.pet{position:absolute;left:0;bottom:8%;z-index:7;width:190px;height:190px;display:grid;place-items:center;animation:bob 2.2s ease-in-out infinite}
+.pet.roam{animation:roamPixel 7s linear infinite alternate,bob 2.2s ease-in-out infinite}
+.pet.action-feed{animation:feedAction .75s ease-out 1}
+.needBubble{position:absolute;z-index:10;left:50%;top:20%;transform:translateX(-50%);max-width:270px;padding:10px 15px;border:3px solid #8fb8d5;border-radius:18px;background:#fff;color:#27445e;font-weight:900;font-size:15px;line-height:1.3;text-align:center;box-shadow:4px 5px 0 rgba(32,60,85,.16);transition:.25s;white-space:nowrap}.needBubble:after{content:'';position:absolute;left:28px;bottom:-12px;border:7px solid transparent;border-top-color:#8fb8d5}.needBubble.low{background:#fff0f3;border-color:#ef8ca4;color:#a93450}.needBubble.low:after{border-top-color:#ef8ca4}.needBubble.warn{background:#fff8df;border-color:#e6bb4c;color:#7a5a08}.needBubble.good{background:#ecfff6;border-color:#6fc5a4;color:#23785e}.pet.bored .pixel{animation:boredFace .9s ease-in-out infinite alternate}.pet.bored:before{content:'💭  ·  ·';position:absolute;z-index:9;left:28px;top:24px;font-size:23px;color:#758aa1;animation:floatThought 1.5s ease-in-out infinite}.pet.tired .pixel{filter:brightness(.82) saturate(.8);animation:tiredFace 1.6s ease-in-out infinite}.pet.tired:before{content:'💤';position:absolute;z-index:9;left:22px;top:18px;font-size:27px;animation:zzz 1.7s ease-in-out infinite}.pet.hungry .pixel{animation:hunger .7s ease-in-out infinite}.pet.dirty .pixel{animation:dirtyFace 1.1s ease-in-out infinite alternate}.pet.happyMood .pixel{animation:happy .8s ease-in-out infinite alternate}.pet.happyMood:before{content:'♥  ✦  ♥';position:absolute;z-index:9;left:25px;top:16px;color:#ff7195;font-size:20px;animation:heartFloat 1.3s ease-in-out infinite}
+.faceMood{position:absolute;inset:0;z-index:8;pointer-events:none}.faceMood .eye{position:absolute;top:42px;width:14px;height:14px;background:#203047;border-radius:2px;display:block}.faceMood .e1{left:45px}.faceMood .e2{right:45px}.faceMood .mouth{position:absolute;left:63px;top:68px;width:24px;height:9px;border-bottom:5px solid #203047;border-radius:0 0 14px 14px}.faceMood .tear{display:none;position:absolute;width:7px;height:13px;background:#5eb8ff;border-radius:0 0 8px 8px;top:57px}.faceMood .t1{left:46px}.faceMood .t2{right:46px}.pet.hungry .faceMood .eye{top:44px;height:10px}.pet.hungry .faceMood .mouth{top:73px;border-bottom:0;border-top:5px solid #203047;border-radius:14px 14px 0 0}.pet.hungry .faceMood .tear{display:block;opacity:.7}.pet.bored .faceMood .eye{top:48px;height:5px;border-radius:8px}.pet.bored .faceMood .mouth{top:72px;width:28px;height:5px;border-bottom:4px solid #203047;border-radius:0}.pet.tired .faceMood .eye{top:47px;height:5px;border-radius:8px;transform:skewX(-15deg)}.pet.tired .faceMood .mouth{top:72px;border-bottom:0;border-top:4px solid #203047;border-radius:12px 12px 0 0}.pet.dirty .faceMood .eye{top:45px}.pet.dirty .faceMood .mouth{top:70px;width:18px;height:13px;border:4px solid #203047;border-top:0;border-radius:0 0 12px 12px}.pet.sleeping .faceMood .eye{top:48px;width:17px;height:5px;background:transparent;border-bottom:4px solid #203047;border-radius:0;transform:rotate(8deg)}.pet.sleeping .faceMood .e2{transform:rotate(-8deg)}.pet.sleeping .faceMood .mouth{top:71px;width:10px;height:6px;border-bottom:0;border-top:3px solid #203047;border-radius:50%}.pet.happyMood .faceMood .eye{top:48px;width:16px;height:6px;background:transparent;border-bottom:4px solid #ff5f8c;border-radius:0;transform:rotate(10deg)}.pet.happyMood .faceMood .e2{transform:rotate(-10deg)}.pet.happyMood .faceMood .mouth{top:68px;width:28px;height:13px;border-bottom:5px solid #203047;border-radius:0 0 18px 18px}
+@keyframes boredFace{50%{transform:translateY(3px) rotate(-2deg);filter:saturate(.7)}}
+.faceMood.egg .brow,.faceMood.egg .cheek,.faceMood.egg .tear,.faceMood.egg .sweat,.faceMood.egg .blush{display:none!important}.faceMood.egg .eye{top:86px;width:10px;height:10px;background:#203047;border-radius:50%}.faceMood.egg .e1{left:70px}.faceMood.egg .e2{right:70px}.faceMood.egg .mouth{left:83px;top:107px;width:14px;height:7px;border-bottom:3px solid #203047;border-radius:0 0 10px 10px}.pet.eggMood .faceMood{opacity:1}.faceMood .brow{position:absolute;top:32px;width:20px;height:5px;background:#203047;border-radius:8px;display:block;opacity:.95}.faceMood .b1{left:41px;transform:rotate(-8deg)}.faceMood .b2{right:41px;transform:rotate(8deg)}
+.faceMood .cheek{position:absolute;top:58px;width:17px;height:8px;background:#ff7892;border-radius:50%;opacity:.72}.faceMood .ch1{left:30px}.faceMood .ch2{right:30px}
+.faceMood .sweat{display:none;position:absolute;width:8px;height:15px;background:#55bfff;border-radius:70% 30% 65% 65%;top:39px;box-shadow:0 0 0 1px rgba(40,140,220,.08)}.faceMood .sw1{right:27px;transform:rotate(18deg)}.faceMood .sw2{right:17px;top:49px;transform:rotate(28deg)}
+.faceMood .blush{display:none;position:absolute;width:19px;height:8px;border-radius:50%;background:#ff91aa;top:59px;opacity:.8}.faceMood .bl1{left:25px}.faceMood .bl2{right:25px}
+.pet.generatedFace .faceMood .brow,.pet.generatedFace .faceMood .cheek,.pet.generatedFace .faceMood .blush,.pet.generatedFace .faceMood .tear,.pet.generatedFace .faceMood .sweat{display:none!important}.pet.generatedFace.happyMood:before{display:none!important}.pet.generatedFace .faceMood .eye{top:88px;width:12px;height:14px;background:#203047;border-radius:2px}.pet.generatedFace .faceMood .e1{left:57px}.pet.generatedFace .faceMood .e2{right:57px}.pet.generatedFace .faceMood .mouth{left:82px;top:116px;width:22px;height:9px;border-bottom:4px solid #203047;border-radius:0 0 12px 12px}.pet.generatedFace .faceMood .tear{top:101px;width:7px;height:14px}.pet.generatedFace .faceMood .t1{left:59px}.pet.generatedFace .faceMood .t2{right:59px}.pet.generatedFace .faceMood .sweat{top:88px}.pet.generatedFace .faceMood .sw1{right:48px}.pet.generatedFace .faceMood .sw2{right:38px;top:99px}
+.pet.happyMood .faceMood .brow{top:34px;transform:rotate(-14deg)}.pet.happyMood .faceMood .b2{transform:rotate(14deg)}.pet.happyMood .faceMood .blush{display:block}.pet.happyMood .faceMood .mouth{height:15px;border-bottom:6px solid #203047}
+.pet.hungry .faceMood .brow{top:34px;transform:rotate(12deg)}.pet.hungry .faceMood .b2{transform:rotate(-12deg)}.pet.hungry .faceMood .tear{display:block}.pet.hungry .faceMood .mouth{width:18px;height:11px;left:66px}
+.pet.bored .faceMood .brow{top:35px;transform:rotate(2deg);opacity:.55}.pet.bored .faceMood .b2{transform:rotate(-2deg)}.pet.bored .faceMood .cheek{opacity:.35}
+.pet.tired .faceMood .brow{top:37px;transform:rotate(8deg);opacity:.65}.pet.tired .faceMood .b2{transform:rotate(-8deg)}.pet.tired .faceMood .sweat{display:block;opacity:.65}
+.pet.dirty .faceMood .brow{top:36px;transform:rotate(-16deg)}.pet.dirty .faceMood .b2{transform:rotate(16deg)}.pet.dirty .faceMood .cheek{background:#b58a6b;opacity:.5}.pet.dirty .faceMood .mouth{transform:rotate(-5deg)}
+.pet.sleeping .faceMood .brow{top:38px;width:15px;height:4px;opacity:.45;transform:rotate(8deg)}.pet.sleeping .faceMood .b2{transform:rotate(-8deg)}.pet.sleeping .faceMood .blush{display:block;opacity:.35}
+.pet.sleeping .faceMood .sweat{display:none}
+.pet.touch .faceMood .brow{top:31px;transform:rotate(-10deg)}.pet.touch .faceMood .b2{transform:rotate(10deg)}.pet.touch .faceMood .blush{display:block}
+.pet.sad .faceMood .brow{top:38px;transform:rotate(22deg)}.pet.sad .faceMood .b2{transform:rotate(-22deg)}.pet.sad .faceMood .tear{display:block}.pet.sad .faceMood .mouth{border-bottom:0;border-top:5px solid #203047;border-radius:14px 14px 0 0}
+@keyframes tiredFace{50%{transform:translateY(6px) scale(.97)}}@keyframes dirtyFace{50%{filter:saturate(.45) brightness(.82)}}@keyframes floatThought{50%{transform:translateY(-7px);opacity:.55}}@keyframes heartFloat{50%{transform:translateY(-10px);opacity:.65}}
+.pet.action-play{animation:playAction 1s ease-in-out 1}
+.pet.action-bath{animation:bathAction 1s ease-in-out 1}
+.pet.action-train{animation:trainAction .9s ease-in-out 1}
+.pet.dirty .pixel{filter:saturate(.55) brightness(.88)}
+.pet.dirty .pixel:after{box-shadow:38px 28px 0 #8b795e,15px 58px 0 #8b795e}
+.pet.dirty:before{content:'💨  •  ·  💨';position:absolute;z-index:8;left:-30px;top:42px;font-size:18px;opacity:.75;animation:dust 1.1s ease-in-out infinite}
+.pet.sleeping .pixel:before,.pet.sleeping .pixel:after{height:5px;width:18px;top:39px;background:transparent;border-bottom:4px solid #203047;border-radius:0;box-shadow:none}
+.pet.sleeping .pixel:before{left:25px;transform:rotate(8deg)}
+.pet.sleeping .pixel:after{right:25px;transform:rotate(-8deg)}
+.pet.sleeping:after{content:'Z  z  Z';position:absolute;z-index:9;right:5px;top:8px;color:#fff;font:800 20px Fredoka;text-shadow:0 2px 4px #29365e;letter-spacing:5px;animation:zzz 2s ease-in-out infinite}
+.pet.action-play:before{content:'⚽';position:absolute;z-index:9;font-size:42px;left:78px;top:28px;animation:ballKick 1s ease-out 1}
+.pet.action-train:before{content:'🥊   🥊';position:absolute;z-index:9;font-size:31px;left:37px;top:25px;letter-spacing:28px;animation:boxing .9s ease-out 1}
+.pet.action-bath:before{content:'🫧  💦  🫧';position:absolute;z-index:9;font-size:25px;left:18px;top:16px;animation:bubbles 1s ease-out 1}
+.pet.action-feed:before{content:'🍎';position:absolute;z-index:9;font-size:34px;left:83px;top:18px;animation:foodDrop .75s ease-out 1}
+@keyframes dust{50%{transform:translateX(-7px) translateY(-4px);opacity:.35}}
+@keyframes zzz{50%{transform:translateY(-13px);opacity:.55}}
+@keyframes ballKick{0%{transform:translate(-25px,18px) rotate(0)}55%{transform:translate(55px,-8px) rotate(180deg)}100%{transform:translate(95px,20px) rotate(360deg);opacity:0}}
+@keyframes boxing{0%{transform:translateX(0) scale(.8);opacity:0}30%{opacity:1}55%{transform:translateX(-10px) scale(1.08)}75%{transform:translateX(12px) scale(1.08)}100%{transform:translateX(0);opacity:0}}
+@keyframes bubbles{0%{transform:translateY(15px) scale(.6);opacity:0}35%{opacity:1}100%{transform:translateY(-38px) scale(1.15);opacity:0}}
+@keyframes foodDrop{0%{transform:translateY(-25px) scale(.7);opacity:0}45%{opacity:1}100%{transform:translateY(35px) scale(1);opacity:0}}
+.scene.sleep-mode{background-image:url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
+.scene.sleep-mode:after{content:'';position:absolute;inset:0;background:rgba(10,18,45,.2);pointer-events:none;z-index:1}
+.scene.sleep-mode .cloud{opacity:.18}
+.scene.sleep-mode .sun{display:none}
+.scene.sleep-mode .moon{display:block!important}
+.scene .moon{display:none;position:absolute;z-index:0;top:30px;right:42px;width:62px;height:62px;border-radius:50%;background:#f4f0cf;box-shadow:0 0 32px rgba(244,240,207,.65),0 0 80px rgba(170,190,255,.22)}
+.scene .moon:after{content:'✦  ✧  ✦';position:absolute;left:-85px;top:70px;color:rgba(255,255,255,.7);font-size:15px;letter-spacing:18px;white-space:nowrap}
+.fx.show.feedfx{animation:feedFx 1s ease-out}
+.fx.show.playfx{animation:playFx 1s ease-out}
+.fx.show.bathfx{animation:bathFx 1s ease-out}
+.fx.show.trainfx{animation:trainFx 1s ease-out}
+.fx.show.rejectfx{animation:rejectFx .8s ease-out}
+.fx.show.touchfx{animation:touchFx .8s ease-out}
+@keyframes rejectFx{0%{opacity:0;transform:translateY(8px) scale(.7)}25%{opacity:1;transform:translateY(0) scale(1.05)}100%{opacity:0;transform:translateY(-28px) scale(1)}}
+@keyframes touchFx{0%{opacity:0;transform:translateY(8px) scale(.7)}30%{opacity:1;transform:translateY(-5px) scale(1.15)}100%{opacity:0;transform:translateY(-42px) scale(1)}}
+@keyframes roamPixel{from{left:2%}to{left:calc(100% - 192px)}}
+@keyframes feedAction{0%{transform:scale(1)}35%{transform:translateY(-10px) scale(1.08)}70%{transform:scale(.94)}100%{transform:scale(1)}}
+@keyframes playAction{0%{transform:translateX(-8px) rotate(0)}25%{transform:translateX(24px) rotate(8deg)}50%{transform:translateX(-20px) rotate(-8deg)}75%{transform:translateX(18px) rotate(7deg)}100%{transform:translateX(0)}}
+@keyframes bathAction{0%{transform:translateY(0)}35%{transform:translateY(-8px) scale(1.05)}60%{transform:translateY(4px) scale(.97)}100%{transform:translateY(0)}}
+@keyframes trainAction{0%,100%{transform:scale(1)}25%{transform:translateX(18px) rotate(-7deg) scale(1.05)}50%{transform:translateX(-14px) rotate(7deg)}75%{transform:translateX(10px) rotate(-5deg)}}
+@keyframes feedFx{0%{opacity:0;transform:translateY(10px) scale(.7)}25%{opacity:1}100%{opacity:0;transform:translateY(-70px) scale(1.15)}}
+@keyframes playFx{0%{opacity:0;transform:translateY(15px) scale(.7)}25%{opacity:1}100%{opacity:0;transform:translateY(-80px) rotate(12deg) scale(1.2)}}
+@keyframes bathFx{0%{opacity:0;transform:translateY(12px) scale(.6)}25%{opacity:1}100%{opacity:0;transform:translateY(-65px) scale(1.35)}}
+@keyframes trainFx{0%{opacity:0;transform:translateY(12px) scale(.7)}25%{opacity:1}100%{opacity:0;transform:translateY(-75px) scale(1.15)}}.pet .body{position:relative;width:150px;height:150px;image-rendering:pixelated}.pixel{position:relative;width:116px;height:104px;border-radius:34%;background:#78c95a;box-shadow:inset -10px -8px 0 rgba(38,105,45,.16),inset 7px 6px 0 rgba(255,255,255,.2);image-rendering:pixelated;transition:transform .25s ease,filter .25s ease}.pixelSprite{width:180px;height:180px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 7px 0 rgba(32,60,85,.25));user-select:none}.pixel.sprout{width:108px;height:112px;border-radius:48% 48% 38% 38%}.pixel.sprout .leaf{position:absolute;display:block;width:48px;height:30px;background:#65b957;top:-20px;left:30px;border-radius:100% 10% 100% 10%;transform:rotate(-18deg)}.pixel.ember{width:126px;height:118px;background:#f28b45;border-radius:45% 45% 38% 38%;box-shadow:inset -11px -9px 0 rgba(154,55,30,.2),inset 8px 7px 0 rgba(255,255,255,.16)}.pixel.ember .ear{position:absolute;width:38px;height:48px;background:#f28b45;top:-29px;border-radius:70% 70% 12% 12%;z-index:-1;box-shadow:inset -5px -4px 0 rgba(154,55,30,.15)}.pixel.ember .e1{left:8px;transform:rotate(-20deg)}.pixel.ember .e2{right:8px;transform:rotate(20deg)}.pixel.ember .flame{position:absolute;width:22px;height:30px;background:#ffd45c;bottom:-17px;left:52px;border-radius:80% 20% 80% 20%;transform:rotate(45deg)}.pixel.aqua{background:#62c9e8;border-radius:45%;width:138px;height:106px;box-shadow:inset -12px -9px 0 rgba(34,112,151,.18),inset 8px 7px 0 rgba(255,255,255,.18)}.pixel.aqua .fin{position:absolute;width:40px;height:30px;background:#62c9e8;top:45px;z-index:-1;border-radius:70% 15% 70% 15%}.pixel.aqua .f1{left:-28px;transform:rotate(-12deg)}.pixel.aqua .f2{right:-28px;transform:rotate(12deg)}.pixel.aqua .tail{position:absolute;width:45px;height:42px;background:#62c9e8;right:-29px;bottom:-12px;border-radius:15% 75% 15% 75%;transform:rotate(20deg);z-index:-1}.pixel.egg{width:104px;height:128px;border-radius:50%;background:#fff8dc;box-shadow:inset -9px -8px 0 #e9dcae}.pixel.egg:after{content:'';position:absolute;width:22px;height:12px;background:#e7d49b;left:18px;top:48px;border-radius:50%;box-shadow:38px 28px 0 #e7d49b,15px 58px 0 #e7d49b}
+.pixel.bloom{background:#f28fc4;border-radius:46% 46% 38% 38%;width:124px;height:116px;box-shadow:inset -10px -8px 0 rgba(130,45,100,.16),inset 8px 7px 0 rgba(255,255,255,.18)}
+.pixel.flare{background:#e95d38;width:128px;height:120px;border-radius:44% 44% 35% 35%;box-shadow:inset -12px -9px 0 rgba(125,35,20,.2),inset 8px 7px 0 rgba(255,255,255,.16)}
+.pixel.ripple{background:#4da9e8;width:136px;height:106px;border-radius:48%;box-shadow:inset -12px -9px 0 rgba(20,76,130,.18),inset 8px 7px 0 rgba(255,255,255,.18)}
+.pixel.volt{background:#f5d34f;width:116px;height:116px;border-radius:42% 52% 44% 48%;box-shadow:inset -11px -9px 0 rgba(145,105,20,.18),inset 8px 7px 0 rgba(255,255,255,.2)}
+.pixel.spark{background:#ffe05e;width:132px;height:124px;clip-path:polygon(50% 0,63% 28%,94% 22%,76% 48%,100% 62%,67% 65%,72% 100%,46% 76%,20% 100%,27% 67%,0 57%,29% 44%,12% 17%,42% 26%)}
+.pixel.rocky{background:#9b8f88;width:122px;height:116px;border-radius:35% 48% 38% 44%;box-shadow:inset -12px -10px 0 rgba(55,45,42,.22),inset 8px 7px 0 rgba(255,255,255,.14)}
+.pixel.golem{background:#6f777c;width:138px;height:126px;border-radius:28% 38% 24% 30%;box-shadow:inset -14px -12px 0 rgba(30,38,42,.25),inset 9px 8px 0 rgba(255,255,255,.13)}
+.pixel.moss{background:#69ad68;width:120px;height:112px;border-radius:50% 50% 35% 35%;box-shadow:inset -10px -8px 0 rgba(35,85,45,.18),inset 8px 7px 0 rgba(255,255,255,.18)}
+.pixel.moonmoss{background:#566f9e;width:132px;height:122px;border-radius:48% 42% 34% 38%;box-shadow:inset -12px -10px 0 rgba(30,38,75,.25),inset 8px 7px 0 rgba(255,255,255,.15)}
+.pixel:before,.pixel:after{content:'';position:absolute;background:#203047;width:15px;height:22px;top:31px;border-radius:3px}.pixel:before{left:27px}.pixel:after{right:27px}.pixel .mouth{position:absolute;width:25px;height:10px;border-bottom:5px solid #203047;left:46px;top:61px;border-radius:0 0 15px 15px}.pixel .cheek{position:absolute;width:13px;height:7px;background:#ff7892;top:57px;border-radius:50%}.pixel .c1{left:13px}.pixel .c2{right:13px}.pixel.ember{background:#f28b45}.pixel.ember .ear{position:absolute;width:35px;height:42px;background:#f28b45;top:-24px;border-radius:60% 60% 10% 10%;z-index:-1}.pixel.ember .e1{left:7px;transform:rotate(-20deg)}.pixel.ember .e2{right:7px;transform:rotate(20deg)}.pixel.aqua{background:#62c9e8;border-radius:45%;width:126px;height:100px}.pixel.aqua .fin{position:absolute;width:34px;height:24px;background:#62c9e8;top:50px;z-index:-1}.pixel.aqua .f1{left:-22px}.pixel.aqua .f2{right:-22px}.pixel.egg{width:104px;height:128px;border-radius:50%;background:#fff8dc;box-shadow:inset -9px -8px 0 #e9dcae}.pixel.egg:before,.pixel.egg:after{display:none}.pet.attack{animation:attack .42s ease-in-out 2}.pet.happy{animation:happy .6s ease-in-out 2}.pet.sad{animation:sad .8s ease-in-out 1}.pet.hungry{animation:hunger .7s ease-in-out 2}.pet.sleeping{animation:sleepy 2.4s ease-in-out infinite;filter:brightness(.82)}.pet.touch{animation:touch .38s ease-out 1}@keyframes hunger{50%{transform:translateY(5px) scale(.96);filter:saturate(.7)}}@keyframes sleepy{50%{transform:translateY(5px)}}@keyframes touch{35%{transform:scale(1.16) rotate(-4deg)}70%{transform:scale(.94) rotate(4deg)}}@keyframes bob{50%{transform:translateY(-7px)}}@keyframes attack{50%{transform:translateX(34px) rotate(8deg) scale(1.05)}}@keyframes happy{50%{transform:translateY(-22px) rotate(5deg)}}@keyframes sad{50%{transform:translateY(10px) rotate(-6deg);filter:grayscale(.45)}}.fx{position:absolute;z-index:5;font:800 24px Fredoka;color:#fff;text-shadow:0 3px 8px #395;opacity:0}.fx.show{animation:floatfx 1s ease-out}@keyframes floatfx{0%{opacity:0;transform:translateY(10px)}25%{opacity:1}100%{opacity:0;transform:translateY(-70px)}}.name{display:none}.sceneCard{position:absolute;z-index:8;left:16px;top:16px;display:flex;align-items:center;gap:9px;padding:10px 14px;background:#eef9ff;border:3px solid #b6d3e5;border-radius:14px;box-shadow:4px 4px 0 rgba(32,60,85,.16);font-weight:900}.sceneCard b{font-size:17px;color:#23415c}.sceneCard span{font-size:11px;color:#587086}.weatherCard{position:absolute;z-index:8;right:16px;top:16px;display:flex;align-items:center;gap:8px;padding:10px 13px;background:#214d70;color:#fff;border:3px solid #15384f;border-radius:14px;box-shadow:4px 4px 0 rgba(32,60,85,.2);font-weight:900}.weatherCard b{font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.stat{background:#f6f9fd;border-radius:14px;padding:9px}.stat small{display:flex;justify-content:space-between;color:var(--muted);font-weight:800}.bar{height:8px;border-radius:99px;background:#e3eaf3;margin-top:6px;overflow:hidden}.fill{height:100%;border-radius:99px;background:var(--blue);width:50%;transition:width .3s}.fill.food{background:#ff9f43}.fill.joy{background:#ff70a0}.fill.energy{background:#6bc6ff}.fill.hyg{background:#58c9a4}
+.panel{padding:18px;border:4px solid #8fb8d5;border-radius:22px;background:#f8fcff;box-shadow:0 8px 0 #bdd7e8}.actions{grid-template-columns:repeat(2,1fr);gap:9px}.btn{min-height:52px;border:3px solid rgba(32,60,85,.14);border-radius:14px;font-weight:900}.btn.primary{background:#f17878;color:#fff}.btn.pink{background:#f28eb0;color:#fff}.btn.green{background:#4ba9e8;color:#fff}.btn.gold{background:#ffd54f;color:#543f12}.panel h2{font:700 22px Fredoka;margin:2px 0 14px}.info{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}.info div{background:#f7faff;border-radius:15px;padding:11px}.info b{display:block;font-size:18px}.info span{color:var(--muted);font-size:12px;font-weight:800}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:16px;padding:13px 10px;background:#edf4ff;color:#31527c;font:800 14px Nunito;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-2px);filter:brightness(.98)}.btn.primary{background:var(--blue);color:#fff}.btn.pink{background:#ffe7ed;color:#b23c5b}.btn.green{background:#dff7ee;color:#23785e}.btn.gold{background:#fff2cf;color:#8a6516}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.log{margin-top:13px;background:#f7faff;border:1px solid var(--line);border-radius:16px;padding:12px;height:126px;overflow:auto;font-size:13px;color:#52657f}.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.mini{padding:10px 7px;border-radius:13px;background:#fff;border:1px solid var(--line);font-weight:900;color:#52657f;cursor:pointer}.ad{margin-top:12px;min-height:62px;border:1px dashed #cbd7e6;border-radius:14px;display:grid;place-items:center;color:#9aa9bc;font-size:12px;font-weight:800}.modal{position:fixed;inset:0;background:rgba(24,39,61,.45);display:none;place-items:center;padding:20px;z-index:20}.modal.open{display:grid}.dialog{background:#fff;border-radius:24px;width:min(520px,100%);padding:22px;box-shadow:0 25px 70px rgba(0,0,0,.22)}.dialog h3{font:700 24px Fredoka;margin:0 0 8px}.choice{display:grid;gap:9px;margin-top:15px}.dex{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.dexitem{background:#f7faff;border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}.dexitem .dpet{font-size:48px}.muted{color:var(--muted);font-size:13px;font-weight:700}
+.evoCard{background:linear-gradient(145deg,#fff,#f5f8ff);border:1px solid var(--line);border-radius:18px;padding:12px;overflow:hidden}.evoHead{display:flex;align-items:center;justify-content:space-between;font-weight:900;color:#49627f}.evoChain{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:9px}.miniPet{position:relative;width:54px;height:54px;display:grid;place-items:center}.miniPet .pixel{transform:scale(.34);transform-origin:center;width:116px;height:104px}.evoArrow{font-size:20px;color:#8b9bb0;font-weight:900}.evoLv{font-size:10px;color:#8b9bb0;margin-top:6px}.evoName{font-size:12px;font-weight:900;margin-top:2px}
+.dex{display:block;margin-top:12px;max-height:68vh;overflow:auto;padding-right:3px}.evoCard{margin-bottom:10px;padding:12px}.dexRoot{display:flex;align-items:center;justify-content:center;gap:10px;padding:7px 0 12px;border-bottom:1px dashed #d9e4ef}.dexRoot .miniPet{width:76px;height:76px}.dexRoot .miniPet .pixelSprite{width:76px;height:76px}.dexBranchList{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.dexBranch{min-width:0;background:#fff;border:1px solid #e2eaf3;border-radius:14px;padding:7px;text-align:center}.dexBranch .miniPet{width:64px;height:64px;margin:0 auto}.dexBranch .miniPet .pixelSprite{width:64px;height:64px}.dexFinals{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px;padding-top:7px;border-top:1px dashed #e1e8f0}.dexFinal{min-width:0}.dexFinal .miniPet{width:48px;height:48px;margin:auto}.dexFinal .miniPet .pixelSprite{width:48px;height:48px}.dexFinal .evoName{font-size:9px;line-height:1.15;word-break:keep-all}.dexBranch .evoName{font-size:11px;line-height:1.2;word-break:keep-all}.dexRoot .evoName{font-size:14px}.dexRoot .evoLv,.dexBranch .evoLv,.dexFinal .evoLv{line-height:1.15}
+@media(max-width:760px){.dialog{width:min(560px,100%);padding:16px}.dexBranchList{grid-template-columns:1fr;gap:7px}.dexBranch{display:grid;grid-template-columns:64px 1fr;grid-template-rows:auto auto;column-gap:8px;text-align:left}.dexBranch .miniPet{grid-row:1/3}.dexBranch .evoName{align-self:end}.dexBranch .evoLv{align-self:start}.dexFinals{grid-column:1/3;grid-template-columns:repeat(3,1fr);text-align:center}.dexFinal .miniPet{width:44px;height:44px}.dexFinal .miniPet .pixelSprite{width:44px;height:44px}}
+@media(max-width:760px){
+.game{grid-template-columns:1fr;display:flex;flex-direction:column}
+.panel{order:1;padding:14px}
+.stage{order:2;padding:10px}
+.scene{min-height:390px}
+.stats{grid-template-columns:1fr 1fr}
+.wrap{padding-top:14px}
+.brand{font-size:26px}
+.panel h2{margin:0 0 8px;font-size:21px}
+.panel .info{order:2;margin:8px 0 10px;gap:6px}
+.panel .actions{order:1;grid-template-columns:repeat(3,1fr);gap:6px}
+.panel .actions .btn{min-height:42px;padding:8px 4px;border-radius:11px;font-size:12px}
+.panel .menu{order:3;margin-top:6px;grid-template-columns:repeat(3,1fr);gap:6px}
+.panel .mini{padding:8px 4px;font-size:11px}
+.panel .log{order:4;margin-top:8px;height:90px}
+.sceneCard{left:12px;top:12px;width:calc(100% - 24px);min-width:0!important;max-width:calc(100% - 24px);padding:6px 9px!important;gap:6px}
+.sceneAvatar{width:34px;height:34px;flex:0 0 34px}
+.sceneAvatar img{width:30px;height:30px}
+.sceneIdentity{min-width:0;grid-template-columns:minmax(0,1fr) auto;column-gap:5px;flex:1}
+.sceneIdentity b{font-size:14px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sceneIdentity strong{font-size:12px;white-space:nowrap}
+.sceneXp{width:100%;min-width:0;height:6px}
+.sceneIdentity span{font-size:9px;white-space:nowrap}
+.weatherCard{right:10px;top:70px;padding:7px 9px;font-size:12px;z-index:9}
+.weatherCard b{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+<style id="save-code-ui">
+.saveCodeBox{display:grid;gap:9px;margin-top:12px}.saveCodeBox textarea{width:100%;min-height:120px;resize:vertical;padding:11px;border:2px solid #cfe0ee;border-radius:12px;background:#f7fbff;color:#29425b;font:700 12px monospace;line-height:1.45}.saveCodeBox .saveBtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.saveHint{padding:9px 11px;background:#eef7ff;border-radius:11px;color:#60768d;font-size:12px;font-weight:800;line-height:1.45}
+</style>
+<style id="pixel-world-fix">
+/* Pixel world background */
+.scene{min-height:600px!important;display:block!important;background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center/cover no-repeat!important;overflow:hidden!important}
+.scene:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
+linear-gradient(135deg,transparent 0 38%,#79a8ce 38% 48%,transparent 48%) 5% 32%/48% 27% no-repeat,
+linear-gradient(225deg,transparent 0 38%,#4f88b8 38% 48%,transparent 48%) 34% 32%/55% 27% no-repeat,
+linear-gradient(135deg,transparent 0 38%,#82b1d5 38% 48%,transparent 48%) 62% 34%/52% 24% no-repeat,
+linear-gradient(225deg,transparent 0 38%,#5c94bd 38% 48%,transparent 48%) 76% 34%/45% 24% no-repeat,
+radial-gradient(circle at 10% 51%,#3d8a54 0 38px,transparent 39px),
+radial-gradient(circle at 17% 50%,#4c9959 0 50px,transparent 51px),
+radial-gradient(circle at 89% 50%,#3d8b55 0 46px,transparent 47px),
+radial-gradient(circle at 96% 51%,#4a9958 0 35px,transparent 36px),
+linear-gradient(#61bff0 0 100%)}
+.scene:after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:1;pointer-events:none;background:
+linear-gradient(90deg,transparent 0 9%,#8d673e 9% 10%,transparent 10% 20%,#8d673e 20% 21%,transparent 21% 32%,#8d673e 32% 33%,transparent 33% 46%,#8d673e 46% 47%,transparent 47% 61%,#8d673e 61% 62%,transparent 62% 76%,#8d673e 76% 77%,transparent 77% 89%,#8d673e 89% 90%,transparent 90%),
+linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
+.scene .cloud{z-index:4;font-size:0;opacity:1;width:62px;height:24px;top:16%;left:9%;background:#f4fbff;border:4px solid #5d7990;border-radius:16px;box-shadow:14px -15px 0 -2px #f4fbff,35px -8px 0 -1px #f4fbff}
+.scene .cloud.c2{top:27%;left:auto;right:13%;transform:scale(.7)}
+.sun{z-index:5!important;top:9%!important;right:10%!important;width:50px!important;height:50px!important;background:#ffd84d!important;border:4px solid #9a7131;box-shadow:0 0 0 5px #ffd84d!important}
+.scene .moon{z-index:5!important;top:9%!important;right:10%!important}
+.ground{display:none!important}
+.sceneCard,.weatherCard{position:absolute;z-index:8;display:flex;align-items:center;gap:9px;padding:9px 12px;border:3px solid #b8cee0;border-radius:12px;background:#f7fcff;box-shadow:4px 4px 0 rgba(42,72,95,.2);font-weight:900}
+.sceneCard{left:12px;top:12px}.sceneCard b{font-size:16px}.sceneCard span{font-size:11px;color:#587086}
+.weatherCard{right:12px;top:12px;background:#214d70;color:#fff;border-color:#15384f}.weatherCard b{font-size:13px}
+.pet{z-index:7!important;bottom:4%!important;top:auto!important;margin-top:0!important}
+.pixel{border:3px solid #203c55!important;box-shadow:inset -9px -8px 0 rgba(20,60,80,.18),inset 6px 6px 0 rgba(255,255,255,.22),4px 5px 0 rgba(32,60,85,.22)!important}
+.pixel.egg{width:92px!important;height:112px!important;border-radius:50% 50% 47% 47%!important;background:#fff9dc!important;border:4px solid #6e6251!important;box-shadow:inset -10px -9px 0 #eadfb9,inset 8px 7px 0 #fff!important}
+.pixel.egg:before{content:""!important;display:block!important;position:absolute!important;width:18px!important;height:12px!important;left:17px!important;top:34px!important;background:#e2d39e!important;border-radius:50%!important;box-shadow:38px 20px 0 #e2d39e,14px 48px 0 #e2d39e!important;border:0!important}
+.pixel.egg:after{content:""!important;display:block!important;position:absolute!important;width:9px!important;height:7px!important;left:47px!important;top:14px!important;background:#e2d39e!important;border-radius:50%!important;box-shadow:none!important;border:0!important}
+.stats{position:relative;z-index:10}
+.panel{position:relative;z-index:10}
+.scene.sleep-mode:before{filter:brightness(.48);opacity:.7}
+.scene.sleep-mode:after{filter:brightness(.65)}
+</style><style id="pixel-ui-v26">
+/* Pixel world presentation */
+.scene{
+  min-height:600px!important;height:600px!important;
+  background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center bottom/cover no-repeat!important;
+  image-rendering:auto!important;
+}
+.scene .body{position:relative;width:100%;height:100%;display:grid;place-items:center}
+.scene .pet{bottom:7%!important;top:auto!important;width:200px!important;height:200px!important}
+.scene .pet.roam{animation:pixelRoam 8s linear infinite alternate,pixelBob 1.8s ease-in-out infinite}
+@keyframes pixelRoam{from{left:1%}to{left:calc(100% - 201px)}} 
+@keyframes pixelBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.pixelSprite{display:block!important;width:190px!important;height:190px!important;object-fit:contain!important;image-rendering:pixelated!important;filter:drop-shadow(0 9px 0 rgba(24,45,64,.25))!important}
+.sceneCard{
+  min-width:210px!important;gap:9px!important;padding:10px 14px!important;
+  background:#eef9ff!important;border:3px solid #8eb8d2!important;
+  box-shadow:4px 4px 0 rgba(32,60,85,.22)!important;
+}
+.sceneCard:before{
+  content:'🐾';display:grid;place-items:center;width:34px;height:34px;
+  background:#fff;border:2px solid #9fc4d9;border-radius:9px;font-size:18px;
+}
+.weatherCard{background:#1f4f75!important;border:3px solid #173c58!important}
+.fx{
+  z-index:20!important;font-family:Fredoka,sans-serif!important;
+  font-weight:900!important;text-shadow:3px 3px 0 rgba(32,60,85,.25)!important;
+}
+.pet.action-feed .pixelSprite{animation:feedPixel .8s ease-out 1}
+.pet.action-play .pixelSprite{animation:playPixel 1s ease-out 1}
+.pet.action-bath .pixelSprite{animation:bathPixel 1s ease-out 1}
+.pet.action-train .pixelSprite{animation:trainPixel .9s ease-out 1}
+@keyframes feedPixel{0%{transform:scale(1)}35%{transform:scale(1.08) translateY(-7px)}70%{transform:rotate(-4deg) scale(1.04)}100%{transform:scale(1)}}
+@keyframes playPixel{0%{transform:translateY(0)}25%{transform:translateY(-18px) rotate(-6deg)}50%{transform:translateY(0) rotate(6deg)}75%{transform:translateY(-12px) rotate(-4deg)}100%{transform:translateY(0)}}
+@keyframes bathPixel{0%{transform:translateY(0)}25%{transform:translateY(-5px) rotate(-4deg)}50%{transform:translateY(2px) rotate(4deg)}75%{transform:translateY(-4px) rotate(-2deg)}100%{transform:none}}
+@keyframes trainPixel{0%,100%{transform:none}20%{transform:translateX(-9px) rotate(-7deg)}40%{transform:translateX(9px) rotate(7deg)}60%{transform:translateX(-7px) rotate(-5deg)}80%{transform:translateX(7px) rotate(5deg)}}
+.pet.sleeping .pixelSprite{filter:brightness(.62) drop-shadow(0 8px 0 rgba(12,26,45,.28))!important}
+.pet.sleeping:after{
+ content:'Z  z  Z';position:absolute;right:-5px;top:0;color:#fff;
+ font:900 24px Fredoka,sans-serif;letter-spacing:4px;
+ text-shadow:3px 3px 0 #284461;animation:zzzPixel 2s ease-in-out infinite;
+}
+@keyframes zzzPixel{0%,100%{transform:translateY(8px);opacity:.65}50%{transform:translateY(-8px);opacity:1}}
+.pet.dirty .pixelSprite{filter:saturate(.55) brightness(.78) drop-shadow(0 8px 0 rgba(32,60,85,.25))!important}
+.pet.sad .pixelSprite{filter:grayscale(.35) brightness(.82) drop-shadow(0 8px 0 rgba(32,60,85,.25))!important;animation:sadPixel .5s ease-in-out 2}
+@keyframes sadPixel{50%{transform:translateX(-5px) rotate(-3deg)}}
+.stats{grid-template-columns:repeat(5,1fr)!important}
+.stat{background:#f4faff!important;border:3px solid #d1e3ee!important;box-shadow:0 3px 0 #bdd4e3!important}
+.panel{border:4px solid #8fb8d5!important;border-radius:24px!important;background:#f7fcff!important;box-shadow:0 8px 0 #bfd8e8,0 16px 28px rgba(55,93,125,.12)!important}
+.panel h2{font-family:Fredoka,sans-serif!important;color:#183d5b!important}
+.info>div{border:3px solid #d0e3ef!important;background:#eef7fc!important;box-shadow:0 3px 0 #c4dbe8!important}
+.actions .btn{font-family:Nunito,sans-serif!important;font-weight:900!important;border:3px solid rgba(32,60,85,.16)!important;box-shadow:0 5px 0 rgba(32,60,85,.13)!important}
+.menu .mini{border:3px solid #b9d4e5!important;background:#f9fdff!important;box-shadow:0 4px 0 #d0e2ed!important}
+.log{border:3px solid #c5dce9!important;background:#eef8fd!important}
+.dialog{border:4px solid #86aec8!important;box-shadow:0 10px 0 rgba(32,60,85,.2)!important}
+.dex{gap:12px!important}
+.evoCard{border:3px solid #bcd7e7!important;box-shadow:0 4px 0 #d7e7ef!important;background:#f8fcff!important}
+.miniPet{background:#eaf5fb!important;border:2px solid #c8dfea!important;border-radius:12px!important}
+.miniPet .pixelSprite{width:82px!important;height:82px!important}
+@media(max-width:900px){.scene{height:540px!important;min-height:540px!important}.stats{grid-template-columns:repeat(3,1fr)!important}}
+@media(max-width:600px){.scene{height:460px!important;min-height:460px!important}.scene .pet{width:160px!important;height:160px!important}.pixelSprite{width:150px!important;height:150px!important}.stats{grid-template-columns:repeat(2,1fr)!important}}
+</style><style id="pixel-action-v27">
+.fx2{position:absolute;left:50%;top:46%;z-index:30;pointer-events:none;font-family:Fredoka,sans-serif;font-size:28px;font-weight:900;text-shadow:3px 3px 0 #203c55;transform:translate(-50%,-50%);opacity:0}
+.fx2.show{opacity:1}
+.fx2.feedfx{animation:appleFx .9s steps(5,end) 1}
+.fx2.playfx{animation:ballFx 1s steps(6,end) 1}
+.fx2.bathfx{animation:bubbleFx 1s steps(5,end) 1}
+.fx2.trainfx{animation:gloveFx .9s steps(5,end) 1}
+.fx2.touchfx{animation:heartFx .7s steps(4,end) 1}
+.fx2.rejectfx{animation:noFx .7s steps(4,end) 1}
+@keyframes appleFx{0%{transform:translate(-50%,80%) scale(.5);opacity:0}25%{transform:translate(-50%,10%) scale(1);opacity:1}60%{transform:translate(-50%,-15%) scale(1.1);opacity:1}100%{transform:translate(-50%,-70%) scale(.7);opacity:0}}
+@keyframes ballFx{0%{transform:translate(-50%,40%) scale(.6)}30%{transform:translate(-20%,-10%) rotate(20deg) scale(1)}60%{transform:translate(25%,-45%) rotate(-20deg) scale(1.05)}100%{transform:translate(70%,-70%) rotate(40deg) scale(.6);opacity:0}}
+@keyframes bubbleFx{0%{transform:translate(-50%,30%) scale(.4);opacity:0}25%{transform:translate(-90%,-5%) scale(1);opacity:1}55%{transform:translate(20%,-35%) scale(1.1)}100%{transform:translate(70%,-75%) scale(.6);opacity:0}}
+@keyframes gloveFx{0%{transform:translate(-50%,10%) scale(.5)}25%{transform:translate(-10%,-5%) scale(1.15) rotate(-8deg)}50%{transform:translate(25%,5%) scale(1.15) rotate(8deg)}75%{transform:translate(-15%,-8%) scale(1.1)}100%{transform:translate(50%,-35%) scale(.5);opacity:0}}
+@keyframes heartFx{0%{transform:translate(-50%,20%) scale(.4);opacity:0}40%{transform:translate(-50%,-20%) scale(1.2);opacity:1}100%{transform:translate(-50%,-75%) scale(.7);opacity:0}}
+@keyframes noFx{0%,100%{transform:translate(-50%,-20%)}25%{transform:translate(-58%,-20%)}75%{transform:translate(-42%,-20%)}}
+.pet{will-change:left,transform}.pet.roam{animation:pixelRoam 8s linear infinite alternate,pixelBob 1.8s steps(4,end) infinite}
+.pixelSprite{image-rendering:pixelated!important;shape-rendering:crispEdges!important}
+</style><style id="fix-v28">
+.sceneCard{display:flex!important;align-items:center!important;gap:9px!important;min-width:190px!important;padding:8px 12px!important}
+.sceneAvatar{width:38px;height:38px;display:grid;place-items:center;background:#fff;border:2px solid #9fc4d9;border-radius:9px;overflow:hidden;image-rendering:pixelated}
+.sceneAvatar img{width:34px;height:34px;object-fit:contain;image-rendering:pixelated}
+.sceneIdentity{display:grid;grid-template-columns:auto auto;align-items:center;column-gap:8px}
+.sceneIdentity b{font-size:16px!important}.sceneIdentity strong{font-size:13px;color:#23415c}
+.sceneXp{grid-column:1/3;width:108px;height:7px;background:#d7e7f0;border:1px solid #a8c7d8;border-radius:4px;overflow:hidden}
+.sceneXp i{display:block;height:100%;width:0;background:#3299e6;transition:width .3s}
+.sceneIdentity span{font-size:10px;color:#587086}
+.pet.sleeping{animation:pixelSleep 2.2s steps(3,end) infinite!important;left:50%!important;transform:translateX(-50%)!important}
+@keyframes pixelSleep{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(3px)}}
+.pet.sleeping:before{content:'−  −';position:absolute;z-index:15;left:50%;top:43%;transform:translate(-50%,-50%);font:900 18px monospace;letter-spacing:16px;color:#203c55;text-shadow:2px 2px #fff;white-space:nowrap}
+.pet.sleeping:after{content:'Z  z  Z';position:absolute;z-index:16;right:-5px;top:5px;color:#fff;font:900 22px Fredoka;text-shadow:3px 3px #284461;letter-spacing:5px;animation:zzzPixel 2s ease-in-out infinite}
+.scene.sleep-mode:after{content:'';display:block!important;position:absolute;z-index:4;right:58px;top:82px;width:58px;height:58px;border-radius:50%;background:#f4f0cf;box-shadow:0 0 0 8px rgba(244,240,207,.16),0 0 25px rgba(244,240,207,.5)}
+.scene.sleep-mode{background-image:linear-gradient(rgba(9,22,48,.48),rgba(9,22,48,.48)),url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg')!important}
+.scene.sleep-mode .weatherCard{background:#152f50!important}.scene.sleep-mode .sceneCard{background:#e9f0f7!important}
+<style id="fix-v30">
+/* Use one complete pixel world in both day and night. Remove the old geometric overlays that caused duplicated mountains/fences. */
+.scene{background-size:100% 100%!important;background-position:center center!important;background-repeat:no-repeat!important}
+.scene:not(.sleep-mode):before,.scene:not(.sleep-mode):after,.scene.sleep-mode:before{display:none!important;content:none!important}
+.scene .ground{display:none!important}
+</style></style>
+<style id="ui-v32">
+.stage{display:flex;flex-direction:column}
+.stage>.sceneCard{position:relative;left:auto;top:auto;z-index:8;margin-bottom:10px;align-self:stretch}
+.stage>.stats{order:2;margin-top:0;margin-bottom:12px}
+.stage>.scene{order:3}
+@media(max-width:760px){
+  .game{display:flex!important;flex-direction:column!important}
+  .stage{order:1!important;padding:10px}
+  .panel{order:2!important;padding:14px}
+  .panel h2,.panel .info{display:none!important}
+  .panel .actions{margin-top:0!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important}
+  .panel .actions .btn{min-height:44px!important;padding:8px 3px!important;border-radius:11px!important;font-size:12px!important}
+  .panel .menu{margin-top:7px!important}
+  .sceneCard{width:100%!important;max-width:none!important;min-width:0!important;padding:8px 10px!important;margin-bottom:8px!important}
+  .sceneAvatar{width:36px!important;height:36px!important;flex:0 0 36px!important}
+  .sceneAvatar img{width:31px!important;height:31px!important}
+  .sceneIdentity{min-width:0!important;flex:1!important}
+  .sceneIdentity b{font-size:16px!important}
+  .sceneIdentity strong{font-size:13px!important}
+  .sceneXp{width:100%!important}
+  .stats{grid-template-columns:1fr 1fr!important;margin-top:0!important;margin-bottom:10px!important}
+  .scene{min-height:390px!important}
+}
+</style><meta name="disable-service-worker" content="true">
+
+<meta property="og:title" content="Pocket Pet - 웹 다마고치" /><meta property="og:description" content="시간에 따라 성장하고 진화하는 웹 펫 키우기 게임" />
+
+<script type="text/javascript">hostname = '//project29230.websitepublisher.ai';</script>
+
+<meta name="disable-service-worker" content="true">
+
+
+
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">Pocket <span>Pet</span></div><div class="pill" id="clock">--:--</div></div>
+  <div class="game">
+    <section class="stage">
+      <div class="sceneCard"><div class="sceneAvatar"><img id="sceneAvatarImg" src="https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg" alt=""></div><div class="sceneIdentity"><b id="scenePetName">알</b><strong id="sceneLevel">Lv.0</strong><div class="sceneXp"><i id="sceneXpFill"></i></div><span id="sceneExp">0 / 60</span></div></div>
+      <div class="stats">
+        <div class="stat"><small>🍖 먹이 <span id="foodN">80</span></small><div class="bar"><div class="fill food" id="foodB"></div></div></div>
+        <div class="stat"><small>😊 기쁨 <span id="joyN">80</span></small><div class="bar"><div class="fill joy" id="joyB"></div></div></div>
+        <div class="stat"><small>⚡ 에너지 <span id="eneN">80</span></small><div class="bar"><div class="fill energy" id="eneB"></div></div></div>
+        <div class="stat"><small>💧 청결 <span id="hygN">100</span></small><div class="bar"><div class="fill hyg" id="hygB"></div></div></div>
+      </div>
+      <div class="scene" id="scene">
+        <div class="sun" id="sky"></div><div class="moon" id="moon"></div><div class="cloud">☁</div><div class="cloud c2">☁</div><div class="ground"></div>
+        <div class="weatherCard"><span id="weatherIcon">☀</span><span id="weatherText">맑음</span><b id="sceneClock">--:--</b></div>
+        <div class="name" id="petName">알</div>
+        <div class="pet" id="pet"><div class="body" id="petBody"><img class="pixelSprite" id="pixelPet" src="https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg" alt="알"><div class="faceMood" id="faceMood" aria-hidden="true"><i class="brow b1"></i><i class="brow b2"></i><i class="eye e1"></i><i class="eye e2"></i><i class="cheek ch1"></i><i class="cheek ch2"></i><i class="mouth"></i><i class="tear t1"></i><i class="tear t2"></i><i class="sweat sw1"></i><i class="sweat sw2"></i><i class="blush bl1"></i><i class="blush bl2"></i></div></div></div>
+        <div class="needBubble" id="needBubble">✨ 기분이 좋아요!</div><div class="fx" id="fx">+5 ❤️</div><div class="fx fx2" id="fx2"></div>
+      </div>
+    </section>
+    <aside class="panel">
+      <h2 id="statusTitle">새로운 알</h2>
+      <div class="info">
+        <div><span>레벨</span><b id="level">0</b></div><div><span>경험치</span><b id="exp">0 / 60</b></div>
+        <div><span>💰 골드</span><b id="gold">100</b></div><div><span>♥ 유대</span><b id="bond">0</b></div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="feed">🍎 먹이</button>
+        <button class="btn green" id="bath">🧼 목욕</button>
+        <button class="btn gold" id="sleep">🌙 잠자기</button>
+        <button class="btn pink" id="play">⚽ 놀기</button>
+        <button class="btn" id="train">🥊 훈련</button>
+        <button class="btn" id="rename">✏️ 이름</button>
+      </div>
+      <div class="menu">
+        <button class="mini" id="hatch">🥚 부화</button><button class="mini" id="dex">📖 도감</button><button class="mini" id="saveData">💾 저장/불러오기</button><button class="mini" id="reset">↻ 초기화</button>
+      </div>
+      
+      <div class="log" id="log" aria-live="polite"></div>
+    </aside>
+  </div>
+</div>
+<div class="modal" id="modal"><div class="dialog" id="dialog"></div></div>
+<script>
+(function(){
+const KEY='pocket_pet_v1';
+const families=[
+ {root:'sprout',name:'새싹이',className:'sprout',rate:22,palette:['#78c95a','#2d7138','#f28fc4'],branches:[
+  {id:'bloom',name:'꽃망울',trait:'feed',label:'영양형',old:true},
+  {id:'leafbloom',name:'잎새꽃',trait:'rest',label:'활력형'},
+  {id:'vinebud',name:'덩굴콩',trait:'hyg',label:'청결형'}
+ ]},
+ {root:'ember',name:'불꽃이',className:'ember',rate:18,palette:['#f28b45','#9e3825','#ffd45c'],branches:[
+  {id:'flare',name:'화염꼬리',trait:'feed',label:'영양형',old:true},
+  {id:'flamehorn',name:'불꽃갈기',trait:'rest',label:'활력형'},
+  {id:'cinder',name:'잿불꼬리',trait:'hyg',label:'청결형'}
+ ]},
+ {root:'aqua',name:'물방울이',className:'aqua',rate:18,palette:['#62c9e8','#236b9a','#d9f7ff'],branches:[
+  {id:'ripple',name:'파도링',trait:'feed',label:'영양형',old:true},
+  {id:'tidefin',name:'물결지느러미',trait:'rest',label:'활력형'},
+  {id:'rainbell',name:'비방울이',trait:'hyg',label:'청결형'}
+ ]},
+ {root:'volt',name:'찌릿이',className:'volt',rate:14,palette:['#f5d34f','#8d6b13','#ffe98a'],branches:[
+  {id:'spark',name:'번개냥',trait:'feed',label:'영양형',old:true},
+  {id:'voltfox',name:'전광여우',trait:'rest',label:'활력형'},
+  {id:'thunderpaw',name:'천둥발',trait:'hyg',label:'청결형'}
+ ]},
+ {root:'rocky',name:'돌콩이',className:'rocky',rate:12,palette:['#9b8f88','#514943','#d9d0c9'],branches:[
+  {id:'golem',name:'돌수호자',trait:'feed',label:'영양형',old:true},
+  {id:'ironstone',name:'바위갑옷',trait:'rest',label:'활력형'},
+  {id:'crystalock',name:'수정돌이',trait:'hyg',label:'청결형'}
+ ]},
+ {root:'moss',name:'이끼링',className:'moss',rate:10,palette:['#69ad68','#315f3d','#e6f6a2'],branches:[
+  {id:'moonmoss',name:'달이끼',trait:'feed',label:'영양형',old:true},
+  {id:'forestbud',name:'숲방울',trait:'rest',label:'활력형'},
+  {id:'mossdeer',name:'이끼사슴',trait:'hyg',label:'청결형'}
+ ]}
+];
+const finalTraits=[
+ {id:'f1',trait:'feed',label:'풍요형'},
+ {id:'f2',trait:'rest',label:'휴식형'},
+ {id:'f3',trait:'hyg',label:'청결형'}
+];
+const species=[];
+families.forEach(f=>{
+ species.push({id:f.root,name:f.name,className:f.className,next:null,at:6,rate:f.rate,stage:1,family:f.root,palette:f.palette});
+ f.branches.forEach(b=>{
+   const mid={id:b.id,name:b.name,className:b.id,next:null,at:11,stage:2,family:f.root,branch:b.id,trait:b.trait,label:b.label,palette:f.palette,generated:!b.old};
+   species.push(mid);
+   finalTraits.forEach((ft,i)=>{
+     species.push({id:b.id+'_'+ft.id,name:b.name+' '+ft.label,className:b.id+'_'+ft.id,next:null,at:99,stage:3,family:f.root,branch:b.id,trait:ft.trait,label:ft.label,palette:f.palette,generated:true,variant:i+1});
+   });
+ });
+});
+const base={species:'sprout',name:'새싹이',level:0,exp:0,gold:100,bond:0,food:80,joy:80,ene:80,hyg:100,weight:30,sleeping:false,hatched:false,last:Date.now(),created:Date.now(),dex:['sprout'],training:0,refuse:{feed:0,play:0,bath:0,train:0,touch:0},care:{feed:0,sleep:0,energy:0,hyg:0}};
+let awayResetNotice=null;
+let s=load(); let tickTimer;
+const $=id=>document.getElementById(id);
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x){const awayMs=Date.now()-(x.last||Date.now());if(awayMs>=30*24*60*60*1000){const days=Math.floor(awayMs/(24*60*60*1000));awayResetNotice={name:x.name||'펫',days};const fresh=structuredClone(base);fresh.last=Date.now();fresh.created=Date.now();localStorage.setItem(KEY,JSON.stringify(fresh));return fresh}x.care=Object.assign({feed:0,sleep:0,energy:0,hyg:0},x.care||{});if(!x.care.feed&&!x.care.sleep&&!x.care.energy&&!x.care.hyg){x.care.feed=x.food||50;x.care.energy=x.ene||50;x.care.hyg=x.hyg||50;x.care.sleep=x.sleeping?30:10}applyOffline(x);return x}}catch(e){}return structuredClone(base)}
+function save(){s.last=Date.now();localStorage.setItem(KEY,JSON.stringify(s))}
+function applyOffline(x){
+ const now=Date.now(), mins=Math.min(10080,Math.max(0,Math.floor((now-(x.last||now))/60000)));
+ if(mins>0 && x.hatched){const drain=x.sleeping?.25:1;x.food=Math.max(0,x.food-2*mins*drain);x.ene=Math.min(100,x.ene+(x.sleeping?3:1)*mins);x.hyg=Math.max(0,x.hyg-1*mins*drain);x.joy=Math.max(0,x.joy-1*mins*drain);x.exp=Math.min(60,(x.exp||0)+mins)}
+ return x
+}
+function log(t){const d=document.createElement('div');d.textContent='• '+t;$('log').prepend(d);while($('log').children.length>18)$('log').lastChild.remove()}
+function clamp(v){return Math.max(0,Math.min(100,Math.round(v)))}
+function current(){return species.find(x=>x.id===s.species)||species[0]}
+function spriteUrl(id){
+ const p=species.find(x=>x.id===id)||species[0];
+ if(!p.generated)return 'https://cdn.websitepublisher.ai/custom/wid29230/images/'+(id==='sprout'||id==='ember'||id==='aqua'||id==='volt'||id==='rocky'||id==='moss'||id==='bloom'||id==='flare'||id==='ripple'||id==='spark'||id==='golem'||id==='moonmoss'?id:'egg')+'.svg';
+ const pal=p.palette||['#78c95a','#2d7138','#f28fc4'],stage=p.stage||2,v=p.variant||({feed:1,rest:2,hyg:3}[p.trait]||1);
+ const base=pal[0],dark=pal[1],accent=pal[2];
+ const head=stage===2?'<rect x="20" y="25" width="56" height="54" rx="14" fill="'+base+'"/><rect x="28" y="18" width="40" height="14" fill="'+base+'"/>':'<polygon points="18,34 30,18 66,18 78,34 78,76 66,88 30,88 18,76" fill="'+accent+'"/><rect x="29" y="10" width="38" height="18" fill="'+accent+'"/>';
+ let accessory='';
+ if(v===1)accessory='<rect x="31" y="7" width="34" height="11" fill="'+dark+'"/><rect x="39" y="0" width="18" height="9" fill="'+base+'"/><rect x="7" y="44" width="13" height="27" fill="'+base+'"/><rect x="76" y="44" width="13" height="27" fill="'+base+'"/>';
+ if(v===2)accessory='<polygon points="48,2 61,25 35,25" fill="'+dark+'"/><rect x="39" y="0" width="18" height="7" fill="'+dark+'"/><polygon points="5,60 20,39 25,76" fill="'+base+'"/><polygon points="91,60 76,39 71,76" fill="'+base+'"/>';
+ if(v===3)accessory='<circle cx="48" cy="13" r="13" fill="'+base+'"/><rect x="29" y="2" width="11" height="18" fill="'+dark+'"/><rect x="56" y="2" width="11" height="18" fill="'+dark+'"/><rect x="4" y="49" width="17" height="29" fill="'+base+'"/><rect x="75" y="49" width="17" height="29" fill="'+base+'"/>';
+ const face='';
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><g shape-rendering="crispEdges">'+accessory+head+'<rect x="18" y="73" width="60" height="9" fill="'+dark+'" opacity=".35"/>'+face+(stage===3?'<rect x="41" y="30" width="14" height="9" fill="'+base+'"/>':'')+'</g></svg>';
+ return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+}
+function render(){
+ const p=current();$('petName').textContent=s.hatched?s.name:'알';const pp=$('pixelPet');const sprite=s.hatched?p.id:'egg';pp.className='pixelSprite';pp.src=s.hatched?spriteUrl(sprite):'https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';pp.alt=s.hatched?p.name:'알';$('level').textContent=s.level;$('exp').textContent=s.level>=p.at?'진화 가능':(s.exp+' / 60');$('gold').textContent=s.gold;$('bond').textContent=s.bond;
+ ['food','joy','ene','hyg'].forEach(k=>{$(k+'N').textContent=s[k];$(k+'B').style.width=s[k]+'%'});
+ let mood='good',bubble='✨ 기분이 좋아요!',bubbleClass='good';
+ if(!s.hatched){bubble='🥚 알을 부화시켜 주세요!';bubbleClass='good'}
+ else if(s.sleeping){mood='sleeping';bubble='🌙 졸려요... 자고 싶어요!';bubbleClass='warn'}
+ else if(s.hyg<30){mood='dirty';bubble='🧼 더러워요... 목욕시켜 주세요!';bubbleClass='low'}
+ else if(s.food<25){mood='hungry';bubble='🍖 배고파요... 밥 주세요!';bubbleClass='low'}
+ else if(s.ene<20){mood='tired';bubble='⚡ 힘이 없어요... 쉬고 싶어요!';bubbleClass='warn'}
+ else if(s.joy<25){mood='bored';bubble='⚽ 심심해요... 같이 놀아요!';bubbleClass='warn'}
+ $('statusTitle').textContent=s.hatched?(s.sleeping?'😴 잠자는 중':s.hyg<30?'🧼 너무 꼬질해요!':s.food<25?'🍖 배고파요!':s.ene<20?'⚡ 너무 피곤해요!':s.joy<25?'😟 심심해요!':'✨ '+p.name+' · 성장 중'):'새로운 알';$('needBubble').textContent=bubble;$('needBubble').className='needBubble '+bubbleClass;$('scenePetName').textContent=s.hatched?s.name:'알';$('sceneLevel').textContent='Lv.'+s.level;$('sceneExp').textContent=s.level>=p.at?'진화 가능':(s.exp+' / 60');$('sceneAvatarImg').src=s.hatched?spriteUrl(p.id):'https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';$('sceneAvatarImg').alt=s.hatched?p.name:'알';$('sceneXpFill').style.width=Math.min(100,(s.exp/60)*100)+'%';$('pet').className='pet '+(s.hatched&&!s.sleeping?'roam ':'')+(s.hatched?(p.generated?'generatedFace ':'')+(mood==='good'?'happyMood ':mood):'eggMood');$('faceMood').className='faceMood '+(s.hatched?mood:'egg');$('scene').classList.toggle('sleep-mode',s.sleeping);
+ $('sleep').textContent=s.sleeping?'☀️ 깨우기':'🌙 잠자기';$('hatch').textContent=s.hatched?'🧬 진화':'🥚 부화';
+ $('feed').disabled=!s.hatched||s.sleeping;$('play').disabled=!s.hatched||s.sleeping;$('bath').disabled=!s.hatched||s.sleeping;$('train').disabled=!s.hatched||s.sleeping;
+ const night=new Date().getHours()<6||new Date().getHours()>=19;$('scene').classList.toggle('night',night);$('sky').className=night?'moon':'sun';
+}
+function fx(txt,kind){$('fx').textContent=txt;$('fx').className='fx show '+(kind||'');void $('fx').offsetWidth;if(kind){const f=$('fx2');const icons={feed:'🍎',play:'⚽',bath:'🫧',train:'🥊',reject:'×',touch:'♥'};f.textContent=icons[kind]||'✦';f.className='fx show '+kind+'fx';setTimeout(()=>{f.className='fx'},900)}setTimeout(()=>{$('fx').className='fx'},950)}
+function rejectAction(type,msg){s.refuse=s.refuse||{};s.refuse[type]=(s.refuse[type]||0)+1;fx('싫어요!','reject');log(msg);$('pet').className='pet sad';setTimeout(()=>{$('pet').className='pet roam'},900)}
+function actionReady(type,stat,max,reason){s.refuse=s.refuse||{};if(stat<max){s.refuse[type]=0;return true}if((s.refuse[type]||0)<2){s.refuse[type]=(s.refuse[type]||0)+1;return true}rejectAction(type,reason);return false}
+function act(type){
+ if(!s.hatched||s.sleeping)return;
+ if(type==='feed'&&!actionReady('feed',s.food,100,'배가 불러서 더는 먹기 싫어요!'))return;
+ if(type==='play'&&!actionReady('play',s.joy,100,'지금은 충분히 놀아서 쉬고 싶어요!'))return;
+ if(type==='bath'&&!actionReady('bath',s.hyg,100,'이미 깨끗해요! 목욕은 싫어요!'))return;
+ if(type==='train'&&!actionReady('train',s.ene,20,'힘이 없어요! 훈련은 이제 싫어요!'))return;
+ if(type==='feed'){s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.care.feed+=2;s.food=clamp(s.food+25);s.joy=clamp(s.joy+2);s.gold=Math.max(0,s.gold-3);s.exp=Math.min(60,s.exp+2);fx('+25 🍖','feed');log('베리를 먹었습니다! 경험치 +2');}
+ if(type==='play'){s.joy=clamp(s.joy+15);s.ene=clamp(s.ene-12);s.bond++;s.exp=Math.min(60,s.exp+4);fx('+4 EXP 😊','play');log('즐겁게 놀았습니다! 경험치 +4 · 에너지 -12');}
+ if(type==='bath'){s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.care.hyg+=3;s.hyg=100;s.exp=Math.min(60,s.exp+1);fx('+1 EXP 🫧','bath');log('깨끗해졌습니다! 경험치 +1');}
+ if(type==='train'){s.training=Math.min(18,s.training+1);s.ene=clamp(s.ene-25);s.joy=clamp(s.joy+3);s.gold+=5;s.exp=Math.min(60,s.exp+8);fx('+8 EXP STR','train');log('훈련 완료! 경험치 +8 · 에너지 -25');}checkGrowth();save();render();const petEl=$('pet'),sceneEl=$('scene'),sceneRect=sceneEl.getBoundingClientRect(),petRect=petEl.getBoundingClientRect();const stayLeft=Math.max(0,petRect.left-sceneRect.left);petEl.style.left=stayLeft+'px';petEl.className='pet action-'+type;setTimeout(()=>{petEl.style.left='';petEl.className='pet roam'},1100)
+}
+function hatch(){if(s.hatched){if(s.level>=current().at)evolve();return} const pool=species.filter(x=>x.rate);let r=Math.random()*pool.reduce((a,x)=>a+x.rate,0),pick=pool[0];for(const x of pool){r-=x.rate;if(r<=0){pick=x;break}} s.hatched=true;s.level=1;s.exp=0;s.species=pick.id;s.name=pick.name;s.dex=[pick.id];save();render();$('pet').className='pet happy';fx('HATCH!');log('🥚✨ 알이 깨지며 '+pick.name+'이(가) 태어났습니다!');setTimeout(()=>{$('pet').className='pet'},1200)}
+function careProfile(){const c=s.care||{};return{feed:(c.feed||0)+s.food*.45,sleep:(c.sleep||0)+(s.sleeping?18:0)+s.ene*.15,energy:(c.energy||0)+s.ene*.5,hyg:(c.hyg||0)+s.hyg*.5}}
+function chooseEvolution(stage){const q=careProfile();if(stage===2){const scores={feed:q.feed*1.2+q.hyg*.15,rest:q.sleep*.8+q.energy*1.15,hyg:q.hyg*1.15+q.sleep*.25};return Object.keys(scores).sort((a,b)=>scores[b]-scores[a])[0]}const scores={feed:q.feed,rest:q.sleep+q.energy*.7,hyg:q.hyg};return Object.keys(scores).sort((a,b)=>scores[b]-scores[a])[0]}
+function evolve(){const p=current();if(!s.hatched)return;let n=null;if(p.stage===1){const trait=chooseEvolution(2);n=species.find(x=>x.family===p.family&&x.stage===2&&x.trait===trait)}else if(p.stage===2){const trait=chooseEvolution(3);n=species.find(x=>x.family===p.family&&x.stage===3&&x.branch===p.id&&x.trait===trait)}if(!n)return;$('pet').className='pet happy';const q=careProfile();const path=n.stage===2?(n.label+' · 먹이/수면/에너지/청결 관리 결과'):n.label+' · '+(n.trait==='feed'?'먹이 관리가 가장 중요했어요':n.trait==='rest'?'수면·에너지 관리가 가장 좋았어요':'청결 관리가 가장 좋았어요');fx('✨ EVOLUTION!');log('✨ '+p.name+'이(가) 빛나기 시작합니다!');setTimeout(()=>{s.species=n.id;s.name=n.name;s.level++;s.exp=0;s.dex=Array.from(new Set((s.dex||[]).concat(n.id)));save();render();$('pet').className='pet happy';log('🌟 '+n.name+'으로 진화! '+path);fx('EVOLVE!');setTimeout(()=>{$('pet').className='pet'},1200)},900)}
+function checkGrowth(){const p=current();if(s.hatched&&s.exp>=60){s.exp=0;s.level++;log('🎉 레벨 업! Lv.'+s.level);fx('LEVEL UP!');if(s.level>=p.at&&p.stage<3){setTimeout(()=>{evolve()},500)}}}
+function modal(content){$('dialog').innerHTML=content;$('modal').classList.add('open')}
+$('modal').addEventListener('click',e=>{if(e.target===$('modal'))$('modal').classList.remove('open')});
+$('feed').onclick=()=>act('feed');$('play').onclick=()=>act('play');$('bath').onclick=()=>act('bath');$('train').onclick=()=>act('train');
+$('pet').onclick=()=>{if(!s.hatched)return;if(s.sleeping){fx('Z z Z');log('😴 지금은 자고 있어요.');return}s.bond++;s.joy=clamp(s.joy+3);s.refuse=s.refuse||{};s.refuse.touch=0;fx('♥ 쓰담쓰담!','touch');$('pet').className='pet touch';log('♥ '+s.name+'의 머리를 쓰다듬었습니다.');save();render();$('pet').className='pet touch';setTimeout(()=>{$('pet').className='pet roam'},650)};
+$('sleep').onclick=()=>{if(!s.hatched)return;s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.sleeping=!s.sleeping;if(s.sleeping)s.care.sleep+=2;log(s.sleeping?'🌙 잠이 들었습니다. 달빛 아래에서 편안히 잠듭니다.':'☀️ 잠에서 깨어났습니다.');save();render()};
+$('hatch').onclick=()=>{
+ if(!s.hatched){hatch();return}
+ const p=current();
+ if(s.level===p.at-1 && s.exp>=60){
+   s.exp=0;s.level++;save();render();log('🎉 Lv.'+s.level+' 달성! 이제 진화할 수 있습니다.');fx('LEVEL UP!');
+ }
+ if(s.level>=p.at){
+   modal('<h3>✨ 진화의 순간!</h3><p>'+s.name+'이(가) 새로운 모습으로 성장할 수 있습니다.</p><div class="choice"><button class="btn primary" id="yesE">✨ 진화하기</button><button class="btn" id="noE">현재 모습 유지</button></div>');
+ }else{
+   modal('<h3>🧬 아직 진화할 수 없어요</h3><p>진화하려면 <b>Lv.'+p.at+'</b>까지 성장해야 합니다.</p><p>현재 <b>Lv.'+s.level+'</b> · 경험치 <b>'+s.exp+' / 60</b></p><p class="muted">'+(s.exp>=60?'경험치가 가득 찼습니다. 레벨업하면 진화 조건을 다시 확인하세요.':'경험치를 60까지 채우면 다음 레벨로 성장합니다.')+'</p><div class="choice"><button class="btn primary" id="closeE">확인</button></div>');
+ }
+ setTimeout(()=>{
+   $('yesE')&&($('yesE').onclick=()=>{evolve();$('modal').classList.remove('open')});
+   $('noE')&&($('noE').onclick=()=>{$('modal').classList.remove('open')});
+   $('closeE')&&($('closeE').onclick=()=>{$('modal').classList.remove('open')});
+ },0)
+};
+$('rename').onclick=()=>{if(!s.hatched)return;modal('<h3>이름 바꾸기</h3><input id="nameInput" maxlength="12" value="'+s.name+'" style="width:100%;padding:13px;border:1px solid #dfe8f4;border-radius:12px;font:700 16px Nunito"><div class="choice"><button class="btn primary" id="saveName">저장</button></div>');setTimeout(()=>{$('saveName').onclick=()=>{const v=$('nameInput').value.trim();if(v){s.name=v;save();render();log('이름을 '+v+'로 바꿨습니다.')}$('modal').classList.remove('open')}},0)};
+$('dex').onclick=()=>{const roots=families;modal('<h3>📖 캐릭터 도감</h3><p class="muted">부화 '+roots.length+'종 · 2차 진화 '+(roots.length*3)+'종 · 최종 진화 '+(roots.length*9)+'종</p><div class="dex">'+roots.map(f=>{const r=species.find(x=>x.id===f.root);return '<div class="evoCard"><div class="evoHead"><span>✨ '+f.name+' 계열</span><span>'+f.rate+'%</span></div><div class="evoChain"><div><div class="miniPet"><img class="pixelSprite" src="'+spriteUrl(f.root)+'"></div><div class="evoLv">Lv.1~5</div><div class="evoName">'+f.name+'</div></div><div class="evoArrow">→</div>'+f.branches.map(b=>'<div><div class="miniPet"><img class="pixelSprite" src="'+spriteUrl(b.id)+'"></div><div class="evoLv">Lv.6~10</div><div class="evoName">'+b.name+'</div><div class="evoLv">'+b.label+'</div><div class="evoChain">'+finalTraits.map(ft=>{const z=species.find(x=>x.id===b.id+'_'+ft.id);return '<div><div class="miniPet"><img class="pixelSprite" src="'+spriteUrl(z.id)+'"></div><div class="evoLv">Lv.11+</div><div class="evoName">'+z.name+'</div></div>'}).join('')+'</div></div>').join('')+'</div></div>'}).join('')+'</div>');};
+function makeSaveCode(){
+  s.last=Date.now();
+  const payload={v:1,game:s,createdAt:Date.now()};
+  const bytes=new TextEncoder().encode(JSON.stringify(payload));
+  let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);
+  return 'PP1-'+btoa(bin);
+}
+function readSaveCode(code){
+  const raw=(code||'').trim();
+  if(!raw.startsWith('PP1-'))throw new Error('저장 코드 형식이 올바르지 않습니다.');
+  const bin=atob(raw.slice(4));
+  const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
+  const payload=JSON.parse(new TextDecoder().decode(bytes));
+  if(!payload||payload.v!==1||!payload.game||typeof payload.game!=='object')throw new Error('저장 데이터가 올바르지 않습니다.');
+  const x=Object.assign(structuredClone(base),payload.game);
+  if(!Array.isArray(x.dex))x.dex=[x.species||'sprout'];
+  x.refuse=Object.assign({feed:0,play:0,bath:0,train:0,touch:0},x.refuse||{});
+  x.last=Date.now();
+  return x;
+}
+$('saveData').onclick=()=>{
+  const code=makeSaveCode();
+  modal('<h3>💾 저장 데이터</h3><div class="saveHint">PC에서 <b>저장 코드 복사</b> 후 카카오톡·메신저·메모장 등으로 스마트폰에 보내세요. 스마트폰에서는 이 화면에 코드를 붙여넣고 <b>불러오기</b>를 누르면 이어서 키울 수 있습니다.</div><div class="saveCodeBox"><textarea id="saveCode" spellcheck="false"></textarea><div class="saveBtns"><button class="btn primary" id="copySave">📋 저장 코드 복사</button><button class="btn green" id="loadSave">📥 코드 불러오기</button></div><button class="btn" id="refreshSave">🔄 현재 상태로 코드 다시 만들기</button></div>');
+  $('saveCode').value=code;
+  setTimeout(()=>{
+    $('copySave').onclick=async()=>{try{await navigator.clipboard.writeText($('saveCode').value);fx('복사 완료!');log('💾 저장 코드를 클립보드에 복사했습니다.')}catch(e){$('saveCode').select();document.execCommand('copy');log('💾 저장 코드를 복사했습니다.')}};
+    $('loadSave').onclick=()=>{try{const x=readSaveCode($('saveCode').value);s=x;localStorage.setItem(KEY,JSON.stringify(s));$('modal').classList.remove('open');render();log('📥 저장 데이터를 불러왔습니다! Lv.'+s.level+' · '+(s.hatched?s.name:'알'));fx('LOAD!')}catch(e){log('⚠️ '+e.message);alert(e.message)}};
+    $('refreshSave').onclick=()=>{$('saveCode').value=makeSaveCode();log('🔄 현재 상태의 저장 코드를 다시 만들었습니다.')};
+  },0);
+};
+$('reset').onclick=()=>modal('<h3>정말 초기화할까요?</h3><p>현재 캐릭터와 성장 데이터를 모두 삭제하고 새 알로 돌아갑니다.</p><div class="choice"><button class="btn pink" id="yesReset">초기화</button><button class="btn" id="noReset">취소</button></div>');setTimeout(()=>{$('yesReset')&&($('yesReset').onclick=()=>{localStorage.removeItem(KEY);s=structuredClone(base);$('modal').classList.remove('open');log('새 게임을 시작했습니다.');render()});$('noReset')&&($('noReset').onclick=()=>$('modal').classList.remove('open'))},0);
+function gameTick(){if(!s.hatched)return;s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.food=clamp(s.food-2);s.ene=clamp(s.ene+(s.sleeping?3:1));s.hyg=clamp(s.hyg-(s.sleeping?0:1));s.joy=clamp(s.joy-(s.food<30?3:1));if(s.food>=45&&s.food<=90)s.care.feed+=1;if(s.sleeping)s.care.sleep+=1;if(s.ene>=60)s.care.energy+=1;if(s.hyg>=70)s.care.hyg+=1;if(s.sleeping&&s.ene>=100)s.sleeping=false;s.exp=Math.min(60,s.exp+1);checkGrowth();save();render()}
+setInterval(gameTick,30000);setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});},1000);
+render();log('게임을 시작했습니다. 알을 눌러 부화시키세요.');if(awayResetNotice){setTimeout(()=>{modal('<h3>🏡 펫이 고향으로 돌아갔어요</h3><p><b>'+awayResetNotice.days+'일</b> 동안 게임에 접속하지 않아 '+awayResetNotice.name+'이(가) 고향으로 돌아갔습니다.</p><p>새로운 인연을 다시 시작해 주세요. 이번에는 <b>알</b>부터 다시 키울 수 있습니다. 🥚</p><div class="choice"><button class="btn primary" id="closeAway">🥚 새 알과 시작하기</button></div>');setTimeout(()=>{$('closeAway')&&($('closeAway').onclick=()=>{$('modal').classList.remove('open')})},0)},250)}$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+})();
+</script>
+
+<!-- WPE-DEBUG path=api slug=index.html -->
+<script src="https://cdn.websitepublisher.ai/wpe/loader.js" data-project="29230" data-page="index.html" defer></script>
+
+
+<!-- WebsitePublisher.ai Powered-by Widget -->
+<div id="wpa-widget" style="position:fixed;bottom:0;right:0;z-index:2147483647;display:flex;justify-content:flex-end;pointer-events:none;padding:0 12px 12px 0;">
+    <div style="pointer-events:auto;display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(15,15,15,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:11px;line-height:1;color:rgba(255,255,255,0.7);box-shadow:0 2px 12px rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.08);">
+        <a href="https://www.websitepublisher.ai?ref=widget" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-flex;align-items:center;gap:4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            WebsitePublisher.ai
+        </a>
+        <span style="color:rgba(255,255,255,0.25);">&middot;</span>
+        <a href="https://www.websitepublisher.ai/report?url=https%3A%2F%2Fproject29230.websitepublisher.ai" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.5);text-decoration:none;">Report Abuse</a>
+    </div>
+</div>
+</body></html>
