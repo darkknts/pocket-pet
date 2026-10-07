@@ -17,8 +17,8 @@
 :root{--bg:#eef7ff;--card:#fff;--ink:#203047;--muted:#70809a;--blue:#4b8dff;--mint:#57c9a4;--pink:#ff7d9b;--yellow:#ffc857;--line:#dfe8f4;--shadow:0 18px 45px rgba(50,86,130,.13)}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 10%,#fff 0 15%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff);color:var(--ink);font-family:Nunito,sans-serif;min-height:100vh}
 .wrap{width:min(980px,94vw);margin:0 auto;padding:24px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.brand{font:700 30px Fredoka;color:#315b92}.brand span{color:var(--pink)}.pill{background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:999px;font-weight:800;color:var(--muted)}
-.game{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.stage,.panel{background:rgba(255,255,255,.9);border:1px solid rgba(220,232,246,.9);border-radius:28px;box-shadow:var(--shadow)}.stage{padding:18px}.scene{min-height:600px;border-radius:22px;position:relative;overflow:hidden;background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center/cover no-repeat;display:block}
-.scene.night{filter:none!important;background-image:url('https://cdn.websitepublisher.ai/custom/wid29230/images/world-night.svg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}.scene:not(.night):not(.sleep-mode){filter:none!important}.sun,.moon{position:absolute;top:28px;right:35px;width:58px;height:58px;border-radius:50%;background:#ffe28a;box-shadow:0 0 45px #ffe28a}.moon{background:#eef2ff;box-shadow:0 0 30px #cfdcff}.cloud{position:absolute;left:8%;top:16%;font-size:50px;opacity:.7}.cloud.c2{left:auto;right:15%;top:28%;font-size:38px}.ground{position:absolute;bottom:0;width:100%;height:42%;background:repeating-linear-gradient(120deg,rgba(255,255,255,.14) 0 3px,transparent 3px 20px)}
+.game{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.stage,.panel{background:rgba(255,255,255,.9);border:1px solid rgba(220,232,246,.9);border-radius:28px;box-shadow:var(--shadow)}.stage{padding:18px}.scene{min-height:600px;border-radius:22px;position:relative;overflow:hidden;background:#62c5f2 url('./images/world.svg') center/cover no-repeat;display:block}
+.scene.night{filter:none!important;background-image:url('./images/world-night.svg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}.scene:not(.night):not(.sleep-mode){filter:none!important}.sun,.moon{position:absolute;top:28px;right:35px;width:58px;height:58px;border-radius:50%;background:#ffe28a;box-shadow:0 0 45px #ffe28a}.moon{background:#eef2ff;box-shadow:0 0 30px #cfdcff}.cloud{position:absolute;left:8%;top:16%;font-size:50px;opacity:.7}.cloud.c2{left:auto;right:15%;top:28%;font-size:38px}.ground{position:absolute;bottom:0;width:100%;height:42%;background:repeating-linear-gradient(120deg,rgba(255,255,255,.14) 0 3px,transparent 3px 20px)}
 .pet{position:absolute;left:0;bottom:8%;z-index:7;width:190px;height:190px;display:grid;place-items:center;animation:bob 2.2s ease-in-out infinite}
 .pet.roam{animation:bob 2.2s ease-in-out infinite}
 .pet.action-feed{animation:feedAction .75s ease-out 1}
@@ -60,7 +60,7 @@
 @keyframes boxing{0%{transform:translateX(0) scale(.8);opacity:0}30%{opacity:1}55%{transform:translateX(-10px) scale(1.08)}75%{transform:translateX(12px) scale(1.08)}100%{transform:translateX(0);opacity:0}}
 @keyframes bubbles{0%{transform:translateY(15px) scale(.6);opacity:0}35%{opacity:1}100%{transform:translateY(-38px) scale(1.15);opacity:0}}
 @keyframes foodDrop{0%{transform:translateY(-25px) scale(.7);opacity:0}45%{opacity:1}100%{transform:translateY(35px) scale(1);opacity:0}}
-.scene.sleep-mode{background-image:url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
+.scene.sleep-mode{background-image:url('./images/world.svg')!important;background-position:center!important;background-size:cover!important;background-repeat:no-repeat!important}
 .scene.sleep-mode:after{content:'';position:absolute;inset:0;background:rgba(10,18,45,.2);pointer-events:none;z-index:1}
 .scene.sleep-mode .cloud{opacity:.18}
 .scene.sleep-mode .sun{display:none}
@@ -170,7 +170,7 @@
 </style></style></style>
 <style id="pixel-world-fix">
 /* Pixel world background */
-.scene{min-height:600px!important;display:block!important;background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center/cover no-repeat!important;overflow:hidden!important}
+.scene{min-height:600px!important;display:block!important;background:#62c5f2 url('./images/world.svg') center/cover no-repeat!important;overflow:hidden!important}
 .scene:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
 linear-gradient(135deg,transparent 0 38%,#79a8ce 38% 48%,transparent 48%) 5% 32%/48% 27% no-repeat,
 linear-gradient(225deg,transparent 0 38%,#4f88b8 38% 48%,transparent 48%) 34% 32%/55% 27% no-repeat,
@@ -205,7 +205,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 /* Pixel world presentation */
 .scene{
   min-height:600px!important;height:600px!important;
-  background:#62c5f2 url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg') center bottom/cover no-repeat!important;
+  background:#62c5f2 url('./images/world.svg') center bottom/cover no-repeat!important;
   image-rendering:auto!important;
 }
 .scene .body{position:relative;width:100%;height:100%;display:grid;place-items:center}
@@ -307,7 +307,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 .pet.sleeping:before{content:'−  −';position:absolute;z-index:15;left:50%;top:43%;transform:translate(-50%,-50%);font:900 18px monospace;letter-spacing:16px;color:#203c55;text-shadow:2px 2px #fff;white-space:nowrap}
 .pet.sleeping:after{content:'Z  z  Z';position:absolute;z-index:16;right:-5px;top:5px;color:#fff;font:900 22px Fredoka;text-shadow:3px 3px #284461;letter-spacing:5px;animation:zzzPixel 2s ease-in-out infinite}
 .scene.sleep-mode:after{content:'';display:block!important;position:absolute;z-index:4;right:58px;top:82px;width:58px;height:58px;border-radius:50%;background:#f4f0cf;box-shadow:0 0 0 8px rgba(244,240,207,.16),0 0 25px rgba(244,240,207,.5)}
-.scene.sleep-mode{background-image:linear-gradient(rgba(9,22,48,.48),rgba(9,22,48,.48)),url('https://cdn.websitepublisher.ai/custom/wid29230/images/world.svg')!important}
+.scene.sleep-mode{background-image:linear-gradient(rgba(9,22,48,.48),rgba(9,22,48,.48)),url('./images/world.svg')!important}
 .scene.sleep-mode .weatherCard{background:#152f50!important}.scene.sleep-mode .sceneCard{background:#e9f0f7!important}
 <style id="fix-v30">
 /* Use one complete pixel world in both day and night. Remove the old geometric overlays that caused duplicated mountains/fences. */
@@ -432,7 +432,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
   <div class="top"><div class="brand">Pocket <span>Pet</span></div><div class="accountArea"><span class="accountName" id="accountName"></span><button id="logoutBtn" type="button">로그아웃</button><div class="pill" id="clock">--:--</div></div></div>
   <div class="game">
     <section class="stage">
-      <div class="sceneCard"><div class="sceneAvatar"><img id="sceneAvatarImg" src="https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg" alt=""></div><div class="sceneIdentity"><b id="scenePetName">알</b><strong id="sceneLevel">Lv.0</strong><div class="sceneXp"><i id="sceneXpFill"></i></div><span id="sceneExp">0 / 60</span></div></div>
+      <div class="sceneCard"><div class="sceneAvatar"><img id="sceneAvatarImg" src="./images/egg.svg" alt=""></div><div class="sceneIdentity"><b id="scenePetName">알</b><strong id="sceneLevel">Lv.0</strong><div class="sceneXp"><i id="sceneXpFill"></i></div><span id="sceneExp">0 / 60</span></div></div>
       <div class="stats">
         <div class="stat"><small>🍖 먹이 <span id="foodN">80</span></small><div class="bar"><div class="fill food" id="foodB"></div></div></div>
         <div class="stat"><small>😊 기쁨 <span id="joyN">80</span></small><div class="bar"><div class="fill joy" id="joyB"></div></div></div>
@@ -443,7 +443,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
         <div class="sun" id="sky"></div><div class="moon" id="moon"></div><div class="cloud">☁</div><div class="cloud c2">☁</div><div class="ground"></div>
         <div class="weatherCard"><span id="weatherIcon">☀</span><span id="weatherText">맑음</span><b id="sceneClock">--:--</b></div>
         <div class="name" id="petName">알</div>
-        <div class="pet" id="pet"><div class="body" id="petBody"><img class="pixelSprite" id="pixelPet" src="https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg" alt="알"><div class="faceMood" id="faceMood" aria-hidden="true"><i class="brow b1"></i><i class="brow b2"></i><i class="eye e1"></i><i class="eye e2"></i><i class="cheek ch1"></i><i class="cheek ch2"></i><i class="mouth"></i><i class="tear t1"></i><i class="tear t2"></i><i class="sweat sw1"></i><i class="sweat sw2"></i><i class="blush bl1"></i><i class="blush bl2"></i></div></div></div>
+        <div class="pet" id="pet"><div class="body" id="petBody"><img class="pixelSprite" id="pixelPet" src="./images/egg.svg" alt="알"><div class="faceMood" id="faceMood" aria-hidden="true"><i class="brow b1"></i><i class="brow b2"></i><i class="eye e1"></i><i class="eye e2"></i><i class="cheek ch1"></i><i class="cheek ch2"></i><i class="mouth"></i><i class="tear t1"></i><i class="tear t2"></i><i class="sweat sw1"></i><i class="sweat sw2"></i><i class="blush bl1"></i><i class="blush bl2"></i></div></div></div>
         <div class="needBubble" id="needBubble">✨ 기분이 좋아요!</div><div class="fx" id="fx">+5 ❤️</div><div class="fx fx2" id="fx2"></div>
       </div>
     </section>
@@ -454,15 +454,15 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
         <div><span>♥ 유대</span><b id="bond">0</b></div>
       </div>
       <div class="actions">
-        <button class="btn primary" id="feed"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-feed.svg?v=54" alt="">먹이</button>
-        <button class="btn green" id="bath"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-bath.svg?v=54" alt="">목욕</button>
-        <button class="btn gold" id="sleep"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-sleep.svg?v=54" alt="">잠자기</button>
-        <button class="btn pink" id="play"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-play.svg?v=54" alt="">놀기</button>
-        <button class="btn" id="train"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-train.svg?v=54" alt="">훈련</button>
-        <button class="btn" id="rename"><img class="btnIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-rename.svg?v=54" alt="">이름</button>
+        <button class="btn primary" id="feed"><img class="btnIcon" src="./images/ui-feed.svg" alt="">먹이</button>
+        <button class="btn green" id="bath"><img class="btnIcon" src="./images/ui-bath.svg" alt="">목욕</button>
+        <button class="btn gold" id="sleep"><img class="btnIcon" src="./images/ui-sleep.svg" alt="">잠자기</button>
+        <button class="btn pink" id="play"><img class="btnIcon" src="./images/ui-play.svg" alt="">놀기</button>
+        <button class="btn" id="train"><img class="btnIcon" src="./images/ui-train.svg" alt="">훈련</button>
+        <button class="btn" id="rename"><img class="btnIcon" src="./images/ui-rename.svg" alt="">이름</button>
       </div>
       <div class="menu">
-        <button class="mini" id="hatch"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-hatch.svg?v=54" alt="">부화</button><button class="mini" id="dex"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-dex.svg?v=54" alt="">도감</button><button class="mini" id="saveData"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-save.svg?v=54" alt="">저장/불러오기</button><button class="mini" id="reset"><img class="miniIcon" src="https://cdn.websitepublisher.ai/custom/wid29230/images/ui-reset.svg?v=54" alt="">초기화</button><button class="mini" id="sendPet" disabled>🌟 보내주기</button>
+        <button class="mini" id="hatch"><img class="miniIcon" src="./images/ui-hatch.svg" alt="">부화</button><button class="mini" id="dex"><img class="miniIcon" src="./images/ui-dex.svg" alt="">도감</button><button class="mini" id="saveData"><img class="miniIcon" src="./images/ui-save.svg" alt="">저장/불러오기</button><button class="mini" id="reset"><img class="miniIcon" src="./images/ui-reset.svg" alt="">초기화</button><button class="mini" id="sendPet" disabled>🌟 보내주기</button>
       </div>
       
       <div class="log" id="log" aria-live="polite"></div>
@@ -731,7 +731,7 @@ function current(){return species.find(x=>x.id===s.species)||species[0]}
 const BLOOM_ANIM_BASE='https://raw.githubusercontent.com/darkknts/pocket-pet/main/images/pets/sprout/bloom/';
 function spriteUrl(id){
  const p=species.find(x=>x.id===id)||species[0];
- if(id==='egg')return 'https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';
+ if(id==='egg')return './images/egg.svg';
  if(id==='bloom'||id==='sprout')return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
  return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 }
@@ -758,7 +758,7 @@ function applySprite(el,id){
  el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim');
  el.style.visibility='visible';
  if(!id||id==='egg'){
-   el.src='https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';
+   el.src='./images/egg.svg';
    return;
  }
  if(id==='bloom'||id==='sprout'){
@@ -973,7 +973,7 @@ render();log('Pocket Pet을 시작합니다. 로그인해 주세요.');initCloud
 </script>
 
 <!-- WPE-DEBUG path=api slug=index.html -->
-<script src="https://cdn.websitepublisher.ai/wpe/loader.js" data-project="29230" data-page="index.html" defer></script>
+<script src="" data-project="29230" data-page="index.html" defer></script>
 
 
 <!-- WebsitePublisher.ai Powered-by Widget -->
