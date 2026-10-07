@@ -270,6 +270,8 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 }
 .pixelSprite.bloomAnim.idleAnim{animation:bloomIdle .9s steps(1,end) infinite!important}
 .pixelSprite.bloomAnim.walkAnim{animation:bloomWalk .42s steps(1,end) infinite!important}
+.pixelSprite.bloomAnim.walkDirLeft{transform:rotate(-15deg)!important}
+.pixelSprite.bloomAnim.walkDirRight{transform:rotate(15deg)!important}
 .pixelSprite.bloomAnim.eatAnim{animation:bloomEat .5s steps(1,end) infinite!important}
 @keyframes bloomIdle{0%,49%{background-position:0 0}50%,100%{background-position:100% 0}}
 @keyframes bloomWalk{0%,49%{background-position:0 0}50%,100%{background-position:100% 0}}
@@ -733,13 +735,14 @@ function spriteUrl(id){
  return 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 }
 function getBloomAnim(el){return (el&&el.dataset&&el.dataset.bloomAnim)||'idle'}
-function applyBloomAnim(el,anim){
+function applyBloomAnim(el,anim,dir){
  if(!el)return;
  const a=(anim==='walk'||anim==='eat')?anim:'idle';
  el.dataset.bloomAnim=a;
- el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim');
+ el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim','walkDirLeft','walkDirRight');
  el.style.backgroundImage='url("'+BLOOM_ANIM_BASE+a+'.png")';
  el.classList.add('bloomAnim',a+'Anim');
+ if(a==='walk')el.classList.add(dir==='left'?'walkDirLeft':'walkDirRight');
  el.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
  el.style.backgroundSize='200% 100%';
  el.style.backgroundPosition='0 0';
@@ -810,11 +813,11 @@ function fx(txt,kind){$('fx').textContent=txt;$('fx').className='fx show '+(kind
 function rejectAction(type,msg){s.refuse=s.refuse||{};s.refuse[type]=(s.refuse[type]||0)+1;fx('싫어요!','reject');log(msg);$('pet').className='pet sad';setTimeout(()=>{$('pet').className='pet roam'},900)}
 function actionReady(type,stat,max,reason){s.refuse=s.refuse||{};if(stat<max){s.refuse[type]=0;return true}if((s.refuse[type]||0)<2){s.refuse[type]=(s.refuse[type]||0)+1;return true}rejectAction(type,reason);return false}
 let petMoveTimer=null,petMoveDir=1,petMoveX=null,petMovePaused=false;
-function setBloomAnimation(anim){
+function setBloomAnimation(anim,dir){
  const main=$('pixelPet');
  const avatar=$('sceneAvatarImg');
  if(s.hatched&&(s.species==='bloom'||s.species==='sprout')){
-   if(main)applyBloomAnim(main,anim);
+   if(main)applyBloomAnim(main,anim,dir);
    if(avatar)applyBloomAnim(avatar,'idle');
  }
 }
@@ -829,11 +832,11 @@ function startPetMove(){
  if(s.species==='bloom'||s.species==='sprout')setBloomAnimation('walk');
  petMoveTimer=setInterval(()=>{
    if(petMovePaused||!s.hatched||s.sleeping)return;
-   if(s.species==='bloom'||s.species==='sprout')setBloomAnimation('walk');
    const sr2=scene.getBoundingClientRect(),pr2=pet.getBoundingClientRect(),maxX=Math.max(0,sr2.width-pr2.width);
    petMoveX+=petMoveDir*.8;
    if(petMoveX<=0){petMoveX=0;petMoveDir=1}
    if(petMoveX>=maxX){petMoveX=maxX;petMoveDir=-1}
+   if(s.species==='bloom'||s.species==='sprout')setBloomAnimation('walk',petMoveDir<0?'left':'right');
    pet.style.left=petMoveX+'px';
  },16);
 }
@@ -898,7 +901,7 @@ $('dex').onclick=()=>{
        if(z)stages.push({id:z.id,name:z.name,stage:'최종',trait:z.label});
      });
    });
-   return '<div class="dexFamily"><div class="dexFamilyTitle"><span>✨ '+f.name+' 계열</span><span>'+f.rate+'%</span></div><div class="dexStages">'+stages.map(x=>{const found=(s.dex||[]).includes(x.id);return '<div class="dexStage"><div class="dexStageTitle">'+x.stage+'</div><div class="dexChar"><img class="'+(found?'':'undiscovered')+'" data-pet-id="'+x.id+'" src="'+spriteUrl(x.id)+'" alt="'+(found?x.name:'???')+'"></div><div class="dexCharName">'+(found?x.name:'???')+'</div>'+(found&&x.trait?'<div class="dexTrait">'+x.trait+'</div>':'')+'</div>'}).join('')+'</div></div>';
+   return '<div class="dexFamily"><div class="dexFamilyTitle"><span>✨ '+f.name+' 계열</span><span>캐릭터 수집</span></div><div class="dexStages">'+stages.map(x=>{const found=(s.dex||[]).includes(x.id);return '<div class="dexStage"><div class="dexStageTitle">'+x.stage+'</div><div class="dexChar"><img class="'+(found?'':'undiscovered')+'" data-pet-id="'+x.id+'" src="'+spriteUrl(x.id)+'" alt="'+(found?x.name:'???')+'"></div><div class="dexCharName">'+(found?x.name:'???')+'</div>'+(found&&x.trait?'<div class="dexTrait">'+x.trait+'</div>':'')+'</div>'}).join('')+'</div></div>';
  }).join('');
  modal('<h3>📖 캐릭터 도감</h3><p class="muted">부화 6종 · 2차 진화 18종 · 최종 진화 54종 · 총 78종</p><div class="dex">'+cards+'</div>');setTimeout(()=>document.querySelectorAll('[data-pet-id]').forEach(el=>applySprite(el,el.getAttribute('data-pet-id'))),0);
 };
