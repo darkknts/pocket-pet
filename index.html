@@ -755,7 +755,7 @@ function applySprite(el,id){
  el.style.backgroundSize='';
  el.style.backgroundPosition='';
  el.style.backgroundRepeat='';
- el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim');
+ el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim','walkDirLeft','walkDirRight');
  el.style.visibility='visible';
  if(!id||id==='egg'){
    el.src='./images/egg.svg';
@@ -829,7 +829,7 @@ function startPetMove(){
  if(petMoveX===null)petMoveX=Math.max(0,Math.min(sr.width-pr.width,pr.left-sr.left));
  petMovePaused=false;
  pet.style.left=petMoveX+'px';
- if(s.species==='bloom'||s.species==='sprout')setBloomAnimation('walk');
+ if(s.species==='bloom'||s.species==='sprout')setBloomAnimation('walk',petMoveDir<0?'left':'right');
  petMoveTimer=setInterval(()=>{
    if(petMovePaused||!s.hatched||s.sleeping)return;
    const sr2=scene.getBoundingClientRect(),pr2=pet.getBoundingClientRect(),maxX=Math.max(0,sr2.width-pr2.width);
