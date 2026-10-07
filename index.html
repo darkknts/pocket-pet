@@ -728,7 +728,7 @@ function applyOffline(x){
 function log(t){const d=document.createElement('div');d.textContent='• '+t;$('log').prepend(d);while($('log').children.length>18)$('log').lastChild.remove()}
 function clamp(v){return Math.max(0,Math.min(100,Math.round(v)))}
 function current(){return species.find(x=>x.id===s.species)||species[0]}
-const BLOOM_ANIM_BASE='https://raw.githubusercontent.com/darknkts/pocket-pet/main/images/pets/sprout/bloom/';
+const BLOOM_ANIM_BASE='https://raw.githubusercontent.com/darkknts/pocket-pet/main/images/pets/sprout/bloom/';
 function spriteUrl(id){
  const p=species.find(x=>x.id===id)||species[0];
  if(id==='egg')return 'https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg';
@@ -778,7 +778,7 @@ function applySprite(el,id){
  const w=Math.max(44,el.getBoundingClientRect().width||96);
  const scale=w/96;
  el.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
- el.style.backgroundImage='url("https://cdn.websitepublisher.ai/custom/wid29230/images/pet-atlas-exact78-96q.png")';
+ el.style.backgroundImage='url("https://raw.githubusercontent.com/darkknts/pocket-pet/main/images/pet_atlas_exact78_96q.png")';
  el.style.backgroundSize=(1248*scale)+'px '+(576*scale)+'px';
  el.style.backgroundPosition=(-col*96*scale)+'px '+(-fi*96*scale)+'px';
  el.style.backgroundRepeat='no-repeat';
