@@ -266,18 +266,17 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 .pixelSprite.bloomAnim{
   background-repeat:no-repeat!important;
   background-position:0 0!important;
-  background-size:200% 100%!important;
   image-rendering:pixelated!important;
   object-fit:contain!important;
 }
-.pixelSprite.bloomAnim.idleAnim{animation:bloomIdle .9s steps(1,end) infinite!important}
-.pixelSprite.bloomAnim.walkAnim{animation:bloomWalk .42s steps(1,end) infinite!important}
-.pixelSprite.bloomAnim.walkDirLeft{transform:rotate(-15deg)!important}
-.pixelSprite.bloomAnim.walkDirRight{transform:rotate(15deg)!important}
-.pixelSprite.bloomAnim.eatAnim{animation:bloomEat .5s steps(1,end) infinite!important}
+.pixelSprite.bloomAnim.idleAnim{animation:bloomIdle .9s steps(1,end) infinite!important;background-size:200% 100%!important}
+.pixelSprite.bloomAnim.eatAnim{animation:bloomEat .5s steps(1,end) infinite!important;background-size:200% 100%!important}
+.pixelSprite.bloomAnim.walkLeftAnim{animation:bloomWalkLeft .42s steps(1,end) infinite!important;background-size:400% 100%!important}
+.pixelSprite.bloomAnim.walkRightAnim{animation:bloomWalkRight .42s steps(1,end) infinite!important;background-size:400% 100%!important}
 @keyframes bloomIdle{0%,49%{background-position:0 0}50%,100%{background-position:100% 0}}
-@keyframes bloomWalk{0%,49%{background-position:0 0}50%,100%{background-position:100% 0}}
 @keyframes bloomEat{0%,34%{background-position:0 0}35%,100%{background-position:100% 0}}
+@keyframes bloomWalkLeft{0%,49%{background-position:0 0}50%,100%{background-position:33.333% 0}}
+@keyframes bloomWalkRight{0%,49%{background-position:66.666% 0}50%,100%{background-position:100% 0}}
 </style><style id="pixel-action-v27">
 .fx2{position:absolute;left:50%;top:46%;z-index:30;pointer-events:none;font-family:Fredoka,sans-serif;font-size:28px;font-weight:900;text-shadow:3px 3px 0 #203c55;transform:translate(-50%,-50%);opacity:0}
 .fx2.show{opacity:1}
@@ -380,7 +379,15 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 
 
 
-</head>
+<style id="walk-direction-v2">
+/* Walking is controlled by JS left/right movement; the pet body stays upright. */
+.scene .pet.roam,
+.scene .pet.roam.walkLeft,
+.scene .pet.roam.walkRight{
+  animation:bob 2.2s ease-in-out infinite!important;
+  will-change:left;
+}
+</style></head>
 <body>
 <style id="pocket-pet-auth-ui">
 #authGate{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 20% 10%,#fff 0 12%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff)}
@@ -741,13 +748,13 @@ function applyBloomAnim(el,anim,dir){
  if(!el)return;
  const a=(anim==='walk'||anim==='eat')?anim:'idle';
  el.dataset.bloomAnim=a;
- el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim','walkDirLeft','walkDirRight');
- el.style.backgroundImage='url("'+BLOOM_ANIM_BASE+a+'.png")';
- el.classList.add('bloomAnim',a+'Anim');
- if(a==='walk')el.classList.add(dir==='left'?'walkDirLeft':'walkDirRight');
+ el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim','walkDirLeft','walkDirRight','walkLeftAnim','walkRightAnim');
+ const file=a==='walk'?'walk.svg':a+'.png';
+ el.style.backgroundImage='url("'+BLOOM_ANIM_BASE+file+'")';
+ el.classList.add('bloomAnim',a==='walk'?(dir==='left'?'walkLeftAnim':'walkRightAnim'):a+'Anim');
  el.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
- el.style.backgroundSize='200% 100%';
- el.style.backgroundPosition='0 0';
+ el.style.backgroundSize=a==='walk'?'400% 100%':'200% 100%';
+ el.style.backgroundPosition=a==='walk'?(dir==='left'?'0 0':'66.666% 0'):'0 0';
  el.style.backgroundRepeat='no-repeat';
  el.style.imageRendering='pixelated';
 }
@@ -757,7 +764,7 @@ function applySprite(el,id){
  el.style.backgroundSize='';
  el.style.backgroundPosition='';
  el.style.backgroundRepeat='';
- el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim','walkDirLeft','walkDirRight');
+ el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim','walkDirLeft','walkDirRight','walkLeftAnim','walkRightAnim');
  el.style.visibility='visible';
  if(!id||id==='egg'){
    el.src='./images/egg.svg';
