@@ -1,11 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 96" shape-rendering="crispEdges">
 <defs>
- <g id="body"><ellipse cx="48" cy="77" rx="30" ry="5" fill="#9aa9b7" opacity=".65"/><path d="M22 42Q22 18 48 16Q74 18 74 42L70 67Q64 76 48 78Q32 76 26 67Z" fill="#ff86a8" stroke="#171b26" stroke-width="4"/><path d="M30 24Q36 18 45 18" fill="none" stroke="#ffd4df" stroke-width="3"/><path d="M35 15L26 3L43 9L49 17Z" fill="#65c95c" stroke="#171b26" stroke-width="4"/><path d="M49 17L59 5L72 2L66 16L53 22Z" fill="#65c95c" stroke="#171b26" stroke-width="4"/><circle cx="31" cy="52" r="5" fill="#f36f92" opacity=".7"/><circle cx="65" cy="52" r="5" fill="#f36f92" opacity=".7"/></g>
- <g id="feetA"><path d="M31 67Q24 69 26 77Q28 82 35 79L38 70Z" fill="#ff86a8" stroke="#171b26" stroke-width="4"/><path d="M59 70Q65 68 69 73Q71 80 65 81Q58 81 57 75Z" fill="#ff86a8" stroke="#171b26" stroke-width="4"/></g>
- <g id="feetB"><path d="M31 70Q25 68 23 74Q22 81 29 81Q36 81 37 75Z" fill="#ff86a8" stroke="#171b26" stroke-width="4"/><path d="M60 68Q68 69 69 76Q68 82 61 80Q57 78 57 72Z" fill="#ff86a8" stroke="#171b26" stroke-width="4"/></g>
+<g id="body">
+ <path d="M20 46Q20 20 48 17Q76 20 76 46Q76 73 48 78Q20 73 20 46Z" fill="#ff8eac" stroke="#10151f" stroke-width="4"/>
+ <path d="M27 29Q34 21 44 20" fill="none" stroke="#ffd8e2" stroke-width="3"/>
+ <path d="M33 20L24 5L42 11L49 20Z" fill="#67ca59" stroke="#10151f" stroke-width="4"/>
+ <path d="M49 20L59 8L74 4L68 20L54 25Z" fill="#67ca59" stroke="#10151f" stroke-width="4"/>
+ <path d="M31 51Q35 48 39 51" stroke="#e95f87" stroke-width="3" fill="none"/>
+ <path d="M57 51Q61 48 65 51" stroke="#e95f87" stroke-width="3" fill="none"/>
+ <ellipse cx="31" cy="57" rx="5" ry="4" fill="#f36f91"/>
+ <ellipse cx="65" cy="57" rx="5" ry="4" fill="#f36f91"/>
+</g>
+<g id="feet1">
+ <path d="M29 69Q23 72 25 79Q27 83 34 80L38 71Z" fill="#ff8eac" stroke="#10151f" stroke-width="4"/>
+ <path d="M59 71Q66 68 70 74Q72 81 65 82Q59 81 57 76Z" fill="#ff8eac" stroke="#10151f" stroke-width="4"/>
+</g>
+<g id="feet2">
+ <path d="M30 71Q24 68 22 75Q22 82 29 82Q35 81 37 75Z" fill="#ff8eac" stroke="#10151f" stroke-width="4"/>
+ <path d="M60 69Q68 70 70 77Q69 83 62 81Q57 79 57 73Z" fill="#ff8eac" stroke="#10151f" stroke-width="4"/>
+</g>
 </defs>
-<g><use href="#body"/><use href="#feetA"/><ellipse cx="40" cy="45" rx="4.5" ry="6" fill="#171b26"/><ellipse cx="59" cy="45" rx="3.5" ry="5" fill="#171b26"/><path d="M35 56Q40 61 45 57" fill="none" stroke="#171b26" stroke-width="3"/></g>
-<g transform="translate(96)"><use href="#body"/><use href="#feetB"/><ellipse cx="38" cy="45" rx="4.5" ry="6" fill="#171b26"/><ellipse cx="57" cy="45" rx="3" ry="5" fill="#171b26"/><path d="M33 56Q38 61 43 57" fill="none" stroke="#171b26" stroke-width="3"/></g>
-<g transform="translate(192)"><use href="#body"/><use href="#feetA"/><ellipse cx="37" cy="45" rx="3.5" ry="5" fill="#171b26"/><ellipse cx="56" cy="45" rx="4.5" ry="6" fill="#171b26"/><path d="M51 56Q56 61 61 57" fill="none" stroke="#171b26" stroke-width="3"/></g>
-<g transform="translate(288)"><use href="#body"/><use href="#feetB"/><ellipse cx="39" cy="45" rx="3" ry="5" fill="#171b26"/><ellipse cx="58" cy="45" rx="4.5" ry="6" fill="#171b26"/><path d="M53 56Q58 61 63 57" fill="none" stroke="#171b26" stroke-width="3"/></g>
+<!-- left frame 1 -->
+<g><use href="#body"/><use href="#feet1"/>
+ <ellipse cx="39" cy="45" rx="5" ry="7" fill="#10151f"/>
+ <circle cx="57" cy="45" r="2.7" fill="#10151f"/>
+ <path d="M35 59Q40 64 46 59" fill="none" stroke="#10151f" stroke-width="3"/>
+</g>
+<!-- left frame 2 -->
+<g transform="translate(96)"><use href="#body"/><use href="#feet2"/>
+ <ellipse cx="37" cy="45" rx="4.5" ry="7" fill="#10151f"/>
+ <circle cx="55" cy="45" r="2.5" fill="#10151f"/>
+ <path d="M33 59Q38 63 44 59" fill="none" stroke="#10151f" stroke-width="3"/>
+</g>
+<!-- right frame 1 -->
+<g transform="translate(192)"><use href="#body"/><use href="#feet1"/>
+ <circle cx="39" cy="45" r="2.7" fill="#10151f"/>
+ <ellipse cx="57" cy="45" rx="5" ry="7" fill="#10151f"/>
+ <path d="M50 59Q56 64 61 59" fill="none" stroke="#10151f" stroke-width="3"/>
+</g>
+<!-- right frame 2 -->
+<g transform="translate(288)"><use href="#body"/><use href="#feet2"/>
+ <circle cx="41" cy="45" r="2.5" fill="#10151f"/>
+ <ellipse cx="59" cy="45" rx="4.5" ry="7" fill="#10151f"/>
+ <path d="M52 59Q58 63 63 59" fill="none" stroke="#10151f" stroke-width="3"/>
+</g>
 </svg>
