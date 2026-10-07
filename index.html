@@ -271,7 +271,7 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 }
 .pixelSprite.bloomAnim.idleAnim{animation:bloomIdle .9s steps(1,end) infinite!important;background-size:200% 100%!important}
 .pixelSprite.bloomAnim.eatAnim{animation:bloomEat .5s steps(1,end) infinite!important;background-size:200% 100%!important}
-.pixelSprite.bloomAnim.walkAnim{animation:bloomWalk .48s steps(4,end) infinite!important;background-size:400% 100%!important}
+.pixelSprite.bloomAnim.walkAnim{animation:bloomWalk .48s steps(1,end) infinite!important;background-size:200% 100%!important}
 .pixelSprite.bloomAnim.walkDirLeft{transform:scaleX(-1)!important}
 .pixelSprite.bloomAnim.walkDirRight{transform:none!important}
 @keyframes bloomIdle{0%,49%{background-position:0 0}50%,100%{background-position:100% 0}}
@@ -748,19 +748,23 @@ function applyBloomAnim(el,anim,dir){
  if(!el)return;
  const a=(anim==='walk'||anim==='eat')?anim:'idle';
  const d=a==='walk'?(dir==='left'?'left':'right'):'';
- if(el.dataset.bloomAnim===a&&el.dataset.bloomDir===d&&el.classList.contains('bloomAnim')&&el.classList.contains(a+'Anim'))return;
+ const file=a+'.png';
+ const url='https://raw.githubusercontent.com/darkknts/pocket-pet/main/images/pets/sprout/bloom/'+file;
  el.dataset.bloomAnim=a;
  el.dataset.bloomDir=d;
  el.classList.remove('bloomAnim','idleAnim','walkAnim','eatAnim','walkDirLeft','walkDirRight','walkLeftAnim','walkRightAnim');
- const file=a+'.png';
- el.style.backgroundImage='url("'+BLOOM_ANIM_BASE+file+'")';
  el.classList.add('bloomAnim',a+'Anim');
  if(d)el.classList.add(d==='left'?'walkDirLeft':'walkDirRight');
  el.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
- el.style.backgroundSize=a==='walk'?'400% 100%':'200% 100%';
+ el.style.backgroundImage='url("'+url+'")';
+ el.style.backgroundSize='200% 100%';
  el.style.backgroundPosition='0 0';
  el.style.backgroundRepeat='no-repeat';
+ el.style.backgroundOrigin='border-box';
  el.style.imageRendering='pixelated';
+ el.style.objectFit='fill';
+ el.style.visibility='visible';
+ el.style.opacity='1';
 }
 function applySprite(el,id){
  if(!el)return;
