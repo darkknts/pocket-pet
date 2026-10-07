@@ -747,7 +747,7 @@ function getBloomAnim(el){return (el&&el.dataset&&el.dataset.bloomAnim)||'idle'}
 function applyBloomAnim(el,anim,dir){
  if(!el)return;
  const a=(anim==='walk'||anim==='eat')?anim:'idle';
- const d=a==='walk'?(dir==='right'?'left':'right'):'');
+ const d=a==='walk'?(dir==='right'?'left':'right'):'';
  const file=a+'.png';
  const url='https://raw.githubusercontent.com/darkknts/pocket-pet/main/images/pets/sprout/bloom/'+file;
  el.dataset.bloomAnim=a;
