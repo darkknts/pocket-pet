@@ -365,8 +365,53 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 
 </head>
 <body><img data-wpe-slot="pet-atlas" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="펫 78종 아틀라스" style="display:none">
-<div class="wrap">
-  <div class="top"><div class="brand">Pocket <span>Pet</span></div><div class="pill" id="clock">--:--</div></div>
+
+<style id="pocket-pet-auth-ui">
+#authGate{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 20% 10%,#fff 0 12%,transparent 35%),linear-gradient(145deg,#eef7ff,#f9f4ff)}
+#authGate.hidden{display:none}
+.authBox{width:min(430px,94vw);background:rgba(255,255,255,.96);border:4px solid #8fb8d5;border-radius:28px;padding:26px;box-shadow:0 18px 55px rgba(50,86,130,.18)}
+.authLogo{text-align:center;font:700 34px Fredoka;color:#315b92;margin-bottom:4px}
+.authLogo span{color:#ff7d9b}
+.authSub{text-align:center;color:#70809a;font-size:13px;font-weight:800;margin-bottom:20px}
+.authTabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}
+.authTab{border:0;border-radius:12px;padding:11px;background:#edf4ff;color:#52657f;font:900 13px Nunito;cursor:pointer}
+.authTab.active{background:#4b8dff;color:#fff}
+.authField{display:grid;gap:6px;margin-top:11px}
+.authField label{font-size:12px;font-weight:900;color:#52657f}
+.authField input{width:100%;padding:13px 14px;border:2px solid #d4e2ed;border-radius:12px;background:#f9fcff;color:#203047;font:800 15px Nunito;outline:none}
+.authField input:focus{border-color:#76a9d1}
+.authHint{margin-top:8px;color:#8a9aac;font-size:11px;font-weight:800;line-height:1.45}
+.authBtn{width:100%;margin-top:16px;border:0;border-radius:14px;padding:13px;background:#4b8dff;color:#fff;font:900 15px Nunito;cursor:pointer}
+.authBtn:disabled{opacity:.55;cursor:not-allowed}
+.authMsg{min-height:20px;margin-top:10px;text-align:center;color:#c24a63;font-size:12px;font-weight:900}
+.authMsg.ok{color:#23785e}
+#logoutBtn{border:0;background:#fff0f4;color:#b23c5b;border-radius:999px;padding:8px 12px;font:900 11px Nunito;cursor:pointer}
+.accountArea{display:flex;align-items:center;gap:7px}
+.accountName{font-size:11px;color:#587086;font-weight:900}
+</style>
+<div id="authGate">
+  <div class="authBox">
+    <div class="authLogo">Pocket <span>Pet</span></div>
+    <div class="authSub">내 펫을 저장하고 다른 기기에서도 이어서 키워보세요.</div>
+    <div class="authTabs">
+      <button class="authTab active" id="authLoginTab" type="button">로그인</button>
+      <button class="authTab" id="authSignupTab" type="button">회원가입</button>
+    </div>
+    <div class="authField">
+      <label for="authUsername">아이디</label>
+      <input id="authUsername" type="text" maxlength="10" autocomplete="username" placeholder="영문 또는 숫자 4~10자리">
+    </div>
+    <div class="authField">
+      <label for="authPassword">비밀번호</label>
+      <input id="authPassword" type="password" maxlength="10" autocomplete="current-password" placeholder="영문 또는 숫자 6~10자리">
+    </div>
+    <div class="authHint">아이디: 영문/숫자 4~10자리 · 비밀번호: 영문/숫자 6~10자리<br>영문+숫자 조합은 필수가 아닙니다.</div>
+    <button class="authBtn" id="authSubmit" type="button">로그인</button>
+    <div class="authMsg" id="authMsg"></div>
+  </div>
+</div>
+<div class="wrap" id="gameWrap">
+  <div class="top"><div class="brand">Pocket <span>Pet</span></div><div class="accountArea"><span class="accountName" id="accountName"></span><button id="logoutBtn" type="button">로그아웃</button><div class="pill" id="clock">--:--</div></div></div>
   <div class="game">
     <section class="stage">
       <div class="sceneCard"><div class="sceneAvatar"><img id="sceneAvatarImg" src="https://cdn.websitepublisher.ai/custom/wid29230/images/egg.svg" alt=""></div><div class="sceneIdentity"><b id="scenePetName">알</b><strong id="sceneLevel">Lv.0</strong><div class="sceneXp"><i id="sceneXpFill"></i></div><span id="sceneExp">0 / 60</span></div></div>
@@ -408,6 +453,16 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
 <section class="ranking"><div class="rankingHead"><h2>🏆 펫 랭킹</h2><span>TOP 5</span></div><div class="rankingList" id="rankingList"></div></section>
 </div>
 <div class="modal" id="modal"><div class="dialog" id="dialog"></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/*
+ * Pocket Pet - Supabase configuration
+ * SUPABASE_ANON_KEY is intentionally left blank until you paste the
+ * public anon key from Supabase Project Settings > API.
+ */
+window.POCKET_SUPABASE_URL = 'https://bsicfwiavyvchezypenzg.supabase.co';
+window.POCKET_SUPABASE_ANON_KEY = 'sb_publishable_MVDUDQ_zconUzHwi5rBJvA_O0g6bbxf';
+</script>
 <script>
 (function(){
 const KEY='pocket_pet_v1';
@@ -465,6 +520,165 @@ const base={species:'sprout',name:'새싹이',level:0,exp:0,gold:100,bond:0,food
 let awayResetNotice=null;
 let s=load(); let tickTimer;
 const $=id=>document.getElementById(id);
+let currentUser=null;
+let cloudReady=false;
+let cloudSaveTimer=null;
+let authMode='login';
+
+function authMessage(msg,ok=false){
+  const el=$('authMsg');
+  if(!el)return;
+  el.textContent=msg||'';
+  el.className='authMsg'+(ok?' ok':'');
+}
+function validUsername(v){return /^[A-Za-z0-9]{4,10}$/.test(v||'')}
+function validPassword(v){return /^[A-Za-z0-9]{6,10}$/.test(v||'')}
+function authEmailForUsername(v){return v.toLowerCase()+'@pocketpet.game'}
+function setAuthMode(mode){
+  authMode=mode;
+  $('authLoginTab').classList.toggle('active',mode==='login');
+  $('authSignupTab').classList.toggle('active',mode==='signup');
+  $('authSubmit').textContent=mode==='login'?'로그인':'회원가입';
+  $('authPassword').autocomplete=mode==='login'?'current-password':'new-password';
+  authMessage('');
+}
+async function cloudSaveNow(){
+  if(!cloudReady||!currentUser)return;
+  try{
+    const payload={user_id:currentUser.id,game_state:s,dex:Array.isArray(s.dex)?s.dex:[],updated_at:new Date().toISOString()};
+    const {error}=await window.pocketSupabase.from('pet_saves').upsert(payload,{onConflict:'user_id'});
+    if(error)throw error;
+  }catch(e){console.warn('cloud save failed',e)}
+}
+function scheduleCloudSave(){
+  if(!cloudReady||!currentUser)return;
+  clearTimeout(cloudSaveTimer);
+  cloudSaveTimer=setTimeout(cloudSaveNow,700);
+}
+async function loadCloudForUser(){
+  const {data,error}=await window.pocketSupabase.from('pet_saves').select('game_state,dex').eq('user_id',currentUser.id).maybeSingle();
+  if(error)throw error;
+  if(data&&data.game_state&&typeof data.game_state==='object'){
+    s=Object.assign(structuredClone(base),data.game_state);
+    s.dex=Array.isArray(data.dex)?data.dex:(Array.isArray(s.dex)?s.dex:['sprout']);
+    s.refuse=Object.assign({feed:0,play:0,bath:0,train:0,touch:0},s.refuse||{});
+    s.care=Object.assign({feed:0,sleep:0,energy:0,hyg:0},s.care||{});
+    applyOffline(s);
+    saveLocalOnly();
+    log('☁️ 저장된 펫 데이터를 불러왔습니다.');
+  }else{
+    // First login on this device: migrate the existing local pet to the account.
+    await cloudSaveNow();
+    log('☁️ 현재 기기의 펫 데이터를 계정에 처음 저장했습니다.');
+  }
+}
+function saveLocalOnly(){
+  s.last=Date.now();
+  const data=JSON.stringify(s);
+  try{
+    localStorage.setItem(BACKUP_KEY,data);
+    localStorage.setItem(KEY,data);
+  }catch(e){
+    try{localStorage.setItem(KEY,data)}catch(err){console.warn('local save failed',err)}
+  }
+}
+async function initCloudAuth(){
+  const gate=$('authGate');
+  const wrap=$('gameWrap');
+  if(!window.supabase||!window.POCKET_SUPABASE_URL||!window.POCKET_SUPABASE_ANON_KEY){
+    authMessage('Supabase 연결 설정이 필요합니다.');
+    return;
+  }
+  window.pocketSupabase=window.supabase.createClient(window.POCKET_SUPABASE_URL,window.POCKET_SUPABASE_ANON_KEY);
+  window.pocketSupabase.auth.onAuthStateChange(async (_event,session)=>{
+    if(!session)return;
+    currentUser=session.user;
+    try{
+      await loadCloudForUser();
+      cloudReady=true;
+      $('accountName').textContent=(currentUser.user_metadata&&currentUser.user_metadata.username)||currentUser.email.split('@')[0];
+      gate.classList.add('hidden');
+      wrap.style.display='';
+      render();
+      startPetMove();
+    }catch(e){
+      console.error(e);
+      authMessage('저장 데이터를 불러오지 못했습니다. 다시 로그인해 주세요.');
+      cloudReady=false;
+    }
+  });
+  const {data:{session}}=await window.pocketSupabase.auth.getSession();
+  if(session){
+    currentUser=session.user;
+    try{
+      await loadCloudForUser();
+      cloudReady=true;
+      $('accountName').textContent=(currentUser.user_metadata&&currentUser.user_metadata.username)||currentUser.email.split('@')[0];
+      gate.classList.add('hidden');
+      wrap.style.display='';
+      render();
+      startPetMove();
+    }catch(e){authMessage('저장 데이터를 불러오지 못했습니다.');}
+  }else{
+    wrap.style.display='none';
+    gate.classList.remove('hidden');
+  }
+}
+async function submitAuth(){
+  const username=$('authUsername').value.trim();
+  const password=$('authPassword').value;
+  if(!validUsername(username)){authMessage('아이디는 영문/숫자 4~10자리로 입력해 주세요.');return}
+  if(!validPassword(password)){authMessage('비밀번호는 영문/숫자 6~10자리로 입력해 주세요.');return}
+  $('authSubmit').disabled=true;
+  authMessage(authMode==='login'?'로그인 중...':'회원가입 중...',true);
+  try{
+    const email=authEmailForUsername(username);
+    if(authMode==='signup'){
+      const {data,error}=await window.pocketSupabase.auth.signUp({
+        email,password,
+        options:{data:{username:username}}
+      });
+      if(error)throw error;
+      if(!data.session){
+        authMessage('회원가입은 완료됐지만 인증 설정을 확인해야 합니다.',false);
+        return;
+      }
+      const {error:profileError}=await window.pocketSupabase.from('profiles').insert({
+        id:data.user.id,username:username
+      });
+      if(profileError&&profileError.code!=='23505')throw profileError;
+      currentUser=data.user;
+      await loadCloudForUser();
+      cloudReady=true;
+      $('accountName').textContent=username;
+      $('authGate').classList.add('hidden');
+      $('gameWrap').style.display='';
+      render();
+      startPetMove();
+      authMessage('');
+    }else{
+      const {data,error}=await window.pocketSupabase.auth.signInWithPassword({email,password});
+      if(error)throw error;
+      currentUser=data.user;
+      await loadCloudForUser();
+      cloudReady=true;
+      $('accountName').textContent=username;
+      $('authGate').classList.add('hidden');
+      $('gameWrap').style.display='';
+      render();
+      startPetMove();
+      authMessage('');
+    }
+  }catch(e){
+    console.error(e);
+    let msg=e.message||'로그인에 실패했습니다.';
+    if(/invalid login credentials/i.test(msg))msg='아이디 또는 비밀번호가 올바르지 않습니다.';
+    else if(/already registered|already been registered/i.test(msg))msg='이미 사용 중인 아이디입니다.';
+    else if(/password.*6/i.test(msg))msg='비밀번호는 최소 6자리여야 합니다.';
+    authMessage(msg);
+  }finally{$('authSubmit').disabled=false}
+}
+
 function load(){
  try{
    let raw=localStorage.getItem(KEY),x=null;
@@ -487,7 +701,7 @@ function load(){
  }catch(e){}
  return structuredClone(base)
 }
-function save(){s.last=Date.now();const data=JSON.stringify(s);try{localStorage.setItem(BACKUP_KEY,data);localStorage.setItem(KEY,data)}catch(e){try{localStorage.setItem(KEY,data)}catch(err){console.warn('save failed',err)}}}
+function save(){saveLocalOnly();scheduleCloudSave()}
 function applyOffline(x){
  const now=Date.now(), mins=Math.min(10080,Math.max(0,Math.floor((now-(x.last||now))/60000)));
  if(mins>0 && x.hatched){const drain=x.sleeping?.25:1;x.food=Math.max(0,x.food-2*mins*drain);x.ene=Math.min(100,x.ene+(x.sleeping?3:1)*mins);x.hyg=Math.max(0,x.hyg-1*mins*drain);x.joy=Math.max(0,x.joy-1*mins*drain);if(x.level<((species.find(z=>z.id===x.species)||{}).at||99))x.exp=Math.min(60,(x.exp||0)+mins)}
@@ -674,10 +888,26 @@ $('saveData').onclick=()=>{
 };
 $('sendPet').onclick=()=>{if(!s.hatched||current().stage!==3)return;modal('<h3>🌟 '+s.name+' 보내주기</h3><p>최종진화를 마친 <b>'+s.name+'</b>을(를) 원래 별로 보내고 새로운 알과 다시 시작할까요?</p><div class="choice"><button class="btn pink" id="yesSend">🌟 보내주기</button><button class="btn" id="noSend">취소</button></div>');setTimeout(()=>{$('yesSend').onclick=()=>{const oldName=s.name;const oldDex=Array.from(new Set(s.dex||[]));const fresh=structuredClone(base);fresh.dex=oldDex;fresh.last=Date.now();fresh.created=Date.now();s=fresh;const freshData=JSON.stringify(s);localStorage.setItem(KEY,freshData);localStorage.setItem(BACKUP_KEY,freshData);$('modal').classList.remove('open');render();log('🌟 '+oldName+'은(는) 원래 별로 돌아갔습니다. 새로운 알이 도착했어요!');fx('GOOD BYE!');setTimeout(()=>{modal('<h3>🥚 새로운 알이 나타났어요!</h3><p><b>'+oldName+'</b>은(는) 원래 별로 돌아갔습니다.</p><p>이제 새로운 알을 다시 키워보세요. ✨</p><div class="choice"><button class="btn primary" id="closeSend">🥚 새로 시작하기</button></div>');setTimeout(()=>{$('closeSend')&&($('closeSend').onclick=()=>{$('modal').classList.remove('open')})},0)},350)};$('noSend').onclick=()=>{$('modal').classList.remove('open')};},0)};
 $('reset').onclick=()=>{modal('<h3>정말 초기화할까요?</h3><p>현재 캐릭터와 성장 데이터를 모두 삭제하고 새 알로 돌아갑니다.</p><div class="choice"><button class="btn pink" id="yesReset">초기화</button><button class="btn" id="noReset">취소</button></div>');setTimeout(()=>{const yes=$('yesReset'),no=$('noReset');if(yes)yes.onclick=()=>{localStorage.removeItem(KEY);localStorage.removeItem(BACKUP_KEY);sessionStorage.clear();location.hash='';location.reload()};if(no)no.onclick=()=>$('modal').classList.remove('open')},0)}
+
+$('authLoginTab').onclick=()=>setAuthMode('login');
+$('authSignupTab').onclick=()=>setAuthMode('signup');
+$('authSubmit').onclick=submitAuth;
+$('authUsername').addEventListener('keydown',e=>{if(e.key==='Enter')$('authPassword').focus()});
+$('authPassword').addEventListener('keydown',e=>{if(e.key==='Enter')submitAuth()});
+$('logoutBtn').onclick=async()=>{
+  if(!window.pocketSupabase)return;
+  await cloudSaveNow();
+  cloudReady=false;currentUser=null;
+  await window.pocketSupabase.auth.signOut();
+  $('gameWrap').style.display='none';
+  $('authGate').classList.remove('hidden');
+  $('authUsername').value='';$('authPassword').value='';
+  authMessage('로그아웃되었습니다.',true);
+};
 function gameTick(){if(!s.hatched)return;s.care=s.care||{feed:0,sleep:0,energy:0,hyg:0};s.food=clamp(s.food-2);s.ene=clamp(s.ene+(s.sleeping?3:1));s.hyg=clamp(s.hyg-(s.sleeping?0:1));s.joy=clamp(s.joy-(s.food<30?3:1));if(s.food>=45&&s.food<=90)s.care.feed+=1;if(s.sleeping)s.care.sleep+=1;if(s.ene>=60)s.care.energy+=1;if(s.hyg>=70)s.care.hyg+=1;if(s.sleeping&&s.ene>=100)s.sleeping=false;if(s.level<current().at)gainExp(1);checkGrowth();save();render()}
 try{const h=location.hash||'';if(h.startsWith('#resume=')){const code=decodeURIComponent(h.slice(8));const x=readSaveCode(code);s=x;const resumeData=JSON.stringify(s);localStorage.setItem(KEY,resumeData);localStorage.setItem(BACKUP_KEY,resumeData);history.replaceState(null,'',location.pathname+location.search);setTimeout(()=>{log('📱 이어하기 링크로 저장 데이터를 불러왔습니다!');fx('RESUME!')},100)} }catch(e){console.warn('resume link load failed',e)}
 setInterval(gameTick,30000);setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});},1000);
-render();setTimeout(startPetMove,100);log('게임을 시작했습니다. 알을 눌러 부화시키세요.');if(awayResetNotice){setTimeout(()=>{modal('<h3>🏡 펫이 고향으로 돌아갔어요</h3><p><b>'+awayResetNotice.days+'일</b> 동안 게임에 접속하지 않아 '+awayResetNotice.name+'이(가) 고향으로 돌아갔습니다.</p><p>새로운 인연을 다시 시작해 주세요. 이번에는 <b>알</b>부터 다시 키울 수 있습니다. 🥚</p><div class="choice"><button class="btn primary" id="closeAway">🥚 새 알과 시작하기</button></div>');setTimeout(()=>{$('closeAway')&&($('closeAway').onclick=()=>{$('modal').classList.remove('open')})},0)},250)}$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+render();log('Pocket Pet을 시작합니다. 로그인해 주세요.');initCloudAuth();if(awayResetNotice){setTimeout(()=>{modal('<h3>🏡 펫이 고향으로 돌아갔어요</h3><p><b>'+awayResetNotice.days+'일</b> 동안 게임에 접속하지 않아 '+awayResetNotice.name+'이(가) 고향으로 돌아갔습니다.</p><p>새로운 인연을 다시 시작해 주세요. 이번에는 <b>알</b>부터 다시 키울 수 있습니다. 🥚</p><div class="choice"><button class="btn primary" id="closeAway">🥚 새 알과 시작하기</button></div>');setTimeout(()=>{$('closeAway')&&($('closeAway').onclick=()=>{$('modal').classList.remove('open')})},0)},250)}$('clock').textContent=new Date().toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
 })();
 </script>
 
