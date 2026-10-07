@@ -3,6 +3,8 @@ name: Build redesigned pet atlas
 on:
   push:
     branches: [main]
+    paths:
+      - 'images/pet_atlas_redesigned.svg'
 
 permissions:
   contents: write
