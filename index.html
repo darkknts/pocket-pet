@@ -387,6 +387,9 @@ linear-gradient(#a9d878 0 30%,#8bc76b 30% 52%,#d9b979 52% 100%)}
   animation:bob 2.2s ease-in-out infinite!important;
   will-change:left;
 }
+/* All redesigned pets use the same left/right visual direction as 꽃망울. */
+.scene .pet.roam.walkLeft .pixelSprite{transform:scaleX(-1)!important}
+.scene .pet.roam.walkRight .pixelSprite{transform:none!important}
 </style></head>
 <body>
 <style id="pocket-pet-auth-ui">
